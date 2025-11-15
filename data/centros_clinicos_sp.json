@@ -1,0 +1,380 @@
+[
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "PRESTADOR",
+    "Unnamed: 1": "ZONA | REGIÃO",
+    "Unnamed: 2": "CNPJ",
+    "Unnamed: 3": "CD PESSOA"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "SANTO ANDRE",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "44649812028300",
+    "Unnamed: 3": "249396788"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "MOGI DAS CRUZES",
+    "Unnamed: 1": "ALTO TIETE",
+    "Unnamed: 2": "44649812027761",
+    "Unnamed: 3": "249396737"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "FREI GALVAO SAN",
+    "Unnamed: 1": "SANTOS",
+    "Unnamed: 2": "44649812019823",
+    "Unnamed: 3": "249396370"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ALPHAVILLE",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "44649812016050",
+    "Unnamed: 3": "249396273"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ANDRADE NEVES II",
+    "Unnamed: 1": "CAMPINAS",
+    "Unnamed: 2": "44649812019408",
+    "Unnamed: 3": "249396354"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "JUNDIAI",
+    "Unnamed: 1": "JUNDIAI",
+    "Unnamed: 2": "44649812028067",
+    "Unnamed: 3": "249396753"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "SANTO ANTONIO",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "44649812012063",
+    "Unnamed: 3": "249396222"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "BARRA FUNDA",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252513781"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "HERMINIO LEMOS",
+    "Unnamed: 1": "PROXIMIDADE: LESTE, SUL",
+    "Unnamed: 2": "44649812023421",
+    "Unnamed: 3": "249396524"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "TATUAPE",
+    "Unnamed: 1": "LESTE",
+    "Unnamed: 2": "44649812003404",
+    "Unnamed: 3": "249396060"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ZONA SUL",
+    "Unnamed: 1": "SUL",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514303"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ITAVUVU",
+    "Unnamed: 1": "SOROCABA",
+    "Unnamed: 2": "44649812005954",
+    "Unnamed: 3": "249396117"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ITU",
+    "Unnamed: 1": "ITU",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514249"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ARUJA",
+    "Unnamed: 1": "ARUJA",
+    "Unnamed: 2": "44649812026366",
+    "Unnamed: 3": "249396656"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ANALIA FRANCO",
+    "Unnamed: 1": "LESTE",
+    "Unnamed: 2": "44649812021640",
+    "Unnamed: 3": "249396443"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ANDRADE NEVES I",
+    "Unnamed: 1": "CAMPINAS",
+    "Unnamed: 2": "44649812018851",
+    "Unnamed: 3": "249396338"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ARUJA",
+    "Unnamed: 1": "ARUJA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252513773"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "AUTONOMISTAS",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "44649812026102",
+    "Unnamed: 3": "249396648"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "BARRA FUNDA",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252513781"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "BELEM",
+    "Unnamed: 1": "LESTE",
+    "Unnamed: 2": "44649812025041",
+    "Unnamed: 3": "249396591"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "CAIEIRAS",
+    "Unnamed: 1": "CAIEIRAS",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252513790"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "CARAPICUIBA",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252513803"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "COTIA",
+    "Unnamed: 1": "COTIA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514214"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "DIADEMA",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514370"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "DOM PEDRO",
+    "Unnamed: 1": "PROXIMIDADE: SUL",
+    "Unnamed: 2": "44649812022450",
+    "Unnamed: 3": "252464918"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "FREI GALVAO UNI",
+    "Unnamed: 1": "SAO VICENTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514311"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "GUARULHOS I",
+    "Unnamed: 1": "ALTO TIETE",
+    "Unnamed: 2": "44649812003900",
+    "Unnamed: 3": "249396079"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "GUARULHOS II",
+    "Unnamed: 1": "ALTO TIETE",
+    "Unnamed: 2": "44649812021569",
+    "Unnamed: 3": "249396435"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "NTERLAGOS",
+    "Unnamed: 1": "PROXIMIDADE: SUL",
+    "Unnamed: 2": "44649812021720",
+    "Unnamed: 3": "249396451"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "IPSA",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514362"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ITAPEVI",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514222"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ITAPURA",
+    "Unnamed: 1": "CAMPINAS",
+    "Unnamed: 2": "44649812019157",
+    "Unnamed: 3": "249396346"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ITAQUERA",
+    "Unnamed: 1": "LESTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514230"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "LAPA",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "44649812015089",
+    "Unnamed: 3": "249396265"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "MOGI DAS CRUZES",
+    "Unnamed: 1": "ALTO TIETE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514257"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "PAULO RIZZO",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "44649812028652",
+    "Unnamed: 3": "249396818"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "PENHA",
+    "Unnamed: 1": "SOROCABA",
+    "Unnamed: 2": "44649812009003",
+    "Unnamed: 3": "249396176"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "POLVILHO",
+    "Unnamed: 1": "CAJAMAR",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514265"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "POMPEIA",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "44649812002696",
+    "Unnamed: 3": "249396052"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "RIBEIRAO PIRES",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514273"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "RODRIGUES PACHECO",
+    "Unnamed: 1": "SOROCABA",
+    "Unnamed: 2": "44649812034628",
+    "Unnamed: 3": "249397105"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "SANTANA",
+    "Unnamed: 1": "PROXIMIDADE: NORTE",
+    "Unnamed: 2": "44649812029381",
+    "Unnamed: 3": "249396869"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "SANTO ANDRE II",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "44649812021992",
+    "Unnamed: 3": "249396460"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "SANTO ANDRE III",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "44649812024746",
+    "Unnamed: 3": "249396583"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "SAO BERNARDO IV",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "44649812004125",
+    "Unnamed: 3": "249396087"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "SAO BERNARDO 3",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "44649812024312",
+    "Unnamed: 3": "252466953"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "SAO BERNARDO IV",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "44649812022026",
+    "Unnamed: 3": "249396478"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "SAO MIGUEL",
+    "Unnamed: 1": "LESTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514281"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "SUZANO",
+    "Unnamed: 1": "ALTO TIETE",
+    "Unnamed: 2": "44649812027842",
+    "Unnamed: 3": "249396745"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "TRUJILLO I",
+    "Unnamed: 1": "SOROCABA",
+    "Unnamed: 2": "44649812009518",
+    "Unnamed: 3": "249396206"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "TRUJILLO II",
+    "Unnamed: 1": "SOROCABA",
+    "Unnamed: 2": "44649812009194",
+    "Unnamed: 3": "249396184"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "VARZEA PAULISTA",
+    "Unnamed: 1": "VARZEA PAULISTA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514290"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "ZONA NORTE",
+    "Unnamed: 1": "NORTE",
+    "Unnamed: 2": "44649812006411",
+    "Unnamed: 3": "249396125"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "IPIRANGA",
+    "Unnamed: 1": "SUL",
+    "Unnamed: 2": "44649812030479",
+    "Unnamed: 3": "249396877"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "MAUA",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514320"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "PRESTES MAIA",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "44649812030550",
+    "Unnamed: 3": "249396885"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "SAO CAETANO",
+    "Unnamed: 1": "SAO CAETANO DO SUL",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514338"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "SAO GABRIEL",
+    "Unnamed: 1": "LESTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514346"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "TABOAO DA SERRA",
+    "Unnamed: 1": "PROXIMIDADE: OESTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252514354"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "RIO DE JANEIRO",
+    "Unnamed: 1": "ZONA OESTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "252513749"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "UNIDADE AVANCADA SALVALUS",
+    "Unnamed: 1": "LESTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "260068651"
+  },
+  {
+    "CENTROS CLINICOS | SÃO PAULO": "UNIDADE AVANCADA SANTO ANDRE",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "259167250"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "REDE DIAGNOSTICO": "AMBAS SOMENTE COLETA, NAO TERA IMAGENS",
+    "Unnamed: 1": "",
+    "Unnamed: 2": "",
+    "Unnamed: 3": ""
+  },
+  {
+    "REDE DIAGNOSTICO": "PRESTADOR",
+    "Unnamed: 1": "ZONA | REGIÃO",
+    "Unnamed: 2": "CNPJ",
+    "Unnamed: 3": "CD PESSOA"
+  },
+  {
+    "REDE DIAGNOSTICO": "DIAGNOSTICO SANTANA II",
+    "Unnamed: 1": "NORTE",
+    "Unnamed: 2": "44649812043104",
+    "Unnamed: 3": "472111367"
+  },
+  {
+    "REDE DIAGNOSTICO": "CLINICA E DIAG ZONA OESTE",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "44649812042566",
+    "Unnamed: 3": "469283500"
+  },
+  {
+    "REDE DIAGNOSTICO": "DIAGNOST VILA CARRAO",
+    "Unnamed: 1": "LESTE",
+    "Unnamed: 2": "44649812042809",
+    "Unnamed: 3": "472075468"
+  }
+]

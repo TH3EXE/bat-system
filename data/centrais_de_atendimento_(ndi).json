@@ -1,0 +1,68 @@
+[
+  {
+    "TELEFONES": "CANAL DE ATENDIMENTO",
+    "Unnamed: 1": "LIGAÇÕES LOCAIS",
+    "Unnamed: 2": "REGIÕES NÃO ATENDIDAS PELO 4090",
+    "Unnamed: 3": "HORÁRIO"
+  },
+  {
+    "TELEFONES": "OUTROS CONVÊNIOS (CONSULTAS E EXAMES)",
+    "Unnamed: 1": "4090-1740",
+    "Unnamed: 2": "0800 409 1740",
+    "Unnamed: 3": "DAS 6:00 ÀS 21:00\nDE SEGUNDA À SÁBADO"
+  },
+  {
+    "TELEFONES": "OUTROS CONVÊNIOS (AGENDAMENTO PARA OUTROS CONVÊNIOS)",
+    "Unnamed: 1": "*",
+    "Unnamed: 2": "4090-1680",
+    "Unnamed: 3": "DAS 6:00 ÀS 21:00\nDE SEGUNDA À SÁBADO"
+  },
+  {
+    "TELEFONES": "SERVIÇOS",
+    "Unnamed: 1": "4090-1750",
+    "Unnamed: 2": "0800 409 1750",
+    "Unnamed: 3": "24 HORAS"
+  },
+  {
+    "TELEFONES": "SAC",
+    "Unnamed: 1": "*",
+    "Unnamed: 2": "0800 015 3855",
+    "Unnamed: 3": "24 HORAS"
+  },
+  {
+    "TELEFONES": "INFINITY",
+    "Unnamed: 1": "*",
+    "Unnamed: 2": "0800 463 4648",
+    "Unnamed: 3": "24 HORAS"
+  },
+  {
+    "TELEFONES": "TPDA (EXCLUSIVO PARA DEFICIENTE AUDITIVO OU DE FALA)",
+    "Unnamed: 1": "*",
+    "Unnamed: 2": "0800 770 0330",
+    "Unnamed: 3": "24 HORAS"
+  },
+  {
+    "TELEFONES": "CREDENCIADOS / SAVI (SERVIÇO DE AUTORIZAÇÃO VIA INTERNET)",
+    "Unnamed: 1": "4002-3336 ",
+    "Unnamed: 2": "0300 313 0956",
+    "Unnamed: 3": "24 HORAS"
+  },
+  {
+    "TELEFONES": "",
+    "Unnamed: 1": "REGIÕES NORTE/ NORDESTE E CENTRO OESTE/ CAPITAIS ",
+    "Unnamed: 2": "REGIÃO SUL/ SUDESTE/ CENTRO OESTE ",
+    "Unnamed: 3": ""
+  },
+  {
+    "TELEFONES": "",
+    "Unnamed: 1": "",
+    "Unnamed: 2": "0300 313 3336",
+    "Unnamed: 3": ""
+  },
+  {
+    "TELEFONES": "",
+    "Unnamed: 1": "",
+    "Unnamed: 2": "DEMAIS LOCALIDADES",
+    "Unnamed: 3": ""
+  }
+]

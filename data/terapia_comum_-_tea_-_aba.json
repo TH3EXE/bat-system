@@ -1,0 +1,272 @@
+[
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "COMUM",
+    "Unnamed: 1": "",
+    "Unnamed: 2": "",
+    "Unnamed: 3": ""
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "PROCEDIMENTOS",
+    "Unnamed: 1": "ESPECIALIDADE",
+    "Unnamed: 2": "TUSS",
+    "Unnamed: 3": "AMB"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "CONSULTA/SESSAO DE NUTRICAO",
+    "Unnamed: 1": "COMUM",
+    "Unnamed: 2": "50000560",
+    "Unnamed: 3": "00010138"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "CONSULTA/SESSAO DE NUTRICAO",
+    "Unnamed: 1": "COMUM",
+    "Unnamed: 2": "50000560",
+    "Unnamed: 3": "10101560"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "CONSULTA/ SESSAO DE PSICOTERAPIA/PSICOLOGO",
+    "Unnamed: 1": "COMUM",
+    "Unnamed: 2": "50001221",
+    "Unnamed: 3": "60010002"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "CONSULTA/SESSAO DE NEUROPSICOLOGIA",
+    "Unnamed: 1": "COMUM",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010363"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "CONSULTA/ SESSAO DE TERAPIA OCUPACIONAL",
+    "Unnamed: 1": "COMUM",
+    "Unnamed: 2": "50000136",
+    "Unnamed: 3": "62010018"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "PSICOPEDAGOGIA CONVENCIONAL",
+    "Unnamed: 1": "COMUM",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010355"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "CONSULTA/SESSAO COM FONOAUDIOLOGO",
+    "Unnamed: 1": "COMUM",
+    "Unnamed: 2": "50000586",
+    "Unnamed: 3": "61010014"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "",
+    "Unnamed: 1": "",
+    "Unnamed: 2": "",
+    "Unnamed: 3": ""
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "TEA",
+    "Unnamed: 1": "",
+    "Unnamed: 2": "",
+    "Unnamed: 3": ""
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "PROCEDIMENTOS",
+    "Unnamed: 1": "ESPECIALIDADE",
+    "Unnamed: 2": "TUSS",
+    "Unnamed: 3": "AMB"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "PSICOTERAPIA TEA",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010126"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "CONSULTA/SESSAO PSICOPEDAGOGIA - TEA",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010150"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "PSICOMOTRICIDADE TEA",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010371"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "SESSAO DE PSICOTERAPIA FAMILIAR POR PSICOLOGO (TEA) (NDI SP)",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010428"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "SESSAO EM PSICOLOGIA EM GRUPO (TEA) (NDI SP)",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010410"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "SESSAO DE PSICOTERAPIA INFANTIL (TEA)",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010436"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "SESSAO DE PSICOTERAPIA DE GRUPO - POR PACIENTE (TEA)",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010398"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "SESSAO DE PSICOMOTRICIDADE EM GRUPO (TEA) (NDI SP )",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010401"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "FONOAUDIOLOGIA TEA",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "61010073"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "TERAPIA OCUPACIONAL TEA",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "62010123"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "SESSAO DE FISIOTERAPIA PARA TEA",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "62010204"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "TERAPIA OCUPACIONAL METODO ESTIMULACAO SENSORIAL (TEA)",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "62010131"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "SESSAO MUSICOTERAPIA - TEA",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "50001213",
+    "Unnamed: 3": "62010212"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "FONOAUDIOTERAPIA DE LINGUAGEM METODO SENA - TEA",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "61010243"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "CONSULTA/ SESSAO NUTRICAO TEA",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "65010035"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "INTEGRACAO SENSORIAL FONO (TEA)",
+    "Unnamed: 1": "TEA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "61010090"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "PACOTE PSICOTERAPIA FONOTERAPIA TER OCUPACIONAL METODO ABA H",
+    "Unnamed: 1": "*",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "98500025"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "PSICOTERAPIA PELO METODO DENVER - POR SESSAO",
+    "Unnamed: 1": "*",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010169"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "SESSAO DE TERAPIA OCUPACIONAL PELO METODO AYRES",
+    "Unnamed: 1": "*",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "62010174"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "FONOAUDIOLOGIA - METODO PROMPT",
+    "Unnamed: 1": "*",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "61010154"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "",
+    "Unnamed: 1": "",
+    "Unnamed: 2": "",
+    "Unnamed: 3": ""
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "ABA",
+    "Unnamed: 1": "",
+    "Unnamed: 2": "",
+    "Unnamed: 3": ""
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "PROCEDIMENTOS",
+    "Unnamed: 1": "ESPECIALIDADE",
+    "Unnamed: 2": "TUSS",
+    "Unnamed: 3": "AMB"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "PSICOTERAPIA PELO METODO ABA - POR SESSAO",
+    "Unnamed: 1": "ABA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010185"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "PSICOPEDAGOGIA PELO METODO ABA - POR SESSAO",
+    "Unnamed: 1": "ABA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010177"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "FONOAUDIOLOGIA PELO METODO ABA - POR SESSAO",
+    "Unnamed: 1": "ABA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "61010103"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "TERAPIA OCUPACIONAL PELO METODO ABA - POR SESSAO",
+    "Unnamed: 1": "ABA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "62010140"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "PSICOMOTRICIDADE PELA METODO ABA - POR SESSAO",
+    "Unnamed: 1": "ABA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010193"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "SESSAO DE FISIOTERAPIA PELO METODO ABA",
+    "Unnamed: 1": "ABA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "62010182"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "TERAPIA OCUPACIONAL METODO ESTIMULACAO SENSORIAL (TEA)",
+    "Unnamed: 1": "ABA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "62010131"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "APLICADOR METODO ABA (TERAPIA MULTIDISCIPLINAR)",
+    "Unnamed: 1": "ABA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "60010207"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "FONOAUDIOTERAPIA DE LINGUAGEM METODO SENA - TEA",
+    "Unnamed: 1": "ABA",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "61010243"
+  },
+  {
+    "TERAPIAS (COMUM - TEA - ABA)": "SESSAO EQUOTERAPIA",
+    "Unnamed: 1": "*",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "62010220"
+  }
+]

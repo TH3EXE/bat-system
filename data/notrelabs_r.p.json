@@ -1,0 +1,212 @@
+[
+  {
+    "NOTRELABS": "PRESTADOR",
+    "Unnamed: 1": "ZONA | REGIÃO",
+    "Unnamed: 2": "CNPJ",
+    "Unnamed: 3": "CD PESSOA"
+  },
+  {
+    "NOTRELABS": "LUCAS GARCEZ",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "264124459"
+  },
+  {
+    "NOTRELABS": "ITAPEVI",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "254575644"
+  },
+  {
+    "NOTRELABS": "AGUA VERDE CURITIBA",
+    "Unnamed: 1": "CURITIBA",
+    "Unnamed: 2": "44649812035942",
+    "Unnamed: 3": "256541194"
+  },
+  {
+    "NOTRELABS": "AMERICANA",
+    "Unnamed: 1": "AMERICANA",
+    "Unnamed: 2": "44649812032170",
+    "Unnamed: 3": "249396940"
+  },
+  {
+    "NOTRELABS": "ANGELICA",
+    "Unnamed: 1": "LESTE",
+    "Unnamed: 2": "44649812033818",
+    "Unnamed: 3": "249397032"
+  },
+  {
+    "NOTRELABS": "ARAUCARIA",
+    "Unnamed: 1": "ARAUCARIA",
+    "Unnamed: 2": "44649812035195",
+    "Unnamed: 3": "256541186"
+  },
+  {
+    "NOTRELABS": "BOQUEIRAO CURITIBA",
+    "Unnamed: 1": "CURITIBA",
+    "Unnamed: 2": "44649812036086",
+    "Unnamed: 3": "256541208"
+  },
+  {
+    "NOTRELABS": "CIDADE NOVA",
+    "Unnamed: 1": "SANTA BARBARA D'OESTE",
+    "Unnamed: 2": "44649812032331",
+    "Unnamed: 3": "249396966"
+  },
+  {
+    "NOTRELABS": "COLOMBO",
+    "Unnamed: 1": "COLOMBO",
+    "Unnamed: 2": "44649812035519",
+    "Unnamed: 3": "256541232"
+  },
+  {
+    "NOTRELABS": "TABOAO DA SERRA",
+    "Unnamed: 1": "PROXIMIDADE: OESTE",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "254670434"
+  },
+  {
+    "NOTRELABS": "GUARULHOS",
+    "Unnamed: 1": "ALTO TIETE",
+    "Unnamed: 2": "44649812034385",
+    "Unnamed: 3": "249397083"
+  },
+  {
+    "NOTRELABS": "HERMINIO LEMOS",
+    "Unnamed: 1": "SUL",
+    "Unnamed: 2": "*",
+    "Unnamed: 3": "259968075"
+  },
+  {
+    "NOTRELABS": "IPANEMA",
+    "Unnamed: 1": "SOROCABA",
+    "Unnamed: 2": "44649812031017",
+    "Unnamed: 3": "249390518"
+  },
+  {
+    "NOTRELABS": "IPIRANGA",
+    "Unnamed: 1": "SUL",
+    "Unnamed: 2": "44649812033907",
+    "Unnamed: 3": "249397040"
+  },
+  {
+    "NOTRELABS": "JARDIM SOCIAL",
+    "Unnamed: 1": "CURITIBA",
+    "Unnamed: 2": "44649812036329",
+    "Unnamed: 3": "256541259"
+  },
+  {
+    "NOTRELABS": "MAUA GENERAL OSORIO",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "44649812033222",
+    "Unnamed: 3": "249397024"
+  },
+  {
+    "NOTRELABS": "MOGI CENTRAL",
+    "Unnamed: 1": "ALTO TIETE",
+    "Unnamed: 2": "44649812027419",
+    "Unnamed: 3": "249396729"
+  },
+  {
+    "NOTRELABS": "MONTE CASTELO",
+    "Unnamed: 1": "SANTA BARBARA D'OESTE",
+    "Unnamed: 2": "44649812032412",
+    "Unnamed: 3": "249396974"
+  },
+  {
+    "NOTRELABS": "NTO",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "44649812023340",
+    "Unnamed: 3": "249396516"
+  },
+  {
+    "NOTRELABS": "OSASCO",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "44649812026447",
+    "Unnamed: 3": "249390500"
+  },
+  {
+    "NOTRELABS": "OSASCO ITABUNA",
+    "Unnamed: 1": "OESTE",
+    "Unnamed: 2": "44649812032927",
+    "Unnamed: 3": "249390534"
+  },
+  {
+    "NOTRELABS": "PAULISTA",
+    "Unnamed: 1": "AMERICANA",
+    "Unnamed: 2": "44649812032250",
+    "Unnamed: 3": "249396958"
+  },
+  {
+    "NOTRELABS": "PINHEIRINHO",
+    "Unnamed: 1": "CURITIBA",
+    "Unnamed: 2": "44649812035608",
+    "Unnamed: 3": "256541240"
+  },
+  {
+    "NOTRELABS": "SANTO AMARO",
+    "Unnamed: 1": "SUL",
+    "Unnamed: 2": "44649812034202",
+    "Unnamed: 3": "249397075"
+  },
+  {
+    "NOTRELABS": "SANTO ANDRE",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "44649812033060",
+    "Unnamed: 3": "249397008"
+  },
+  {
+    "NOTRELABS": "SAO FRANCISCO",
+    "Unnamed: 1": "CURITIBA",
+    "Unnamed: 2": "44649812035438",
+    "Unnamed: 3": "256541224"
+  },
+  {
+    "NOTRELABS": "SAO JOSE DOS PINHAIS",
+    "Unnamed: 1": "SAO JOSE DOS PINHAIS",
+    "Unnamed: 2": "44649812035357",
+    "Unnamed: 3": "256541216"
+  },
+  {
+    "NOTRELABS": "SBC ATLANTICA",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "44649812033141",
+    "Unnamed: 3": "249397016"
+  },
+  {
+    "NOTRELABS": "SBC BANDA",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "44649812032099",
+    "Unnamed: 3": "249396931"
+  },
+  {
+    "NOTRELABS": "SBC NAPOLEAO LAUR",
+    "Unnamed: 1": "ABC",
+    "Unnamed: 2": "44649812034466",
+    "Unnamed: 3": "249397091"
+  },
+  {
+    "NOTRELABS": "SUMARE",
+    "Unnamed: 1": "SUMARE",
+    "Unnamed: 2": "44649812032684",
+    "Unnamed: 3": "249396982"
+  },
+  {
+    "NOTRELABS": "TATUAPE",
+    "Unnamed: 1": "LESTE",
+    "Unnamed: 2": "44649812028229",
+    "Unnamed: 3": "249396770"
+  },
+  {
+    "NOTRELABS": "TATUAPE ICEM",
+    "Unnamed: 1": "LESTE",
+    "Unnamed: 2": "44649812034113",
+    "Unnamed: 3": "249397067"
+  },
+  {
+    "NOTRELABS": "VILA MEDON",
+    "Unnamed: 1": "AMERICANA",
+    "Unnamed: 2": "44649812032765",
+    "Unnamed: 3": "249396990"
+  }
+]
