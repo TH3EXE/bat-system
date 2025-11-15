@@ -38,10 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
         selectAba.innerHTML = '<option value="">Carregando setores...</option>';
 
         try {
-            // 'fetch' SÓ FUNCIONA COM LIVE SERVER
             const response = await fetch('data/manifest.json');
             if (!response.ok) {
-                throw new Error('manifest.json não encontrado');
+                // Se o arquivo não for encontrado (Erro 404)
+                throw new Error('manifest.json não encontrado (Erro 404)');
             }
             mapaAbas = await response.json();
 
@@ -60,9 +60,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Erro ao carregar manifesto:', error);
-            selectAba.innerHTML = '<option value="">ERRO: Use o Live Server</option>';
-            searchStatus.innerHTML = `<p>ERRO AO CARREGAR DADOS. Use a extensão "Live Server" no VS Code.</p>`
+            
+            // =====================================
+            // ATUALIZAÇÃO: Nova Mensagem de Erro
+            // =====================================
+            let mensagemErro = `ERRO: Não foi possível carregar os dados (manifest.json).`;
+            if (window.location.protocol === 'file:') {
+                // Se estiver local (file://)
+                mensagemErro += ` Por favor, use a extensão "Live Server".`;
+            } else {
+                // Se estiver no GitHub (https://)
+                mensagemErro += ` Verifique se a pasta 'data' foi enviada ao GitHub.`;
+            }
+            
+            selectAba.innerHTML = `<option value="">ERRO NOS DADOS</option>`;
+            searchStatus.innerHTML = `<p>${mensagemErro}</p>`;
             window.atualizarStatusSistema('offline'); 
+            // =====================================
+            // FIM DA ATUALIZAÇÃO
+            // =====================================
         }
     }
     
