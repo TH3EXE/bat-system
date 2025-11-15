@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAT-SYSTEM :: BUSCA</title>
+    <title>BAT-SYSTEM :: INÍCIO</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="app-page">
@@ -16,8 +16,11 @@
             <h2>BAT-SYSTEM</h2>
         </div>
         <nav class="main-navigation">
-            <a href="busca.html" class="nav-link active">BUSCA</a> <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
-            <a href="zonas.html" class="nav-link">ZONAS</a> </nav>
+            <a href="busca.html" class="nav-link active">INÍCIO</a> <a href="pesquisa.html" class="nav-link">BUSCA</a> <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
+            <a href="zonas.html" class="nav-link">ZONAS</a>
+            <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
+            <a href="hospitais.html" class="nav-link">HOSPITAIS</a>
+        </nav>
         <div class="user-info">
             <span>OPERADOR: <strong id="user-name">...</strong></span>
             <span>ENTRADA: <strong id="login-time">...</strong></span>
@@ -28,38 +31,45 @@
     </header>
 
     <main class="app-container">
-        <div class="search-layout-container">
-            <div class="tools-column">
-                <div class="tool-module">
-                    <h3>BUSCA AVANÇADA</h3>
-                    <div class="form-group">
-                        <label for="select-aba">1. SELECIONE O SETOR (ABA):</label>
-                        <select id="select-aba">
-                            <option value="">Carregando abas...</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="search-term">2. TERMO DE BUSCA:</label>
-                        <input type="text" id="search-term" placeholder="Digite o TUSS, nome, ou código...">
-                    </div>
-                    <button id="search-button" class="app-button search-button">BUSCAR</button>
-                    <a id="download-planilha-link" href="#" class="app-button" download>Baixar Planilha (Backup)</a>
-                </div>
+        <div class="welcome-container">
+            
+            <h1 class="welcome-header typing-animation">BEM-VINDO AO BAT-SYSTEM</h1>
+            
+            <div class="welcome-content fade-in-1">
+                <p>Este sistema foi forjado nas sombras para ser sua ferramenta definitiva. O objetivo é simples: centralizar todas as informações críticas e repetitivas, eliminando a necessidade de consultar múltiplas planilhas e documentos.</p>
+                <p>Cada segundo economizado na busca é um segundo a mais para a justiça (ou para finalizar seu trabalho).</p>
+                <p>Use as ferramentas com sabedoria, <strong>Menino Batman</strong>.</p>
+            </div>
+
+            <h3 class="welcome-subheader fade-in-2">FERRAMENTAS DISPONÍVEIS:</h3>
+            
+            <div class="welcome-features fade-in-3">
+                <a href="pesquisa.html" class="feature-link">
+                    <strong>BUSCA</strong>
+                    <span>Pesquise instantaneamente em dezenas de planilhas.</span>
+                </a>
+                <a href="fraseologia.html" class="feature-link">
+                    <strong>FRASEOLOGIAS</strong>
+                    <span>Gere textos de negativa e autorização em segundos.</span>
+                </a>
+                <a href="zonas.html" class="feature-link">
+                    <strong>ZONAS (SP/RJ)</strong>
+                    <span>Consulte a divisão de zonas e regiões.</span>
+                </a>
+                <a href="infiltracao.html" class="feature-link">
+                    <strong>INFILTRAÇÃO</strong>
+                    <span>Fluxo completo de procedimentos e locais de retirada.</span>
+                </a>
+                <a href="hospitais.html" class="feature-link">
+                    <strong>HOSPITAIS</strong>
+                    <span>Consulte a rede de hospitais SP, RJ e Regionais.</span>
+                </a>
             </div>
             
-            <div class="results-column">
-                <h3>RESULTADOS DA BUSCA</h3>
-                <div id="search-status">
-                    <p>Pronto para consulta. Selecione um setor e digite um termo.</p>
-                </div>
-                <div id="results-container">
-                </div>
-            </div>
         </div>
     </main>
 
     <div class="bat-signal-background"></div>
     <script src="js/global.js"></script>
-    <script src="js/busca.js"></script>
-</body>
+    </body>
 </html>

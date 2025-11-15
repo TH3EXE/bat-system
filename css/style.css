@@ -67,6 +67,7 @@ body {
     animation: logoFadeIn 2s ease-in-out;
 }
 
+/* Animação de Fade-in (usada no logo e na apresentação) */
 @keyframes logoFadeIn {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -313,12 +314,9 @@ textarea:focus {
     line-height: 1.5;
     word-break: break-word;
 }
-/* ===================================== */
-/* ATUALIZAÇÃO: Estilos da Pesquisa de Zona */
-/* ===================================== */
 .zonas-filtros-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas para os filtros */
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
     border-bottom: 1px solid var(--batman-grey);
     padding-bottom: 1rem;
@@ -335,8 +333,129 @@ mark.highlight {
     font-weight: 700;
 }
 
+/* 4. Estilos da Página de Infiltração */
+.infiltracao-layout-container {
+    max-width: 1600px; 
+    margin: 0 auto;
+}
+.fluxo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.fluxo-bloco {
+    background-color: #1a1a1a;
+    border: 1px solid var(--batman-grey);
+    border-radius: 4px;
+    padding: 1rem;
+}
+.fluxo-bloco h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--batman-yellow);
+    border-bottom: 1px solid var(--batman-yellow);
+    padding-bottom: 0.5rem;
+}
+.bloco-desc {
+    font-size: 0.9rem;
+    color: var(--batman-light-grey);
+    margin-top: 0;
+    font-style: italic;
+    min-height: 50px; 
+}
+.codigo-item {
+    margin-bottom: 1rem;
+}
+.codigo-item span {
+    font-size: 0.8rem;
+    color: var(--batman-light-grey);
+    text-transform: uppercase;
+}
+.codigo-item p {
+    margin: 0.25rem 0;
+    font-size: 1rem;
+}
+.codigo-item strong {
+    color: var(--batman-yellow);
+    font-size: 1.1rem;
+}
+.observacao-bloco {
+    background-color: var(--batman-black);
+    border: 1px solid var(--neon-yellow);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+}
+.observacao-bloco strong {
+    color: var(--neon-yellow);
+}
+.observacao-bloco p {
+    margin-bottom: 0.25rem;
+    font-style: italic;
+}
+.secao-titulo {
+    color: var(--batman-yellow);
+    border-bottom: 2px solid var(--batman-grey);
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+}
 
-/* Módulo de ferramenta (usado em todos os layouts) */
+.infiltracao-duas-colunas {
+   /* Estilos removidos */
+}
+
+.cidade-section {
+    margin-bottom: 2rem;
+}
+.cidade-section h2 {
+    font-size: 1.8rem;
+    color: var(--batman-light-grey);
+}
+.tabela-wrapper {
+    overflow-x: auto; 
+}
+.prestador-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; 
+}
+.prestador-tabela th, .prestador-tabela td {
+    border: 1px solid var(--batman-grey);
+    padding: 0.75rem;
+    text-align: left; 
+    font-size: 0.9rem;
+}
+.prestador-tabela th {
+    background-color: #1a1a1a;
+    color: var(--batman-yellow);
+}
+.prestador-tabela td {
+    color: var(--batman-light-grey);
+    word-break: break-word;
+}
+.prestador-tabela tr:nth-child(even) {
+    background-color: #111;
+}
+
+.prestador-tabela td.check {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--neon-green);
+}
+.prestador-tabela td.no-service {
+    text-align: center;
+    color: #555; 
+    font-weight: 700;
+}
+
+.prestador-tabela th:nth-child(3), 
+.prestador-tabela td:nth-child(3), 
+.prestador-tabela th:nth-child(4), 
+.prestador-tabela td:nth-child(4) { 
+    text-align: center;
+}
+
+/* Módulo de ferramenta (usado em layouts) */
 .tool-module {
     background-color: var(--batman-grey);
     border: 1px solid var(--batman-yellow);
@@ -527,8 +646,80 @@ mark.highlight {
 }
 
 /* ===================================== */
-/* ATUALIZAÇÃO: Media Query para Responsividade */
+/* NOVOS ESTILOS: Página de Apresentação */
 /* ===================================== */
+.welcome-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--batman-grey);
+    border: 1px solid var(--batman-yellow);
+    border-radius: 8px;
+    text-align: center;
+}
+.welcome-header {
+    /* Reusa a animação de digitação do login */
+    font-size: 1.5rem;
+    margin: 0 auto;
+    width: 100%;
+}
+.welcome-content {
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    animation: logoFadeIn 1s ease-in-out 1s forwards; /* Atraso de 1s */
+    opacity: 0; /* Começa invisível */
+}
+.welcome-content p {
+    margin-bottom: 1rem;
+}
+.welcome-subheader {
+    color: var(--batman-yellow);
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--batman-grey);
+    padding-bottom: 0.5rem;
+    animation: logoFadeIn 1s ease-in-out 1.5s forwards; /* Atraso de 1.5s */
+    opacity: 0;
+}
+.welcome-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+    animation: logoFadeIn 1s ease-in-out 2s forwards; /* Atraso de 2s */
+    opacity: 0;
+}
+.feature-link {
+    display: block;
+    background-color: #1a1a1a;
+    border: 1px solid var(--batman-grey);
+    padding: 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--batman-light-grey);
+    transition: all 0.3s ease;
+}
+.feature-link:hover {
+    border-color: var(--batman-yellow);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.feature-link strong {
+    display: block;
+    color: var(--batman-yellow);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+.feature-link span {
+    font-size: 0.9rem;
+}
+/* Animações de Fade-in com atraso */
+.fade-in-1 { animation: logoFadeIn 1.0s ease-out 1s forwards; opacity: 0; }
+.fade-in-2 { animation: logoFadeIn 1.0s ease-out 1.5s forwards; opacity: 0; }
+.fade-in-3 { animation: logoFadeIn 1.0s ease-out 2.0s forwards; opacity: 0; }
+
+
+/* --- Media Query para Responsividade --- */
 
 @media (max-width: 800px) {
 
@@ -574,6 +765,15 @@ mark.highlight {
         padding: 1.5rem;
         box-sizing: border-box;
     }
+    
+    /* --- Responsividade da Página de Apresentação --- */
+    .welcome-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    .welcome-header {
+        font-size: 1.2rem;
+    }
 
     /* --- Responsividade da Página de Busca --- */
     .search-layout-container {
@@ -597,12 +797,18 @@ mark.highlight {
     #zonas-container {
         grid-template-columns: 1fr; 
     }
-    /* Filtros em coluna única */
     .zonas-filtros-container {
         grid-template-columns: 1fr;
     }
 
-
+    /* --- Responsividade da Página de Infiltração --- */
+    .fluxo-container {
+        grid-template-columns: 1fr; 
+    }
+    .infiltracao-duas-colunas {
+        grid-template-columns: 1fr;
+    }
+    
     /* Ajuste do Indicador de Status */
     .status-indicator {
         top: 10px;

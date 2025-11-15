@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAT-SYSTEM :: ZONAS</title>
+    <title>BAT-SYSTEM :: BUSCA</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="app-page">
@@ -16,10 +16,9 @@
             <h2>BAT-SYSTEM</h2>
         </div>
         <nav class="main-navigation">
-            <a href="busca.html" class="nav-link">INÍCIO</a>
-            <a href="pesquisa.html" class="nav-link">BUSCA</a>
-            <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
-            <a href="zonas.html" class="nav-link active">ZONAS</a> <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
+            <a href="busca.html" class="nav-link">INÍCIO</a> <a href="pesquisa.html" class="nav-link active">BUSCA</a> <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
+            <a href="zonas.html" class="nav-link">ZONAS</a>
+            <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
             <a href="hospitais.html" class="nav-link">HOSPITAIS</a>
         </nav>
         <div class="user-info">
@@ -32,37 +31,38 @@
     </header>
 
     <main class="app-container">
-        <div class="zonas-layout-container">
-            <div class="tool-module">
-                <h3>ZONAS DE OPERAÇÃO (SP/RJ)</h3>
-                
-                <div class="zonas-filtros-container">
+        <div class="search-layout-container">
+            <div class="tools-column">
+                <div class="tool-module">
+                    <h3>BUSCA AVANÇADA</h3>
                     <div class="form-group">
-                        <label for="select-cidade">Selecione a Cidade:</label>
-                        <select id="select-cidade">
-                            <option value="">-- Todas --</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="RJ">Rio de Janeiro</option>
+                        <label for="select-aba">1. SELECIONE O SETOR (ABA):</label>
+                        <select id="select-aba">
+                            <option value="">Carregando abas...</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="zona-search-input">Pesquisar Região:</label>
-                        <input type="text" id="zona-search-input" placeholder="Digite Osasco, Lapa, Campinas...">
+                        <label for="search-term">2. TERMO DE BUSCA:</label>
+                        <input type="text" id="search-term" placeholder="Digite o TUSS, nome, ou código...">
                     </div>
+                    <button id="search-button" class="app-button search-button">BUSCAR</button>
+                    <a id="download-planilha-link" href="#" class="app-button" download>Baixar Planilha (Backup)</a>
                 </div>
-                
-                <div id="zonas-container">
-                    <p>Selecione uma cidade ou pesquise uma região.</p>
+            </div>
+            
+            <div class="results-column">
+                <h3>RESULTADOS DA BUSCA</h3>
+                <div id="search-status">
+                    <p>Pronto para consulta. Selecione um setor e digite um termo.</p>
                 </div>
-                <p id="zona-no-results" class="zona-no-results" style="display: none;">
-                    Nenhum resultado encontrado.
-                </p>
+                <div id="results-container">
+                </div>
             </div>
         </div>
     </main>
 
     <div class="bat-signal-background"></div>
     <script src="js/global.js"></script>
-    <script src="js/zonas.js"></script>
+    <script src="js/pesquisa.js"></script>
 </body>
 </html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAT-SYSTEM :: INFILTRAÇÃO</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app-page">
+
+    <div class="status-indicator" id="status-light" title="Status do Sistema"></div>
+
+    <header class="app-header">
+        <div class="logo-title">
+            <svg class="bat-logo-small" fill="#E8B923" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256,23.11c-131.79,0-238.16,92-238.16,205.51,0,80.12,48.24,150.15,116.32,185.74-5.32-2.31-29-14.7-27.11-41.48,1.38-19.12,14.65-42.34,32.32-35.84,10.6,3.9,13,16,16.51,20.8,4.71,6.48,12.72,12.21,21.5,14.54,14.62,3.89,32.48,1.49,43.2-12.22,17.4-22.3,16.27-56.1,16.27-56.1s43.51-17.1,83.87-17.1c40.37,0,83.87,17.1,83.87,17.1s-1.13,33.8,16.27,56.1c10.72,13.71,28.58,16.11,43.2,12.22,8.78-2.33,16.79-8.06,21.5-14.54,3.52-4.82,5.92-16.9,16.51-20.8,17.67-6.5,30.94,16.72,32.32,35.84,1.89,26.78-21.79,39.17-27.11,41.48,68.08-35.59,116.32-105.62,116.32-185.74C494.16,115.11,387.79,23.11,256,23.11Z" /></svg>
+            <h2>BAT-SYSTEM</h2>
+        </div>
+        <nav class="main-navigation">
+            <a href="busca.html" class="nav-link">INÍCIO</a>
+            <a href="pesquisa.html" class="nav-link">BUSCA</a>
+            <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
+            <a href="zonas.html" class="nav-link">ZONAS</a>
+            <a href="infiltracao.html" class="nav-link active">INFILTRAÇÃO</a> <a href="hospitais.html" class="nav-link">HOSPITAIS</a>
+        </nav>
+        <div class="user-info">
+            <span>OPERADOR: <strong id="user-name">...</strong></span>
+            <span>ENTRADA: <strong id="login-time">...</strong></span>
+            <span>SESSÃO: <strong id="session-timer">00:00:00</strong></span>
+            <span>LOGINS: <strong id="login-count">...</strong></span>
+            <button id="logout-button" class="app-button">SAIR</button>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <div class="infiltracao-layout-container">
+            <div class="tool-module">
+                <h3>FLUXO DE INFILTRAÇÃO E RETIRADA DE MEDICAÇÃO</h3>
+
+                <div class="fluxo-container">
+                    <div class="fluxo-bloco">
+                        <h4>1. Infiltração (Articulações)</h4>
+                        <p class="bloco-desc">Membros Superiores (Ombros, Punhos, Mãos, Cotovelos) e Inferiores (Joelhos, Quadris, Tornozelos, Pés).</p>
+                        <div class="codigo-item">
+                            <span>PROCEDIMENTO TUSS:</span>
+                            <p>PUNCAO ARTICULAR DIAGNOSTICA OU TERAPEUTICA (INFILTRACAO)</p>
+                            <strong>CÓDIGO TUSS: 30713137</strong>
+                        </div>
+                        <div class="codigo-item">
+                            <span>PROCEDIMENTO AMB:</span>
+                            <p>INFILTRACAO OU PUNCAO ARTICULAR</p>
+                            <strong>CÓDIGO AMB: 52250067</strong>
+                        </div>
+                    </div>
+                    <div class="fluxo-bloco">
+                        <h4>2. Infiltração (Coluna)</h4>
+                        <p class="bloco-desc">Outras Regiões (Coluna).</p>
+                        <div class="codigo-item">
+                            <span>PROCEDIMENTO TUSS:</span>
+                            <p>COLUNA VERTEBRAL: INFILTRACAO FORAMINAL OU FACETARIA OU ARTI</p>
+                            <strong>CÓDIGO TUSS: 40813363</strong>
+                        </div>
+                        <div class="observacao-bloco">
+                            <strong>OBSERVAÇÃO (COLUNA):</strong>
+                            <p>"BUSCAR PRESTADORES PARA INFILTRAÇÃO DE COLUNA. USE AS TELAS T21PPP OU T21PPPNC PARA LOCALIZAR PRESTADORES HABILITADOS."</p>
+                        </div>
+                    </div>
+                    <div class="fluxo-bloco">
+                        <h4>3. Retirada de Medicação</h4>
+                        <p class="bloco-desc">Código administrativo para retirada da medicação.</p>
+                        <div class="codigo-item">
+                            <span>PROCEDIMENTO:</span>
+                            <p>PROCEDIMENTO MEDICAÇÃO (ADMINISTRATIVO)</p>
+                            <strong>CÓDIGO TUSS/AMB: 80071104</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="secao-titulo">LOCAIS DE ATENDIMENTO</h3>
+
+                <div class="form-group" style="max-width: 600px; margin: 0 auto 1.5rem auto;">
+                    <label for="prestador-search-input">Pesquisar Prestador ou Região (na aba ativa):</label>
+                    <input type="text" id="prestador-search-input" placeholder="Digite Osasco, Salvalus, Campinas...">
+                </div>
+                
+                <p id="prestador-no-results" class="zona-no-results" style="display: none;">
+                    Nenhum prestador encontrado para esta pesquisa.
+                </p>
+
+                <nav class="sub-tab-navigation">
+                    <button class="sub-tab-button active" data-subtab="subtab-sp">SÃO PAULO</button>
+                    <button class="sub-tab-button" data-subtab="subtab-rj">RIO DE JANEIRO</button>
+                </nav>
+
+                <div class="sub-tab-content">
+                    
+                    <section id="subtab-sp" class="sub-tab-panel active">
+                        <div class="tabela-wrapper">
+                            <table class="prestador-tabela" id="tabela-sp">
+                                <thead>
+                                    <tr>
+                                        <th>PRESTADOR</th>
+                                        <th>ZONA | REGIÃO</th>
+                                        <th>CNPJ</th>
+                                        <th>CD PESSOA</th>
+                                        <th>INFILTRAÇÃO</th>
+                                        <th>MEDICAÇÃO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CC ANDRADE NEVES I</td>
+                                        <td>CAMPINAS / INTERIOR</td>
+                                        <td>44649812018851</td>
+                                        <td>249396338</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HOSP RENASCENCA CAMPINAS</td>
+                                        <td>CAMPINAS / INTERIOR</td>
+                                        <td>44649812019238</td>
+                                        <td>249390461</td>
+                                        <td class="no-service">X</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CC FREI GALVAO SAN</td>
+                                        <td>SANTOS / BAIXADA</td>
+                                        <td>44649812019823</td>
+                                        <td>249396370</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HOSPITAL FREI GALVAO</td>
+                                        <td>SANTOS / BAIXADA</td>
+                                        <td>44649812007817</td>
+                                        <td>249396141</td>
+                                        <td class="no-service">X</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CC GUARULHOS I</td>
+                                        <td>GUARULHOS</td>
+                                        <td>44649812003900</td>
+                                        <td>249396079</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HOSP. E MATERNIDADE GUARULHOS</td>
+                                        <td>GUARULHOS</td>
+                                        <td>44649812023502</td>
+                                        <td>249396532</td>
+                                        <td class="no-service">X</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CC JUNDIAI</td>
+                                        <td>JUNDIAÍ / INTERIOR SP</td>
+                                        <td>44649812028067</td>
+                                        <td>249396753</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NUCLEO CASE CC JUNDIAI</td>
+                                        <td>JUNDIAÍ / INTERIOR SP</td>
+                                        <td class="no-service">X</td>
+                                        <td>259919759</td>
+                                        <td class="no-service">X</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CT CLIN TRAUMATO ORT (CREDENCIADA)</td>
+                                        <td>MOGI DAS CRUZES</td>
+                                        <td>50699388000139</td>
+                                        <td>254022149</td>
+                                        <td class="check">✅</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CC PENHA</td>
+                                        <td>SOROCABA / INTERIOR</td>
+                                        <td>44649812009003</td>
+                                        <td>249396176</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CC RODRIGUES PACHECO</td>
+                                        <td>SOROCABA / INTERIOR</td>
+                                        <td>44649812034628</td>
+                                        <td>249397105</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HOSPITAL NOTRECARE SOROCaba</td>
+                                        <td>SOROCABA / INTERIOR</td>
+                                        <td>44649812034709</td>
+                                        <td>249390542</td>
+                                        <td class="no-service">X</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CC SANTO ANTONIO</td>
+                                        <td>OSASCO</td>
+                                        <td>44649812012063</td>
+                                        <td>249396222</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PRONTO ATENDIMENTO OSASCO</td>
+                                        <td>OSASCO</td>
+                                        <td>44649812016646</td>
+                                        <td>249390453</td>
+                                        <td class="no-service">X</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CC SAO BERNARDO 3</td>
+                                        <td>SÃO BERNARDO DO CAMPO</td>
+                                        <td>44649812024312</td>
+                                        <td>252466953</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CC PRESTES MAIA</td>
+                                        <td>SÃO BERNARDO DO CAMPO</td>
+                                        <td>44649812030550</td>
+                                        <td>249396885</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HOSPITAL SAO BERNARDO</td>
+                                        <td>SÃO BERNARDO DO CAMPO</td>
+                                        <td>44649812005016</td>
+                                        <td>249396095</td>
+                                        <td class="no-service">X</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PA SAO GABRIEL</td>
+                                        <td>LESTE</td>
+                                        <td>44649812029209</td>
+                                        <td>249396850</td>
+                                        <td class="check">✅</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CC UA SALVALUS</td>
+                                        <td>LESTE</td>
+                                        <td class="no-service">X</td>
+                                        <td>260068651</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UA SALVALUS</td>
+                                        <td>LESTE</td>
+                                        <td>44649812028903</td>
+                                        <td>249396834</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HOSP E MATERNIDADE SALVALUS</td>
+                                        <td>LESTE</td>
+                                        <td>44649812028490</td>
+                                        <td>249396796</td>
+                                        <td class="no-service">X</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="subtab-rj" class="sub-tab-panel">
+                        <div class="tabela-wrapper">
+                            <table class="prestador-tabela" id="tabela-rj">
+                                <thead>
+                                    <tr>
+                                        <th>PRESTADOR</th>
+                                        <th>ZONA | REGIÃO</th>
+                                        <th>CNPJ</th>
+                                        <th>CD PESSOA</th>
+                                        <th>INFILTRAÇÃO</th>
+                                        <th>MEDICAÇÃO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>PA CIDADE NOVA</td>
+                                        <td>CIDADE NOVA</td>
+                                        <td>44649812037058</td>
+                                        <td>249390550</td>
+                                        <td class="check">✅</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CC DUQUE DE CAXIAS</td>
+                                        <td>DUQUE DE CAXIAS</td>
+                                        <td>44649812020678</td>
+                                        <td>249396397</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HS COR HOSPITAL</td>
+                                        <td>DUQUE DE CAXIAS</td>
+                                        <td>8562523000133</td>
+                                        <td>256437702</td>
+                                        <td class="no-service">X</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CC NITEROI</td>
+                                        <td>NITEROI</td>
+                                        <td>44649812031955</td>
+                                        <td>249396923</td>
+                                        <td class="check">✅</td>
+                                        <td class="no-service">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CASA DE SAUDE E MATERNIDADE</td>
+                                        <td>NITEROI</td>
+                                        <td>30079461000162</td>
+                                        <td>256437370</td>
+                                        <td class="no-service">X</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CC ZONA OESTE</td>
+                                        <td>RIO DE JANEIRO</td>
+                                        <td class="no-service">X</td>
+                                        <td>252513749</td>
+                                        <td class="check">✅</td>
+                                        <td class="check">✅</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div> </div>
+        </div>
+    </main>
+
+    <div class="bat-signal-background"></div>
+    <script src="js/global.js"></script>
+    <script src="js/infiltracao.js"></script>
+</body>
+</html>

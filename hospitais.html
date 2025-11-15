@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAT-SYSTEM :: HOSPITAIS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app-page">
+
+    <div class="status-indicator" id="status-light" title="Status do Sistema"></div>
+
+    <header class="app-header">
+        <div class="logo-title">
+            <svg class="bat-logo-small" fill="#E8B923" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256,23.11c-131.79,0-238.16,92-238.16,205.51,0,80.12,48.24,150.15,116.32,185.74-5.32-2.31-29-14.7-27.11-41.48,1.38-19.12,14.65-42.34,32.32-35.84,10.6,3.9,13,16,16.51,20.8,4.71,6.48,12.72,12.21,21.5,14.54,14.62,3.89,32.48,1.49,43.2-12.22,17.4-22.3,16.27-56.1,16.27-56.1s43.51-17.1,83.87-17.1c40.37,0,83.87,17.1,83.87,17.1s-1.13,33.8,16.27,56.1c10.72,13.71,28.58,16.11,43.2,12.22,8.78-2.33,16.79-8.06,21.5-14.54,3.52-4.82,5.92-16.9,16.51-20.8,17.67-6.5,30.94,16.72,32.32,35.84,1.89,26.78-21.79,39.17-27.11,41.48,68.08-35.59,116.32-105.62,116.32-185.74C494.16,115.11,387.79,23.11,256,23.11Z" /></svg>
+            <h2>BAT-SYSTEM</h2>
+        </div>
+        <nav class="main-navigation">
+            <a href="busca.html" class="nav-link">INÍCIO</a>
+            <a href="pesquisa.html" class="nav-link">BUSCA</a>
+            <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
+            <a href="zonas.html" class="nav-link">ZONAS</a>
+            <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
+            <a href="hospitais.html" class="nav-link active">HOSPITAIS</a> </nav>
+        <div class="user-info">
+            <span>OPERADOR: <strong id="user-name">...</strong></span>
+            <span>ENTRADA: <strong id="login-time">...</strong></span>
+            <span>SESSÃO: <strong id="session-timer">00:00:00</strong></span>
+            <span>LOGINS: <strong id="login-count">...</strong></span>
+            <button id="logout-button" class="app-button">SAIR</button>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <div class="infiltracao-layout-container">
+            <div class="tool-module">
+                <h3>REDE DE HOSPITAIS</h3>
+                
+                <div class="form-group" style="max-width: 600px; margin: 0 auto 1.5rem auto;">
+                    <label for="hospitais-search-input">Pesquisar Hospital ou Região (na aba ativa):</label>
+                    <input type="text" id="hospitais-search-input" placeholder="Digite Bosque da Saude, ABC, Niteroi...">
+                </div>
+                
+                <p id="hospitais-no-results" class="zona-no-results" style="display: none;">
+                    Nenhum hospital encontrado para esta pesquisa.
+                </p>
+
+                <nav class="sub-tab-navigation">
+                    <button class="sub-tab-button active" data-subtab="subtab-sp-rj">Hospitais SP & RJ</button>
+                    <button class="sub-tab-button" data-subtab="subtab-regionais">Hospitais Regionais</button>
+                </nav>
+
+                <div class="sub-tab-content">
+                    
+                    <section id="subtab-sp-rj" class="sub-tab-panel active">
+                        <div class="infiltracao-duas-colunas">
+                            
+                            <div class="cidade-section" id="section-sp">
+                                <h2>HOSPITAIS | SÃO PAULO</h2>
+                                <div class="tabela-wrapper">
+                                    <table class="prestador-tabela" id="tabela-sp">
+                                        <thead>
+                                            <tr>
+                                                <th>PRESTADOR</th>
+                                                <th>ZONA | REGIÃO</th>
+                                                <th>CNPJ</th>
+                                                <th>CD PESSOA</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>HOSPITAL BOSQUE DA SAUDE</td>
+                                                <td>SUL</td>
+                                                <td>44649812023006</td>
+                                                <td>249396508</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOSPITAL CRUZEIRO DO SUL</td>
+                                                <td>OESTE</td>
+                                                <td>44649812026013</td>
+                                                <td>249390496</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOSPITAL E MATERNIDADE GUARULHOS</td>
+                                                <td>ALTO TIETE</td>
+                                                <td>44649812023502</td>
+                                                <td>249396532</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOSP E MATER NOSSA SRA ROSARIO</td>
+                                                <td>NORTE</td>
+                                                <td>44649812007140</td>
+                                                <td>249396133</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOSPITAL FAMILY</td>
+                                                <td>PROXIMIDADE: OESTE, SUL</td>
+                                                <td>44649812022883</td>
+                                                <td>249396486</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOSPITAL NOVA VIDA</td>
+                                                <td>OESTE</td>
+                                                <td>44649812025807</td>
+                                                <td>249396621</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOSPITAL E MATERNIDADE SALVALUS</td>
+                                                <td>LESTE</td>
+                                                <td>44649812028490</td>
+                                                <td>249396796</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOSPITAL INTERMEDICA ANALIA FRANCO</td>
+                                                <td>LESTE</td>
+                                                <td>44649812022964</td>
+                                                <td>249396494</td>
+                                            </tr>
+                                            <tr>
+                                                <td>UNIDADE AVANCADA SALVALUS</td>
+                                                <td>LESTE</td>
+                                                <td>44649812028903</td>
+                                                <td>249396834</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOSPITAL SANTA MARTA</td>
+                                                <td>SUL</td>
+                                                <td>44649812037643</td>
+                                                <td>249390569</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="cidade-section" id="section-rj">
+                                <h2>HOSPITAIS | RIO DE JANEIRO</h2>
+                                <div class="tabela-wrapper">
+                                    <table class="prestador-tabela" id="tabela-rj">
+                                        <thead>
+                                            <tr>
+                                                <th>PRESTADOR</th>
+                                                <th>ZONA | REGIÃO</th>
+                                                <th>CNPJ</th>
+                                                <th>CD PESSOA</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>HS COR HOSPITAL</td>
+                                                <td>DUQUE DE CAXIAS</td>
+                                                <td>8562523000133</td>
+                                                <td>256437702</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOSPITAL SANTA MARTHA</td>
+                                                <td>NITEROI</td>
+                                                <td>30079461000162</td>
+                                                <td>256437370</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOSPITAL NOTRECARE RIO (SAMCI)</td>
+                                                <td>ANDARAI</td>
+                                                <td>44649812024908</td>
+                                                <td>249390470</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOSPITAL DA MULHER JACAREPAGUA</td>
+                                                <td>JACAREPAGUA</td>
+                                                <td>76882612005003</td>
+                                                <td>250517070</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOSPITAL INFANTIL JACAREPAGUA</td>
+                                                <td>JACAREPAGUA</td>
+                                                <td>76882612005186</td>
+                                                <td>250517089</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div> 
+                    </section>
+
+                    <section id="subtab-regionais" class="sub-tab-panel">
+                        <div class="cidade-section">
+                            <h2>HOSPITAIS REGIONAIS</h2>
+                            <div class="tabela-wrapper">
+                                <table class="prestador-tabela" id="tabela-regionais">
+                                    <thead>
+                                        <tr>
+                                            <th>PRESTADOR</th>
+                                            <th>ZONA | REGIÃO</th>
+                                            <th>CNPJ</th>
+                                            <th>CD PESSOA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>HOSPITAL FREI GALVAO</td>
+                                            <td>SANTOS</td>
+                                            <td>44649812007817</td>
+                                            <td>249396141</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL E MATERNIDADE MODELO</td>
+                                            <td>SOROCABA</td>
+                                            <td>44649812008899</td>
+                                            <td>249390437</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL NOTRECARE ABC</td>
+                                            <td>ABC</td>
+                                            <td>44649812026609</td>
+                                            <td>249396672</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL INTERMEDICA ABC</td>
+                                            <td>ABC</td>
+                                            <td>44649812023936</td>
+                                            <td>249396559</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL NOTRECARE SOROCABA</td>
+                                            <td>SOROCABA</td>
+                                            <td>44649812034709</td>
+                                            <td>249390542</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL PAULO SACRAMENTO</td>
+                                            <td>JUNDIAI</td>
+                                            <td>44649812001614</td>
+                                            <td>249396044</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL RENASCENCA CAMPINAS</td>
+                                            <td>CAMPINAS</td>
+                                            <td>44649812019238</td>
+                                            <td>249390461</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL SANTANA MOGI</td>
+                                            <td>ALTO TIETE</td>
+                                            <td>44649812027176</td>
+                                            <td>249396710</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL SAO BERNARDO</td>
+                                            <td>ABC</td>
+                                            <td>44649812005016</td>
+                                            <td>249396095</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL FAMILY</td>
+                                            <td>TABOAO DA SERRA</td>
+                                            <td>44649812022883</td>
+                                            <td>249396486</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL SANTA MARTA</td>
+                                            <td>SANTO AMARO</td>
+                                            <td>44649812037643</td>
+                                            <td>249390569</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL NOVA VIDA</td>
+                                            <td>ITAPEVI</td>
+                                            <td>44649812025807</td>
+                                            <td>249396621</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL CLINICA SAO LUCAS</td>
+                                            <td>AMERICANA</td>
+                                            <td>43254267000118</td>
+                                            <td>256441408</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div> 
+            </div>
+        </div>
+    </main>
+
+    <div class="bat-signal-background"></div>
+    <script src="js/global.js"></script>
+    <script src="js/hospitais.js"></script> </body>
+</html>
