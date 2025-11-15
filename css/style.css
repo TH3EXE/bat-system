@@ -183,7 +183,6 @@ textarea:focus {
 .main-navigation {
     display: flex;
     gap: 0.5rem;
-    /* Faz a navegação ficar no centro */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -280,7 +279,64 @@ textarea:focus {
     min-height: 400px; 
 }
 
-/* Módulo de ferramenta (usado em ambos os layouts) */
+/* 3. Layout da Página de Zonas */
+.zonas-layout-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+#zonas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.zona-bloco {
+    background-color: #1a1a1a;
+    border: 1px solid var(--batman-grey);
+    border-radius: 4px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+.zona-bloco:hover {
+    border-color: var(--batman-yellow);
+}
+.zona-bloco h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--batman-yellow);
+    border-bottom: 1px solid var(--batman-grey);
+    padding-bottom: 0.5rem;
+}
+.zona-bloco p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    word-break: break-word;
+}
+/* ===================================== */
+/* ATUALIZAÇÃO: Estilos da Pesquisa de Zona */
+/* ===================================== */
+.zonas-filtros-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas para os filtros */
+    gap: 1rem;
+    border-bottom: 1px solid var(--batman-grey);
+    padding-bottom: 1rem;
+}
+.zona-no-results {
+    color: var(--neon-yellow);
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+mark.highlight {
+    background-color: var(--batman-yellow);
+    color: var(--batman-black);
+    font-weight: 700;
+}
+
+
+/* Módulo de ferramenta (usado em todos os layouts) */
 .tool-module {
     background-color: var(--batman-grey);
     border: 1px solid var(--batman-yellow);
@@ -317,7 +373,6 @@ textarea:focus {
 
 /* --- Estilos Fraseologia (Sub-Abas) --- */
 
-/* Navegação da Sub-Aba */
 .sub-tab-navigation {
     display: flex;
     border-bottom: 1px solid var(--batman-yellow);
@@ -343,7 +398,6 @@ textarea:focus {
     font-weight: 700;
 }
 
-/* Painéis da Sub-Aba */
 .sub-tab-panel {
     display: none; 
     padding: 0.5rem;
@@ -358,7 +412,6 @@ textarea:focus {
     padding-left: 8px;
 }
 
-/* Container para inputs dinâmicos */
 .inputs-container {
     display: flex;
     flex-direction: column;
@@ -370,14 +423,12 @@ textarea:focus {
     margin-bottom: 0.5rem; 
 }
 
-/* Afeta APENAS o label "Quantos procedimentos?" */
 .inputs-container > label {
     margin-top: 10px;
     color: var(--batman-yellow);
     font-weight: 700;
 }
 
-/* Grid de Blocos Organizados */
 #dynamic-procedure-inputs {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -396,13 +447,11 @@ textarea:focus {
     margin-bottom: 0.5rem;
 }
 
-/* Botão de Gerar */
 .btn-gerar {
     margin-top: 0.5rem;
     width: 100%;
 }
 
-/* Divisor (removido do HTML, escondido no CSS) */
 .divider {
     display: none;
 }
@@ -479,28 +528,27 @@ textarea:focus {
 
 /* ===================================== */
 /* ATUALIZAÇÃO: Media Query para Responsividade */
-/* (Este bloco deve ficar no FINAL do arquivo) */
 /* ===================================== */
 
 @media (max-width: 800px) {
 
     /* --- Responsividade do Cabeçalho --- */
     .app-header {
-        flex-direction: column; /* Empilha o cabeçalho */
+        flex-direction: column; 
         align-items: flex-start;
         gap: 1rem;
         padding: 1rem;
     }
     .main-navigation {
-        position: static; /* Remove o posicionamento absoluto */
-        transform: none;  /* Remove o transform */
+        position: static; 
+        transform: none;  
         flex-direction: column;
         width: 100%;
         gap: 0.5rem;
     }
     .nav-link {
         width: 100%;
-        box-sizing: border-box; /* Garante que o padding não quebre */
+        box-sizing: border-box; 
         text-align: center;
         background-color: var(--batman-grey);
     }
@@ -508,7 +556,7 @@ textarea:focus {
         background-color: var(--batman-yellow);
     }
     .user-info {
-        flex-direction: column; /* Empilha as infos do usuário */
+        flex-direction: column; 
         align-items: flex-start;
         width: 100%;
         gap: 0.5rem;
@@ -517,34 +565,43 @@ textarea:focus {
         font-size: 0.9rem;
     }
     #logout-button {
-        width: 100%; /* Botão de Sair com largura total */
+        width: 100%; 
     }
 
     /* --- Responsividade da Página de Login --- */
     .login-container {
-        width: 90%; /* Caixa de login ocupa 90% da tela */
+        width: 90%; 
         padding: 1.5rem;
         box-sizing: border-box;
     }
 
     /* --- Responsividade da Página de Busca --- */
     .search-layout-container {
-        flex-direction: column; /* Empilha as 2 colunas */
+        flex-direction: column; 
     }
     .results-column {
-        height: auto; /* Altura automática */
-        max-height: 50vh; /* Limita a altura para não ficar gigante */
+        height: auto; 
+        max-height: 50vh; 
     }
 
     /* --- Responsividade da Página de Fraseologia --- */
     .fraseologia-layout-container {
-        flex-direction: column; /* Empilha as 2 colunas */
+        flex-direction: column; 
     }
     
-    /* Grid de Blocos de Autorização (força 1 coluna) */
     #dynamic-procedure-inputs {
-        grid-template-columns: 1fr; /* Apenas 1 coluna */
+        grid-template-columns: 1fr; 
     }
+
+    /* --- Responsividade da Página de Zonas --- */
+    #zonas-container {
+        grid-template-columns: 1fr; 
+    }
+    /* Filtros em coluna única */
+    .zonas-filtros-container {
+        grid-template-columns: 1fr;
+    }
+
 
     /* Ajuste do Indicador de Status */
     .status-indicator {
