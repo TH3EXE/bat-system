@@ -187,6 +187,8 @@ textarea:focus {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    flex-wrap: wrap; 
+    justify-content: center;
 }
 .nav-link {
     padding: 0.5rem 1rem;
@@ -196,6 +198,7 @@ textarea:focus {
     font-weight: 700;
     border-radius: 4px;
     transition: all 0.3s ease;
+    white-space: nowrap; 
 }
 .nav-link:hover {
     background-color: var(--batman-black);
@@ -451,6 +454,14 @@ mark.highlight {
     color: var(--batman-yellow);
     font-size: 1.1rem;
 }
+
+/* Grid para Códigos (Página Fornecimento) */
+.codigo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
 .observacao-bloco {
     background-color: var(--batman-black);
     border: 1px solid var(--neon-yellow);
@@ -487,21 +498,15 @@ mark.highlight {
 .tabela-wrapper {
     overflow-x: auto; 
 }
-/* ===================================== */
-/* ATUALIZAÇÃO: Correção do Bug de Largura */
-/* ===================================== */
 .prestador-tabela {
     width: 100%;
     border-collapse: collapse;
-    min-width: 600px; /* Largura padrão para tabelas de 4 colunas */
+    min-width: 600px; /* Padrão (4 colunas) */
 }
-/* Regra específica para a tabela de 6 colunas (Infiltração) */
+/* Tabela de Infiltração (6 colunas) */
 .prestador-tabela.tabela-infiltracao {
     min-width: 800px; 
 }
-/* ===================================== */
-/* FIM DA ATUALIZAÇÃO */
-/* ===================================== */
 
 .prestador-tabela th, .prestador-tabela td {
     border: 1px solid var(--batman-grey);
@@ -554,6 +559,49 @@ mark.highlight {
     text-align: center;
 }
 
+/* ===================================== */
+/* NOVOS ESTILOS: Página de Informações */
+/* ===================================== */
+.info-container {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 coluna de blocos */
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.info-bloco {
+    background-color: #1a1a1a;
+    border: 1px solid var(--batman-grey);
+    border-radius: 4px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+.info-bloco:hover {
+    border-color: var(--batman-yellow);
+}
+.info-bloco h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--batman-yellow);
+    border-bottom: 1px solid var(--batman-grey);
+    padding-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+/* Estilo para a observação normal */
+.info-item {
+    margin-bottom: 1rem;
+}
+.info-item span {
+    font-size: 0.8rem;
+    color: var(--batman-light-grey);
+    text-transform: uppercase;
+}
+.info-item p {
+    margin: 0.25rem 0 0 0;
+    font-size: 1rem;
+}
+/* ===================================== */
+/* FIM DOS NOVOS ESTILOS */
+/* ===================================== */
 
 /* Módulo de ferramenta (usado em layouts) */
 .tool-module {
@@ -835,6 +883,14 @@ mark.highlight {
         grid-template-columns: 1fr;
     }
     
+    /* --- Responsividade da Página de Informações --- */
+    .info-container {
+        grid-template-columns: 1fr;
+    }
+    .codigo-grid {
+        grid-template-columns: 1fr;
+    }
+
     /* Ajuste do Indicador de Status */
     .status-indicator {
         top: 10px;

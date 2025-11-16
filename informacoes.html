@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAT-SYSTEM :: ZONAS</title>
+    <title>BAT-SYSTEM :: INFORMAÇÕES</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="app-page">
@@ -19,11 +19,13 @@
             <a href="busca.html" class="nav-link">INÍCIO</a>
             <a href="pesquisa.html" class="nav-link">BUSCA</a>
             <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
-            <a href="zonas.html" class="nav-link active">ZONAS</a> <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
+            <a href="zonas.html" class="nav-link">ZONAS</a>
+            <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
             <a href="hospitais.html" class="nav-link">HOSPITAIS</a>
             <a href="terapias.html" class="nav-link">TERAPIAS</a>
             <a href="medicamentos.html" class="nav-link">MEDICAMENTOS</a>
-            <a href="informacoes.html" class="nav-link">INFORMAÇÕES</a> </nav>
+            <a href="fornecimento.html" class="nav-link">FORNECIMENTO</a>
+            <a href="informacoes.html" class="nav-link active">INFORMAÇÕES</a> </nav>
         <div class="user-info">
             <span>OPERADOR: <strong id="user-name">...</strong></span>
             <span>ENTRADA: <strong id="login-time">...</strong></span>
@@ -34,30 +36,19 @@
     </header>
 
     <main class="app-container">
-        <div class="zonas-layout-container">
-            <div class="tool-module">
-                <h3>ZONAS DE OPERAÇÃO (SP/RJ)</h3>
-                
-                <div class="zonas-filtros-container">
-                    <div class="form-group">
-                        <label for="select-cidade">Selecione a Cidade:</label>
-                        <select id="select-cidade">
-                            <option value="">-- Todas --</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="RJ">Rio de Janeiro</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="zona-search-input">Pesquisar Região:</label>
-                        <input type="text" id="zona-search-input" placeholder="Digite Osasco, Lapa, Campinas...">
-                    </div>
+        <div class="zonas-layout-container"> <div class="tool-module">
+                <h3>INFORMAÇÕES BÁSICAS E FLUXOS</h3>
+
+                <div class="form-group" style="max-width: 600px; margin: 0 auto 1.5rem auto;">
+                    <label for="info-search-input">Pesquisar Fluxo, Código ou Observação:</label>
+                    <input type="text" id="info-search-input" placeholder="Digite Guia Incompleta, 1990047, Transcrição...">
                 </div>
+
+                <div id="info-container" class="info-container">
+                    </div>
                 
-                <div id="zonas-container">
-                    <p>Selecione uma cidade ou pesquise uma região.</p>
-                </div>
-                <p id="zona-no-results" class="zona-no-results" style="display: none;">
-                    Nenhum resultado encontrado.
+                <p id="info-no-results" class="zona-no-results" style="display: none;">
+                    Nenhum fluxo encontrado para esta pesquisa.
                 </p>
             </div>
         </div>
@@ -65,6 +56,5 @@
 
     <div class="bat-signal-background"></div>
     <script src="js/global.js"></script>
-    <script src="js/zonas.js"></script>
-</body>
+    <script src="js/informacoes.js"></script> </body>
 </html>
