@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAT-SYSTEM :: MEDICAMENTOS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app-page">
+
+    <div class="status-indicator" id="status-light" title="Status do Sistema"></div>
+
+    <header class="app-header">
+        <div class="logo-title">
+            <svg class="bat-logo-small" fill="#E8B923" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256,23.11c-131.79,0-238.16,92-238.16,205.51,0,80.12,48.24,150.15,116.32,185.74-5.32-2.31-29-14.7-27.11-41.48,1.38-19.12,14.65-42.34,32.32-35.84,10.6,3.9,13,16,16.51,20.8,4.71,6.48,12.72,12.21,21.5,14.54,14.62,3.89,32.48,1.49,43.2-12.22,17.4-22.3,16.27-56.1,16.27-56.1s43.51-17.1,83.87-17.1c40.37,0,83.87,17.1,83.87,17.1s-1.13,33.8,16.27,56.1c10.72,13.71,28.58,16.11,43.2,12.22,8.78-2.33,16.79-8.06,21.5-14.54,3.52-4.82,5.92-16.9,16.51-20.8,17.67-6.5,30.94,16.72,32.32,35.84,1.89,26.78-21.79,39.17-27.11,41.48,68.08-35.59,116.32-105.62,116.32-185.74C494.16,115.11,387.79,23.11,256,23.11Z" /></svg>
+            <h2>BAT-SYSTEM</h2>
+        </div>
+        <nav class="main-navigation">
+            <a href="busca.html" class="nav-link">INÍCIO</a>
+            <a href="pesquisa.html" class="nav-link">BUSCA</a>
+            <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
+            <a href="zonas.html" class="nav-link">ZONAS</a>
+            <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
+            <a href="hospitais.html" class="nav-link">HOSPITAIS</a>
+            <a href="terapias.html" class="nav-link">TERAPIAS</a>
+            <a href="medicamentos.html" class="nav-link active">MEDICAMENTOS</a> </nav>
+        <div class="user-info">
+            <span>OPERADOR: <strong id="user-name">...</strong></span>
+            <span>ENTRADA: <strong id="login-time">...</strong></span>
+            <span>SESSÃO: <strong id="session-timer">00:00:00</strong></span>
+            <span>LOGINS: <strong id="login-count">...</strong></span>
+            <button id="logout-button" class="app-button">SAIR</button>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <div class="infiltracao-layout-container"> <div class="tool-module">
+                <h3>MEDICAMENTOS (COMUM & QUIMIOTERAPIA)</h3>
+                
+                <div class="form-group" style="max-width: 600px; margin: 0 auto 1.5rem auto;">
+                    <label for="medicamentos-search-input">Pesquisar Medicação ou Código (na aba ativa):</label>
+                    <input type="text" id="medicamentos-search-input" placeholder="Digite Zoladex, 80072043...">
+                </div>
+                
+                <p id="medicamentos-no-results" class="zona-no-results" style="display: none;">
+                    Nenhuma medicação encontrada para esta pesquisa.
+                </p>
+
+                <nav class="sub-tab-navigation">
+                    <button class="sub-tab-button active" data-subtab="subtab-medicacao">MEDICAÇÃO</button>
+                    <button class="sub-tab-button" data-subtab="subtab-quimio">QUIMIOTERAPIA</button>
+                </nav>
+
+                <div class="sub-tab-content">
+                    
+                    <section id="subtab-medicacao" class="sub-tab-panel active">
+                        <div class="tabela-wrapper">
+                            <table class="prestador-tabela tabela-medicamentos" id="tabela-medicacao">
+                                <thead>
+                                    <tr>
+                                        <th>NOME DA MEDICAÇÃO</th>
+                                        <th class="text-center">UNIDADE</th>
+                                        <th class="text-center">FORMA DE APLICAÇÃO</th>
+                                        <th class="text-center">PRIMEIRA OPÇÃO</th>
+                                        <th class="text-center">CODIGO 02</th>
+                                        <th class="text-center">CODIGO 03</th>
+                                        <th class="text-center">CODIGO 04</th>
+                                        <th class="text-center">CODIGO 05</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ABATACEPTE</td>
+                                        <td class="text-center">AMPOLA</td>
+                                        <td class="text-center">EV</td>
+                                        <td class="text-center">80072043</td>
+                                        <td class="text-center">80072019</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ACIDO ZOLEDRONICO</td>
+                                        <td class="text-center">FRASCO AMPOLA</td>
+                                        <td class="text-center">EV</td>
+                                        <td class="text-center">80070016</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ADALIMUMABE</td>
+                                        <td class="text-center">SERINGA</td>
+                                        <td class="text-center">SC</td>
+                                        <td class="text-center">80072051</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ALFAEPOETINA</td>
+                                        <td class="text-center">AMPOLA</td>
+                                        <td class="text-center">EV / SC</td>
+                                        <td class="text-center">80070520</td>
+                                        <td class="text-center">80070504</td>
+                                        <td class="text-center">80070512</td>
+                                        <td class="text-center">80070539</td>
+                                        <td class="text-center">80070547</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CERTOLIZUMABE</td>
+                                        <td class="text-center">SERINGA</td>
+                                        <td class="text-center">SC</td>
+                                        <td class="text-center">80072124</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ETANERCEPTE</td>
+                                        <td class="text-center">SERINGA</td>
+                                        <td class="text-center">SC</td>
+                                        <td class="text-center">80072086</td>
+                                        <td class="text-center">80072078</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FERRO INJETAVEL</td>
+                                        <td class="text-center">AMPOLA</td>
+                                        <td class="text-center">EV</td>
+                                        <td class="text-center">80070628</td>
+                                        <td class="text-center">80070636</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FILGRASTINE</td>
+                                        <td class="text-center">AMPOLA</td>
+                                        <td class="text-center">EV / SC</td>
+                                        <td class="text-center">80070555</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GOLIMUMABE</td>
+                                        <td class="text-center">SERINGA</td>
+                                        <td class="text-center">SC</td>
+                                        <td class="text-center">80072132</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>INFLIXIMABE</td>
+                                        <td class="text-center">AMPOLA</td>
+                                        <td class="text-center">EV</td>
+                                        <td class="text-center">80072108</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SECUQUINUMABE</td>
+                                        <td class="text-center">AMPOLA</td>
+                                        <td class="text-center">SC</td>
+                                        <td class="text-center">80072191</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TOCILIZUMABE</td>
+                                        <td class="text-center">AMPOLA</td>
+                                        <td class="text-center">EV / SC</td>
+                                        <td class="text-center">80072175</td>
+                                        <td class="text-center">80072159</td>
+                                        <td class="text-center">80072167</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>USTEQUINUMABE</td>
+                                        <td class="text-center">AMPOLA</td>
+                                        <td class="text-center">EV / SC</td>
+                                        <td class="text-center">80072183</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VEDOLIZUMABE</td>
+                                        <td class="text-center">AMPOLA</td>
+                                        <td class="text-center">EV</td>
+                                        <td class="text-center">80072221</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="subtab-quimio" class="sub-tab-panel">
+                        <div class="tabela-wrapper">
+                            <table class="prestador-tabela tabela-quimio" id="tabela-quimio">
+                                <thead>
+                                    <tr>
+                                        <th>TIPO DE PROCEDIMENTO</th>
+                                        <th>MEDICAÇÃO</th>
+                                        <th class="text-center">PRIMEIRA OPÇÃO</th>
+                                        <th class="text-center">CODIGO 02</th>
+                                        <th class="text-center">CODIGO 03</th>
+                                        <th class="text-center">CODIGO 04</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ACETATO DE GOSERELINA</td>
+                                        <td>ZOLADEX 10.8MG</td>
+                                        <td class="text-center">70201015</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ACETATO DE GOSERELINA</td>
+                                        <td>ZOLADEX 3.6MG</td>
+                                        <td class="text-center">70201023</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ACETATO DE LEUPRORRELINA</td>
+                                        <td>LUPRON 11.25MG</td>
+                                        <td class="text-center">70201031</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ACETATO DE LEUPRORRELINA</td>
+                                        <td>LUPRON 3.75MG</td>
+                                        <td class="text-center">70201040</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ACETATO DE LEUPRORRELINA</td>
+                                        <td>LUPRON 7.5MG</td>
+                                        <td class="text-center">70201058</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ACETATO DE TRIPTORELINA</td>
+                                        <td>NEO DECAPEPTYL 11.25MG</td>
+                                        <td class="text-center">70201066</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ACETATO DE TRIPTORELINA</td>
+                                        <td>NEO DECAPEPTYL 3.75MG</td>
+                                        <td class="text-center">70201074</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DENOSUMABE</td>
+                                        <td>PROLIA 60MG</td>
+                                        <td class="text-center">70204022</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DENOSUMABE</td>
+                                        <td>XGEVA 120MG</td>
+                                        <td class="text-center">70204014</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TRASTUZUMABE</td>
+                                        <td>HERCEPTIN 150MG</td>
+                                        <td class="text-center">70204120</td>
+                                        <td class="text-center">70204103</td>
+                                        <td class="text-center">70204090</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TRASTUZUMABE</td>
+                                        <td>HERCEPTIN 440MG</td>
+                                        <td class="text-center">70204111</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TRASTUZUMABE</td>
+                                        <td>HERCEPTIN 600MG</td>
+                                        <td class="text-center">70204138</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                        <td class="no-service text-center">X</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div> </div>
+        </div>
+    </main>
+
+    <div class="bat-signal-background"></div>
+    <script src="js/global.js"></script>
+    <script src="js/medicamentos.js"></script> </body>
+</html>

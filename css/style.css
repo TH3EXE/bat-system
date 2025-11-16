@@ -487,11 +487,22 @@ mark.highlight {
 .tabela-wrapper {
     overflow-x: auto; 
 }
+/* ===================================== */
+/* ATUALIZAÇÃO: Correção do Bug de Largura */
+/* ===================================== */
 .prestador-tabela {
     width: 100%;
     border-collapse: collapse;
+    min-width: 600px; /* Largura padrão para tabelas de 4 colunas */
+}
+/* Regra específica para a tabela de 6 colunas (Infiltração) */
+.prestador-tabela.tabela-infiltracao {
     min-width: 800px; 
 }
+/* ===================================== */
+/* FIM DA ATUALIZAÇÃO */
+/* ===================================== */
+
 .prestador-tabela th, .prestador-tabela td {
     border: 1px solid var(--batman-grey);
     padding: 0.75rem;
@@ -522,19 +533,27 @@ mark.highlight {
     font-weight: 700;
 }
 
-/* ===================================== */
-/* ATUALIZAÇÃO: Nova Regra de Centralização */
-/* ===================================== */
-/* Remove regras antigas e Nocivas */
-/* (As regras :nth-child foram removidas) */
-
-/* Nova regra PERFEITA: Centraliza apenas colunas com esta classe */
+/* Centraliza colunas específicas */
 .prestador-tabela .text-center {
     text-align: center;
 }
-/* ===================================== */
-/* FIM DA ATUALIZAÇÃO */
-/* ===================================== */
+
+/* Centralização (Terapias) */
+.tabela-terapias th:nth-child(n+2),
+.tabela-terapias td:nth-child(n+2) {
+    text-align: center;
+}
+
+/* Centralização (Medicamentos) */
+.tabela-medicamentos th:nth-child(n+2),
+.tabela-medicamentos td:nth-child(n+2) {
+    text-align: center;
+}
+.tabela-quimio th:nth-child(n+3),
+.tabela-quimio td:nth-child(n+3) {
+    text-align: center;
+}
+
 
 /* Módulo de ferramenta (usado em layouts) */
 .tool-module {
