@@ -454,14 +454,11 @@ mark.highlight {
     color: var(--batman-yellow);
     font-size: 1.1rem;
 }
-
-/* Grid para Códigos (Página Fornecimento) */
 .codigo-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
-
 .observacao-bloco {
     background-color: var(--batman-black);
     border: 1px solid var(--neon-yellow);
@@ -559,9 +556,7 @@ mark.highlight {
     text-align: center;
 }
 
-/* ===================================== */
-/* NOVOS ESTILOS: Página de Informações */
-/* ===================================== */
+/* 6. Estilos da Página de Informações */
 .info-container {
     display: grid;
     grid-template-columns: 1fr; /* 1 coluna de blocos */
@@ -586,7 +581,6 @@ mark.highlight {
     padding-bottom: 0.5rem;
     font-size: 1.2rem;
 }
-/* Estilo para a observação normal */
 .info-item {
     margin-bottom: 1rem;
 }
@@ -599,9 +593,6 @@ mark.highlight {
     margin: 0.25rem 0 0 0;
     font-size: 1rem;
 }
-/* ===================================== */
-/* FIM DOS NOVOS ESTILOS */
-/* ===================================== */
 
 /* Módulo de ferramenta (usado em layouts) */
 .tool-module {
@@ -804,12 +795,14 @@ mark.highlight {
         gap: 1rem;
         padding: 1rem;
     }
+    /* Mova a navegação para baixo do logo */
     .main-navigation {
         position: static; 
         transform: none;  
-        flex-direction: column;
+        flex-direction: column; /* Empilha os links */
         width: 100%;
         gap: 0.5rem;
+        order: 3; /* Ordem: 1. Logo, 2. Info, 3. Nav */
     }
     .nav-link {
         width: 100%;
@@ -825,6 +818,7 @@ mark.highlight {
         align-items: flex-start;
         width: 100%;
         gap: 0.5rem;
+        order: 2;
     }
     .user-info span {
         font-size: 0.9rem;
@@ -847,6 +841,9 @@ mark.highlight {
     }
     .welcome-header {
         font-size: 1.2rem;
+    }
+    .welcome-features {
+        grid-template-columns: 1fr; /* Coluna única no mobile */
     }
 
     /* --- Responsividade da Página de Busca --- */
