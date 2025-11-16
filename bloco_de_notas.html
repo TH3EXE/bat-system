@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAT-SYSTEM :: MEDICAMENTOS</title>
+    <title>BAT-SYSTEM :: BLOCO DE NOTAS</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="app-page">
@@ -17,13 +17,13 @@
         </div>
         <nav class="main-navigation">
             <a href="busca.html" class="nav-link">INÍCIO</a>
-            <a href="bloco_de_notas.html" class="nav-link">BLOCO DE NOTAS</a>
-            <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
+            <a href="bloco_de_notas.html" class="nav-link active">BLOCO DE NOTAS</a> <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
             <a href="zonas.html" class="nav-link">ZONAS</a>
             <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
             <a href="hospitais.html" class="nav-link">HOSPITAIS</a>
             <a href="terapias.html" class="nav-link">TERAPIAS</a>
-            <a href="medicamentos.html" class="nav-link active">MEDICAMENTOS</a> <a href="fornecimento.html" class="nav-link">FORNECIMENTO</a>
+            <a href="medicamentos.html" class="nav-link">MEDICAMENTOS</a>
+            <a href="fornecimento.html" class="nav-link">FORNECIMENTO</a>
             <a href="informacoes.html" class="nav-link">INFORMAÇÕES</a>
         </nav>
         <div class="user-info">
@@ -36,46 +36,31 @@
     </header>
 
     <main class="app-container">
-        <div class="infiltracao-layout-container">
-            <div class="tool-module">
-                <h3>MEDICAMENTOS (COMUM & QUIMIOTERAPIA)</h3>
-                
-                <div class="form-group" style="max-width: 600px; margin: 0 auto 1.5rem auto;">
-                    <label for="medicamentos-search-input">Pesquisar Medicação ou Código (na aba ativa):</label>
-                    <input type="text" id="medicamentos-search-input" placeholder="Digite Zoladex, 80072043...">
+        <div class="notepad-container">
+            
+            <div class="notes-list-column">
+                <div class="notes-list-header">
+                    <h3>PÁGINAS DE NOTAS</h3>
+                    <button id="new-note-btn" class="app-button">NOVA NOTA (+)</button>
                 </div>
-                
-                <p id="medicamentos-no-results" class="zona-no-results" style="display: none;">
-                    Nenhuma medicação encontrada para esta pesquisa.
-                </p>
-
-                <nav class="sub-tab-navigation">
-                    <button class="sub-tab-button active" data-subtab="subtab-medicacao">MEDICAÇÃO</button>
-                    <button class="sub-tab-button" data-subtab="subtab-quimio">QUIMIOTERAPIA</button>
-                </nav>
-
-                <div class="sub-tab-content">
-                    
-                    <section id="subtab-medicacao" class="sub-tab-panel active">
-                        <div class="tabela-wrapper">
-                            <table class="prestador-tabela tabela-medicamentos" id="tabela-medicacao">
-                                </table>
-                        </div>
-                    </section>
-
-                    <section id="subtab-quimio" class="sub-tab-panel">
-                        <div class="tabela-wrapper">
-                            <table class="prestador-tabela tabela-quimio" id="tabela-quimio">
-                                </table>
-                        </div>
-                    </section>
-                </div> 
+                <div class="notes-list" id="notes-list">
+                    </div>
             </div>
+
+            <div class="note-editor-column">
+                <div class="note-editor">
+                    <textarea id="note-editor-area" placeholder="Selecione uma nota ou crie uma nova. Suas notas são salvas automaticamente no seu navegador. Cuidado: Limpar o cache do navegador irá apagar suas notas."></textarea>
+                    <div class="note-actions">
+                        <button id="save-note-btn" class="app-button">SALVAR ALTERAÇÕES</button>
+                        <button id="delete-note-btn" class="app-button">DELETAR NOTA</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
     <div class="bat-signal-background"></div>
     <script src="js/global.js"></script>
-    <script src="js/medicamentos.js"></script>
-</body>
+    <script src="js/bloco_de_notas.js"></script> </body>
 </html>

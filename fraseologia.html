@@ -17,7 +17,7 @@
         </div>
         <nav class="main-navigation">
             <a href="busca.html" class="nav-link">INÍCIO</a>
-            <a href="pesquisa.html" class="nav-link">BUSCA</a>
+            <a href="bloco_de_notas.html" class="nav-link">BLOCO DE NOTAS</a>
             <a href="fraseologia.html" class="nav-link active">FRASEOLOGIAS</a> <a href="zonas.html" class="nav-link">ZONAS</a>
             <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
             <a href="hospitais.html" class="nav-link">HOSPITAIS</a>
@@ -37,40 +37,33 @@
 
     <main class="app-container">
         <div class="fraseologia-layout-container">
-            
             <div class="fraseologia-tools-column">
                 <div class="tool-module">
                     <h3>GERADOR DE FRASEOLOGIAS</h3>
-                    
                     <nav class="sub-tab-navigation">
                         <button class="sub-tab-button active" data-subtab="subtab-negativas">Restrições / Negativas</button>
                         <button class="sub-tab-button" data-subtab="subtab-autorizacao">Autorização Padrão</button>
                         <button class="sub-tab-button" data-subtab="subtab-finalizacao">Finalização</button>
                         <button class="sub-tab-button" data-subtab="subtab-reembolso">Reembolso</button>
                     </nav>
-
                     <div class="sub-tab-content">
-                        
                         <section id="subtab-negativas" class="sub-tab-panel active">
                             <p>Selecione a negativa para gerar o texto.</p>
                             <select id="select-negativas"></select>
                             <div id="inputs-negativas" class="inputs-container"></div>
                             <button class="app-button btn-gerar" data-tipo="negativas">Gerar Negativa</button>
                         </section>
-                        
                         <section id="subtab-autorizacao" class="sub-tab-panel">
                             <p>Gere a autorização para um ou mais procedimentos.</p>
                             <div id="inputs-autorizacao" class="inputs-container"></div>
                             <button class="app-button btn-gerar" data-tipo="autorizacao">Gerar Autorização</button>
                         </section>
-
                         <section id="subtab-finalizacao" class="sub-tab-panel">
                             <p>Selecione a frase de finalização ou orientação.</p>
                             <select id="select-finalizacao"></select>
                             <div id="inputs-finalizacao" class="inputs-container"></div>
                             <button class="app-button btn-gerar" data-tipo="finalizacao">Gerar Finalização</button>
                         </section>
-
                         <section id="subtab-reembolso" class="sub-tab-panel">
                             <p>Gera o texto padrão para Reembolso PPO.</p>
                             <div id="inputs-reembolso" class="inputs-container"></div>
@@ -79,7 +72,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="fraseologia-output-column">
                 <div class="tool-module">
                     <h3>FRASEOLOGIA GERADA</h3>
