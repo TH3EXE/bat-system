@@ -235,7 +235,78 @@ textarea:focus {
 
 /* --- Layouts das Páginas --- */
 
-/* 1. Layout da Página de Busca (2 colunas) */
+/* 1. Layout da Página de Apresentação */
+.welcome-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--batman-grey);
+    border: 1px solid var(--batman-yellow);
+    border-radius: 8px;
+    text-align: center;
+}
+.welcome-header {
+    font-size: 1.5rem;
+    margin: 0 auto;
+    width: 100%;
+}
+.welcome-content {
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    animation: logoFadeIn 1s ease-in-out 1s forwards; 
+    opacity: 0; 
+}
+.welcome-content p {
+    margin-bottom: 1rem;
+}
+.welcome-subheader {
+    color: var(--batman-yellow);
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--batman-grey);
+    padding-bottom: 0.5rem;
+    animation: logoFadeIn 1s ease-in-out 1.5s forwards; 
+    opacity: 0;
+}
+.welcome-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+    animation: logoFadeIn 1s ease-in-out 2s forwards; 
+    opacity: 0;
+}
+.feature-link {
+    display: block;
+    background-color: #1a1a1a;
+    border: 1px solid var(--batman-grey);
+    padding: 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--batman-light-grey);
+    transition: all 0.3s ease;
+}
+.feature-link:hover {
+    border-color: var(--batman-yellow);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.feature-link strong {
+    display: block;
+    color: var(--batman-yellow);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+.feature-link span {
+    font-size: 0.9rem;
+}
+/* Animações de Fade-in com atraso */
+.fade-in-1 { animation: logoFadeIn 1.0s ease-out 1s forwards; opacity: 0; }
+.fade-in-2 { animation: logoFadeIn 1.0s ease-out 1.5s forwards; opacity: 0; }
+.fade-in-3 { animation: logoFadeIn 1.0s ease-out 2.0s forwards; opacity: 0; }
+
+
+/* 2. Layout da Página de Busca (2 colunas) */
 .search-layout-container {
     display: flex;
     gap: 1rem;
@@ -255,7 +326,7 @@ textarea:focus {
     overflow-y: auto;
 }
 
-/* 2. Layout da Página de Fraseologia (2 colunas) */
+/* 3. Layout da Página de Fraseologia (2 colunas) */
 .fraseologia-layout-container {
     display: flex;
     gap: 1rem;
@@ -280,7 +351,7 @@ textarea:focus {
     min-height: 400px; 
 }
 
-/* 3. Layout da Página de Zonas */
+/* 4. Layout da Página de Zonas */
 .zonas-layout-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -333,7 +404,7 @@ mark.highlight {
     font-weight: 700;
 }
 
-/* 4. Estilos da Página de Infiltração */
+/* 5. Estilos da Página de Infiltração e Hospitais */
 .infiltracao-layout-container {
     max-width: 1600px; 
     margin: 0 auto;
@@ -401,7 +472,9 @@ mark.highlight {
 }
 
 .infiltracao-duas-colunas {
-   /* Estilos removidos */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
 }
 
 .cidade-section {
@@ -437,6 +510,7 @@ mark.highlight {
     background-color: #111;
 }
 
+/* Estilos do X e ✅ */
 .prestador-tabela td.check {
     text-align: center;
     font-size: 1.2rem;
@@ -448,12 +522,19 @@ mark.highlight {
     font-weight: 700;
 }
 
-.prestador-tabela th:nth-child(3), 
-.prestador-tabela td:nth-child(3), 
-.prestador-tabela th:nth-child(4), 
-.prestador-tabela td:nth-child(4) { 
+/* ===================================== */
+/* ATUALIZAÇÃO: Nova Regra de Centralização */
+/* ===================================== */
+/* Remove regras antigas e Nocivas */
+/* (As regras :nth-child foram removidas) */
+
+/* Nova regra PERFEITA: Centraliza apenas colunas com esta classe */
+.prestador-tabela .text-center {
     text-align: center;
 }
+/* ===================================== */
+/* FIM DA ATUALIZAÇÃO */
+/* ===================================== */
 
 /* Módulo de ferramenta (usado em layouts) */
 .tool-module {
@@ -645,80 +726,6 @@ mark.highlight {
     100% { transform: scale(0.9); }
 }
 
-/* ===================================== */
-/* NOVOS ESTILOS: Página de Apresentação */
-/* ===================================== */
-.welcome-container {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: var(--batman-grey);
-    border: 1px solid var(--batman-yellow);
-    border-radius: 8px;
-    text-align: center;
-}
-.welcome-header {
-    /* Reusa a animação de digitação do login */
-    font-size: 1.5rem;
-    margin: 0 auto;
-    width: 100%;
-}
-.welcome-content {
-    margin: 1.5rem 0;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    animation: logoFadeIn 1s ease-in-out 1s forwards; /* Atraso de 1s */
-    opacity: 0; /* Começa invisível */
-}
-.welcome-content p {
-    margin-bottom: 1rem;
-}
-.welcome-subheader {
-    color: var(--batman-yellow);
-    margin-top: 2rem;
-    border-bottom: 1px solid var(--batman-grey);
-    padding-bottom: 0.5rem;
-    animation: logoFadeIn 1s ease-in-out 1.5s forwards; /* Atraso de 1.5s */
-    opacity: 0;
-}
-.welcome-features {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-    animation: logoFadeIn 1s ease-in-out 2s forwards; /* Atraso de 2s */
-    opacity: 0;
-}
-.feature-link {
-    display: block;
-    background-color: #1a1a1a;
-    border: 1px solid var(--batman-grey);
-    padding: 1.5rem;
-    border-radius: 4px;
-    text-decoration: none;
-    color: var(--batman-light-grey);
-    transition: all 0.3s ease;
-}
-.feature-link:hover {
-    border-color: var(--batman-yellow);
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-.feature-link strong {
-    display: block;
-    color: var(--batman-yellow);
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-.feature-link span {
-    font-size: 0.9rem;
-}
-/* Animações de Fade-in com atraso */
-.fade-in-1 { animation: logoFadeIn 1.0s ease-out 1s forwards; opacity: 0; }
-.fade-in-2 { animation: logoFadeIn 1.0s ease-out 1.5s forwards; opacity: 0; }
-.fade-in-3 { animation: logoFadeIn 1.0s ease-out 2.0s forwards; opacity: 0; }
-
-
 /* --- Media Query para Responsividade --- */
 
 @media (max-width: 800px) {
@@ -801,7 +808,7 @@ mark.highlight {
         grid-template-columns: 1fr;
     }
 
-    /* --- Responsividade da Página de Infiltração --- */
+    /* --- Responsividade da Página de Infiltração/Hospitais --- */
     .fluxo-container {
         grid-template-columns: 1fr; 
     }
