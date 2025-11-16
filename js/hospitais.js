@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('hospitais-search-input');
     const noResultsMsg = document.getElementById('hospitais-no-results');
 
-    if (subTabButtons.length === 0) return; // Sai se não estiver na página certa
+    if (!searchInput) return; // Sai se não estiver na página certa
 
     // --- 2. FUNÇÕES ---
 
@@ -31,10 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let matchesFound = 0;
 
         // 1. Descobre qual aba está ativa
-        const activePanel = document.querySelector('#subtab-sp-rj.active, #subtab-regionais.active');
+        // ATUALIZAÇÃO: Seletor agora busca qualquer painel ativo
+        const activePanel = document.querySelector('.sub-tab-panel.active');
         if (!activePanel) return; 
         
-        // 2. Pega todas as linhas (tr) APENAS das tabelas visíveis
+        // 2. Pega todas as linhas (tr) APENAS da tabela ativa
         const rows = activePanel.querySelectorAll("tbody tr");
 
         // 3. Filtra as linhas
@@ -79,5 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             filtrarTabelasAtivas();
         });
     });
-
+    
+    // Roda o filtro uma vez no início (para o caso de a pesquisa estar preenchida)
+    filtrarTabelasAtivas();
 });

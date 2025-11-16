@@ -414,7 +414,8 @@ mark.highlight {
 }
 .fluxo-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    /* ATUALIZAÇÃO: Garante 3 colunas em telas grandes */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     margin-bottom: 2rem;
 }
@@ -454,11 +455,20 @@ mark.highlight {
     color: var(--batman-yellow);
     font-size: 1.1rem;
 }
-.codigo-grid {
+
+/* ===================================== */
+/* ATUALIZAÇÃO: Grid de Códigos (Para Fornecimento/Infiltração) */
+/* ===================================== */
+/* Esta regra só se aplica DENTRO de um fluxo-bloco */
+.fluxo-bloco .codigo-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
+/* ===================================== */
+/* FIM DA ATUALIZAÇÃO */
+/* ===================================== */
+
 .observacao-bloco {
     background-color: var(--batman-black);
     border: 1px solid var(--neon-yellow);
@@ -795,14 +805,13 @@ mark.highlight {
         gap: 1rem;
         padding: 1rem;
     }
-    /* Mova a navegação para baixo do logo */
     .main-navigation {
         position: static; 
         transform: none;  
-        flex-direction: column; /* Empilha os links */
+        flex-direction: column;
         width: 100%;
         gap: 0.5rem;
-        order: 3; /* Ordem: 1. Logo, 2. Info, 3. Nav */
+        order: 3; 
     }
     .nav-link {
         width: 100%;
@@ -843,7 +852,7 @@ mark.highlight {
         font-size: 1.2rem;
     }
     .welcome-features {
-        grid-template-columns: 1fr; /* Coluna única no mobile */
+        grid-template-columns: 1fr;
     }
 
     /* --- Responsividade da Página de Busca --- */
@@ -884,8 +893,8 @@ mark.highlight {
     .info-container {
         grid-template-columns: 1fr;
     }
-    .codigo-grid {
-        grid-template-columns: 1fr;
+    .fluxo-bloco .codigo-grid {
+        grid-template-columns: 1fr; /* Empilha os códigos TUSS/AMB */
     }
 
     /* Ajuste do Indicador de Status */
