@@ -1,274 +1,320 @@
 // js/fraseologia.js
-// Lógica carregada APENAS na página fraseologia.html
+// Lógica de Fraseologia (Port do mkacete.py)
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    // --- 1. ELEMENTOS DA PÁGINA DE FRASEOLOGIA ---
+    const subTabContainer = document.querySelector('.sub-tab-navigation');
+    const outputTextarea = document.getElementById('fraseologia-output');
     const copyButton = document.getElementById('copy-fraseologia-button');
-    const outputFraseologiaText = document.getElementById('fraseologia-output');
+    const data = window.FRASEOLOGIAS_DATA;
 
-    // Sub-Abas
-    const subTabButtons = document.querySelectorAll('.sub-tab-button');
-    const subTabPanels = document.querySelectorAll('.sub-tab-panel');
+    if (!subTabContainer || !data) return;
 
-    // Painel Negativas
-    const selectNegativas = document.getElementById('select-negativas');
-    const inputsNegativasDiv = document.getElementById('inputs-negativas');
-    // Painel Autorização
-    const inputsAutorizacaoDiv = document.getElementById('inputs-autorizacao');
-    // Painel Finalização
-    const selectFinalizacao = document.getElementById('select-finalizacao');
-    const inputsFinalizacaoDiv = document.getElementById('inputs-finalizacao');
-    // Botões de Gerar
-    const btnsGerar = document.querySelectorAll('.btn-gerar');
+    initTabs();
+    initMenus();
+    setupButtons();
+    setupCopy();
 
-    // --- 2. INICIALIZAÇÃO DA PÁGINA ---
-    function initFraseologia() {
-        if (!copyButton) return; // Garante que estamos na página certa
-
-        console.log("Página de Fraseologia Inicializada.");
-        initFraseologiaTabs(); 
-        setupEventListenersFraseologia();
-    }
-
-    function setupEventListenersFraseologia() {
-        // Lógica de clique nas Sub-Abas
-        subTabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const targetSubTabId = button.dataset.subtab;
-                subTabButtons.forEach(btn => btn.classList.remove('active'));
-                subTabPanels.forEach(panel => panel.classList.remove('active'));
-                button.classList.add('active');
-                document.getElementById(targetSubTabId).classList.add('active');
-                outputFraseologiaText.value = ''; // Limpa o output
+    // --- GERENCIAMENTO DE ABAS ---
+    function initTabs() {
+        const tabs = document.querySelectorAll('.sub-tab-button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.sub-tab-button').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.sub-tab-panel').forEach(p => p.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.subtab).classList.add('active');
+                outputTextarea.value = ''; // Limpa ao trocar
             });
         });
-
-        // Eventos de mudança dos Selects
-        selectNegativas.addEventListener('change', () => {
-            const chave = selectNegativas.value;
-            prepararInputsDinamicos(DADOS_RESTRICOES[chave], inputsNegativasDiv, "negativas");
-        });
-        selectFinalizacao.addEventListener('change', () => {
-            const chave = selectFinalizacao.value;
-            prepararInputsDinamicos(FERRAMENTAS_FINALIZACAO[chave], inputsFinalizacaoDiv, "finalizacao");
-        });
-        
-        // Listener para TODOS os botões "Gerar"
-        btnsGerar.forEach(button => {
-            button.addEventListener('click', gerarFraseologia);
-        });
-
-        // Listener do botão Copiar
-        copyButton.addEventListener('click', copiarFraseologia);
     }
 
-    // --- 3. FUNÇÕES DE FRASEOLOGIA ---
-
-    // Função única de inicialização para todos os painéis
-    function initFraseologiaTabs() {
-        // Popula o dropdown de Negativas
-        selectNegativas.innerHTML = '<option value="">Selecione uma negativa...</option>';
-        for (const chave in DADOS_RESTRICOES) {
-            const option = document.createElement('option');
-            option.value = chave;
-            option.textContent = DADOS_RESTRICOES[chave].nome;
-            selectNegativas.appendChild(option);
-        }
-
-        // Popula o dropdown de Finalização
-        selectFinalizacao.innerHTML = '<option value="">Selecione uma finalização...</option>';
-        for (const chave in FERRAMENTAS_FINALIZACAO) {
-            const option = document.createElement('option');
-            option.value = chave;
-            option.textContent = FERRAMENTAS_FINALIZACAO[chave].nome;
-            selectFinalizacao.appendChild(option);
-        }
-
-        // Prepara o painel de Autorização
-        const label = document.createElement('label');
-        label.textContent = 'Quantos procedimentos?';
+    // --- INICIALIZAÇÃO DOS MENUS ---
+    function initMenus() {
+        // 1. Negativas
+        setupDropdown('select-negativas', 'inputs-negativas', data.negativas);
         
-        const inputQtde = document.createElement('input');
-        inputQtde.type = 'number';
-        inputQtde.id = 'input-quantidade-procedimentos'; 
-        inputQtde.value = '1';
-        inputQtde.min = '1';
+        // 2. Finalização
+        setupDropdown('select-finalizacao', 'inputs-finalizacao', data.finalizacao);
 
-        const dynamicContainer = document.createElement('div');
-        dynamicContainer.id = 'dynamic-procedure-inputs';
+        // 3. Autorização (Lógica especial de lista)
+        setupAutorizacao();
 
-        inputQtde.addEventListener('change', popularInputsAutorizacao);
-        
-        inputsAutorizacaoDiv.appendChild(label);
-        inputsAutorizacaoDiv.appendChild(inputQtde);
-        inputsAutorizacaoDiv.appendChild(dynamicContainer);
-
-        popularInputsAutorizacao(); // Popula pela primeira vez
+        // 4. Reembolso (Texto estático)
+        document.getElementById('inputs-reembolso').innerHTML = '<p><em>Este texto não requer preenchimento adicional.</em></p>';
     }
 
-    // Função genérica para criar inputs (Negativas e Finalização)
-    function prepararInputsDinamicos(item, containerDiv, tipo) {
-        containerDiv.innerHTML = ''; 
-        if (!item) return;
+    // --- FUNÇÕES AUXILIARES ---
+    function setupDropdown(selectId, containerId, items) {
+        const select = document.getElementById(selectId);
+        if (!select) return;
 
-        if (item.campos && item.campos.length > 0) {
-            item.campos.forEach(campo => {
-                const nomeCampo = campo.replace(/[{}]/g, ''); 
+        select.innerHTML = '';
+        items.forEach(item => {
+            const option = new Option(item.nome, item.id);
+            select.appendChild(option);
+        });
+
+        // Ao mudar a seleção, gera os inputs baseados no template
+        select.addEventListener('change', () => {
+            const item = items.find(i => i.id === select.value);
+            if (item) generateInputsFromTemplate(containerId, item.template);
+        });
+
+        // Dispara para o primeiro item
+        if (items.length > 0) {
+            generateInputsFromTemplate(containerId, items[0].template);
+        }
+    }
+
+    // A MÁGICA: Lê o texto, acha {variavel} e cria o input
+    function generateInputsFromTemplate(containerId, template) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        
+        const regex = /\{([^}]+)\}/g;
+        let match;
+        const foundVars = new Set(); 
+
+        while ((match = regex.exec(template)) !== null) {
+            const varName = match[1];
+            if (!foundVars.has(varName)) {
+                foundVars.add(varName);
+                
+                const wrapper = document.createElement('div');
+                wrapper.className = 'input-wrapper';
+                
+                const label = document.createElement('label');
+                label.textContent = varName.replace(/_/g, ' ').toUpperCase() + ':';
+                label.innerHTML += ' <span style="color: var(--neon-red)">*</span>'; 
+
                 const input = document.createElement('input');
                 input.type = 'text';
-                input.placeholder = `Preencha: ${nomeCampo}`;
-                input.id = `input-${tipo}-${nomeCampo}`; 
-                containerDiv.appendChild(input);
-            });
-        }
-    }
+                input.className = 'dynamic-input';
+                input.dataset.var = varName; 
+                input.placeholder = `Digite ${varName.replace(/_/g, ' ')}...`;
 
-    // =====================================
-    // ATUALIZAÇÃO: Lógica dos Blocos Organizados
-    // =====================================
-    function popularInputsAutorizacao() {
-        const container = document.getElementById('dynamic-procedure-inputs');
-        container.innerHTML = ''; 
+                input.addEventListener('input', () => input.classList.remove('input-error'));
 
-        const quantidade = document.getElementById('input-quantidade-procedimentos').value;
-        if (quantidade < 1) return; 
-
-        for (let i = 1; i <= quantidade; i++) {
-            
-            // 1. Cria o Bloco (div)
-            const block = document.createElement('div');
-            block.className = 'procedure-block'; // Adiciona a nova classe CSS
-            
-            // 2. Cria o Label (Procedimento 1:)
-            const groupLabel = document.createElement('label');
-            groupLabel.textContent = `Procedimento ${i}:`;
-            
-            // 3. Cria os 3 Inputs
-            const inputProc = document.createElement('input');
-            inputProc.type = 'text';
-            inputProc.id = `input-autorizacao-procedimento-${i}`;
-            inputProc.placeholder = `Nome do Procedimento ${i}`;
-
-            const inputSenha = document.createElement('input');
-            inputSenha.type = 'text';
-            inputSenha.id = `input-autorizacao-senha-${i}`;
-            inputSenha.placeholder = `Senha ${i}`;
-
-            const inputPrest = document.createElement('input');
-            inputPrest.type = 'text';
-            inputPrest.id = `input-autorizacao-prestador-${i}`;
-            inputPrest.placeholder = `Prestador ${i}`;
-            
-            // 4. Adiciona tudo DENTRO do bloco
-            block.appendChild(groupLabel);
-            block.appendChild(inputProc);
-            block.appendChild(inputSenha);
-            block.appendChild(inputPrest);
-            
-            // 5. Adiciona o bloco pronto ao container
-            container.appendChild(block);
-        }
-    }
-
-    // Função única que gera a fraseologia
-    function gerarFraseologia(event) {
-        const tipo = event.target.dataset.tipo; 
-        let textoGerado = '';
-
-        try {
-            switch (tipo) {
-                case 'negativas': {
-                    const chave = selectNegativas.value;
-                    if (!chave) throw new Error('Selecione uma negativa.');
-                    
-                    const item = DADOS_RESTRICOES[chave];
-                    textoGerado = item.fraseologia;
-
-                    if (item.campos && item.campos.length > 0) {
-                        item.campos.forEach(campo => {
-                            const nomeCampo = campo.replace(/[{}]/g, '');
-                            const inputValor = document.getElementById(`input-negativas-${nomeCampo}`).value;
-                            if (!inputValor) throw new Error(`Preencha o campo: ${nomeCampo}`);
-                            
-                            const regex = new RegExp(campo.replace('{', '\\{').replace('}', '\\}'), 'g');
-                            textoGerado = textoGerado.replace(regex, inputValor.toUpperCase());
-                        });
-                    }
-                    break;
-                }
-
-                case 'autorizacao': {
-                    const item = FRASEOLOGIA_POSITIVA;
-                    const quantidade = document.getElementById('input-quantidade-procedimentos').value;
-                    
-                    textoGerado = item.header; 
-                    let corpoFraseologia = '';
-
-                    for (let i = 1; i <= quantidade; i++) {
-                        const proc = document.getElementById(`input-autorizacao-procedimento-${i}`).value.toUpperCase();
-                        const senha = document.getElementById(`input-autorizacao-senha-${i}`).value.toUpperCase();
-                        const prest = document.getElementById(`input-autorizacao-prestador-${i}`).value.toUpperCase();
-                        
-                        if (!proc || !senha || !prest) throw new Error(`Preencha todos os campos do Procedimento ${i}.`);
-
-                        corpoFraseologia += `\nPROCEDIMENTO: ${proc}\nSENHA: ${senha}\nPRESTADOR: ${prest}`;
-                        if (i < quantidade) {
-                            corpoFraseologia += "\n=================";
-                        }
-                    }
-
-                    textoGerado += corpoFraseologia; 
-                    textoGerado += item.footer; 
-                    break;
-                }
-
-                case 'finalizacao': {
-                    const chave = selectFinalizacao.value;
-                    if (!chave) throw new Error('Selecione uma finalização.');
-
-                    const item = FERRAMENTAS_FINALIZACAO[chave];
-                    textoGerado = item.fraseologia;
-
-                    if (item.campos && item.campos.length > 0) {
-                        item.campos.forEach(campo => {
-                            const nomeCampo = campo.replace(/[{}]/g, '');
-                            const inputValor = document.getElementById(`input-finalizacao-${nomeCampo}`).value;
-                            if (!inputValor) throw new Error(`Preencha o campo: ${nomeCampo}`);
-                            
-                            const regex = new RegExp(campo.replace('{', '\\{').replace('}', '\\}'), 'g');
-                            textoGerado = textoGerado.replace(regex, inputValor.toUpperCase());
-                        });
-                    }
-                    break;
-                }
-
-                case 'reembolso': {
-                    textoGerado = FERRAMENTAS_TEXTO.REEMBOLSO.fraseologia;
-                    break;
-                }
+                wrapper.appendChild(label);
+                wrapper.appendChild(input);
+                container.appendChild(wrapper);
             }
-            
-            outputFraseologiaText.value = textoGerado.trim();
-
-        } catch (error) {
-            alert(error.message); // Mostra um alerta se um campo não for preenchido
+        }
+        
+        if (foundVars.size === 0) {
+            container.innerHTML = '<p><em>Nenhum campo adicional necessário.</em></p>';
         }
     }
 
-    function copiarFraseologia() {
-        const texto = outputFraseologiaText.value;
-        if (!texto) return;
+    // --- LÓGICA ESPECÍFICA DE AUTORIZAÇÃO (ATUALIZADA COM QUANTIDADE) ---
+    function setupAutorizacao() {
+        const container = document.getElementById('inputs-autorizacao');
+        container.innerHTML = '';
 
-        navigator.clipboard.writeText(texto).then(() => {
-            alert('Texto copiado para a área de transferência!');
-        }).catch(err => {
-            console.error('Erro ao copiar texto:', err);
-            alert('Erro ao copiar.');
+        // --- NOVO: Controles de Quantidade ---
+        const controlsDiv = document.createElement('div');
+        controlsDiv.style.display = 'flex';
+        controlsDiv.style.alignItems = 'flex-end';
+        controlsDiv.style.gap = '10px';
+        controlsDiv.style.marginBottom = '15px';
+        controlsDiv.style.padding = '10px';
+        controlsDiv.style.backgroundColor = '#1a1a1a';
+        controlsDiv.style.border = '1px solid var(--batman-grey)';
+        controlsDiv.style.borderRadius = '4px';
+
+        // Input de Quantidade
+        const inputWrapper = document.createElement('div');
+        inputWrapper.style.flex = '1';
+        
+        const labelQtd = document.createElement('label');
+        labelQtd.textContent = 'Qtd. Procedimentos:';
+        labelQtd.style.color = 'var(--batman-yellow)';
+        labelQtd.style.fontSize = '0.8rem';
+        labelQtd.style.display = 'block';
+        labelQtd.style.marginBottom = '5px';
+
+        const inputQtd = document.createElement('input');
+        inputQtd.type = 'number';
+        inputQtd.min = '1';
+        inputQtd.value = '1';
+        inputQtd.className = 'dynamic-input'; 
+        inputQtd.style.width = '100%';
+        inputQtd.style.boxSizing = 'border-box';
+
+        inputWrapper.appendChild(labelQtd);
+        inputWrapper.appendChild(inputQtd);
+
+        // Botão Definir
+        const btnGerarCampos = document.createElement('button');
+        btnGerarCampos.className = 'app-button';
+        btnGerarCampos.textContent = 'GERAR CAMPOS';
+        btnGerarCampos.style.flex = '1';
+        
+        controlsDiv.appendChild(inputWrapper);
+        controlsDiv.appendChild(btnGerarCampos);
+
+        // Container da grade de inputs
+        const listContainer = document.createElement('div');
+        listContainer.id = 'auth-list-container'; // CSS Grid já configurado
+
+        // Botão para adicionar mais um (caso precise)
+        const btnAddOne = document.createElement('button');
+        btnAddOne.className = 'app-button';
+        btnAddOne.textContent = '+ Adicionar mais 1';
+        btnAddOne.style.marginTop = '5px';
+        btnAddOne.style.backgroundColor = '#333';
+        btnAddOne.style.border = '1px dashed var(--batman-yellow)';
+
+        // Evento: Gerar X campos
+        btnGerarCampos.addEventListener('click', () => {
+            const qtd = parseInt(inputQtd.value) || 1;
+            if(qtd < 1) return;
+            
+            listContainer.innerHTML = ''; // Limpa lista anterior
+            for (let i = 0; i < qtd; i++) {
+                addAuthRow(listContainer);
+            }
+        });
+
+        // Evento: Adicionar um extra
+        btnAddOne.addEventListener('click', () => {
+            addAuthRow(listContainer);
+        });
+        
+        container.appendChild(controlsDiv);
+        container.appendChild(listContainer);
+        container.appendChild(btnAddOne);
+
+        // Inicializa com 1 campo
+        addAuthRow(listContainer);
+    }
+
+    function addAuthRow(container) {
+        const row = document.createElement('div');
+        row.className = 'procedure-block'; // Usa o estilo do CSS
+
+        const html = `
+            <button class="btn-remove-proc">X</button>
+            <label>Procedimento: <span style="color: var(--neon-red)">*</span></label>
+            <input type="text" class="auth-proc" placeholder="Nome do procedimento">
+            
+            <label style="margin-top:5px">Senha: <span style="color: var(--neon-red)">*</span></label>
+            <input type="text" class="auth-senha" placeholder="Senha da guia">
+            
+            <label style="margin-top:5px">Prestador: <span style="color: var(--neon-red)">*</span></label>
+            <input type="text" class="auth-prest" placeholder="Nome do prestador">
+        `;
+        row.innerHTML = html;
+
+        // Botão remover (agora sempre disponível)
+        row.querySelector('.btn-remove-proc').addEventListener('click', (e) => {
+            e.preventDefault();
+            row.remove();
+        });
+
+        container.appendChild(row);
+    }
+    
+    // --- GERAÇÃO DO TEXTO FINAL ---
+    function setupButtons() {
+        document.querySelectorAll('.btn-gerar').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tipo = btn.dataset.tipo;
+                
+                if (tipo === 'negativas') processGeneric('select-negativas', 'inputs-negativas', data.negativas);
+                else if (tipo === 'finalizacao') processGeneric('select-finalizacao', 'inputs-finalizacao', data.finalizacao);
+                else if (tipo === 'reembolso') outputTextarea.value = data.reembolso.template;
+                else if (tipo === 'autorizacao') processAutorizacao();
+            });
         });
     }
 
-    // --- 4. INICIA A PÁGINA ---
-    initFraseologia();
+    function processGeneric(selectId, containerId, dataList) {
+        const select = document.getElementById(selectId);
+        const item = dataList.find(i => i.id === select.value);
+        if (!item) return;
 
+        let texto = item.template;
+        let erro = false;
+
+        const inputs = document.getElementById(containerId).querySelectorAll('.dynamic-input');
+        inputs.forEach(input => {
+            const val = input.value.trim();
+            const varName = input.dataset.var;
+
+            if (!val) {
+                input.classList.add('input-error');
+                erro = true;
+            } else {
+                texto = texto.split(`{${varName}}`).join(val);
+            }
+        });
+
+        if (erro) {
+            alert("Por favor, preencha os campos obrigatórios (em vermelho).");
+        } else {
+            outputTextarea.value = texto;
+        }
+    }
+
+    function processAutorizacao() {
+        const container = document.getElementById('auth-list-container');
+        const rows = container.querySelectorAll('.procedure-block');
+        
+        if (rows.length === 0) {
+            alert("Adicione pelo menos um procedimento.");
+            return;
+        }
+
+        let itensTexto = "";
+        let erro = false;
+
+        rows.forEach(row => {
+            const proc = row.querySelector('.auth-proc');
+            const senha = row.querySelector('.auth-senha');
+            const prest = row.querySelector('.auth-prest');
+
+            if (!proc.value.trim()) { proc.classList.add('input-error'); erro = true; }
+            if (!senha.value.trim()) { senha.classList.add('input-error'); erro = true; }
+            if (!prest.value.trim()) { prest.classList.add('input-error'); erro = true; }
+
+            [proc, senha, prest].forEach(el => el.addEventListener('input', () => el.classList.remove('input-error')));
+
+            let itemStr = data.autorizacao.template_item;
+            itemStr = itemStr.replace('{procedimento}', proc.value);
+            itemStr = itemStr.replace('{senha}', senha.value);
+            itemStr = itemStr.replace('{prestador}', prest.value);
+            
+            itensTexto += itemStr + "\n================="; 
+        });
+
+        if (erro) {
+            alert("Preencha todos os campos dos procedimentos.");
+            return;
+        }
+
+        let final = data.autorizacao.template_intro + itensTexto + data.autorizacao.template_fim;
+        // Remove o último separador
+        final = final.replace("\n=================" + data.autorizacao.template_fim, data.autorizacao.template_fim);
+        
+        outputTextarea.value = final;
+    }
+
+    // --- COPIAR ---
+    function setupCopy() {
+        copyButton.addEventListener('click', () => {
+            if (!outputTextarea.value) return;
+            navigator.clipboard.writeText(outputTextarea.value);
+            const original = copyButton.textContent;
+            copyButton.textContent = "COPIADO!";
+            copyButton.style.background = "var(--neon-green)";
+            copyButton.style.color = "black";
+            setTimeout(() => {
+                copyButton.textContent = original;
+                copyButton.style.background = "";
+                copyButton.style.color = "";
+            }, 1500);
+        });
+    }
 });

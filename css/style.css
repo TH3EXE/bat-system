@@ -209,25 +209,55 @@ textarea:focus {
     color: var(--batman-black);
 }
 
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 0.8rem;
+/* Menu Dropdown (Configurações) */
+.user-menu {
+    position: relative;
+    z-index: 100;
 }
-
-.user-info span { 
-    white-space: nowrap;
-}
-
-.user-info strong {
-    color: var(--batman-yellow);
-}
-
-#logout-button {
-    width: auto;
+.menu-toggle {
+    width: auto; /* Botão não ocupa 100% */
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.menu-toggle-text {
+    /* Escondido em telas pequenas por padrão */
+    display: none;
+}
+.dropdown-content {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px); /* Abaixo do botão */
+    width: 300px;
+    background-color: var(--batman-grey);
+    border: 1px solid var(--batman-yellow);
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    padding: 1rem;
+    box-sizing: border-box;
+}
+.dropdown-content.active {
+    display: block; /* Mostra o menu */
+}
+.user-info-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--batman-grey);
+    padding-bottom: 0.75rem;
+}
+.user-info-item span {
+    color: var(--batman-light-grey);
+}
+.user-info-item strong {
+    color: var(--batman-yellow);
+}
+#logout-button {
+    margin-top: 1rem;
 }
 
 .app-container {
@@ -309,7 +339,106 @@ textarea:focus {
 .fade-in-3 { animation: logoFadeIn 1.0s ease-out 2.0s forwards; opacity: 0; }
 
 
-/* 2. Layout da Página de Busca (Removido, agora é Bloco de Notas) */
+/* 2. Layout da Página de Bloco de Notas (2 colunas) */
+.notepad-container {
+    display: flex;
+    gap: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 75vh;
+}
+.notes-list-column {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    background-color: var(--batman-grey);
+    border: 1px solid var(--batman-yellow);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+.notes-list-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--batman-yellow);
+}
+.notes-list-header h3 {
+    margin: 0 0 1rem 0;
+    color: var(--batman-yellow);
+}
+#new-note-btn {
+    width: 100%;
+}
+.notes-list {
+    overflow-y: auto;
+    padding: 0.5rem;
+}
+.note-item {
+    background-color: #1a1a1a;
+    border: 1px solid var(--batman-grey);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    word-break: break-word;
+}
+.note-item:hover {
+    border-color: var(--batman-yellow);
+}
+.note-item.active {
+    background-color: var(--batman-yellow);
+    color: var(--batman-black);
+    font-weight: 700;
+}
+.note-item-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+.note-item-date {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin: 0;
+}
+.note-editor-column {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+.note-editor {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.note-editor textarea {
+    flex-grow: 1;
+    font-size: 1rem;
+    line-height: 1.6;
+    background-color: rgba(30,30,30,0.5);
+    resize: none;
+    animation: text-pulse 2s infinite alternate;
+}
+@keyframes text-pulse {
+    from { box-shadow: 0 0 5px var(--batman-yellow); }
+    to { box-shadow: 0 0 15px var(--batman-yellow); }
+}
+.note-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+#save-note-btn {
+    flex: 2;
+}
+#delete-note-btn {
+    flex: 1;
+    background-color: var(--neon-red);
+}
+#delete-note-btn:hover {
+    background-color: var(--batman-black);
+    color: var(--neon-red);
+    border-color: var(--neon-red);
+}
 
 
 /* 3. Layout da Página de Fraseologia (2 colunas) */
@@ -373,7 +502,7 @@ textarea:focus {
 }
 .zonas-filtros-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
     border-bottom: 1px solid var(--batman-grey);
     padding-bottom: 1rem;
@@ -399,7 +528,7 @@ mark.highlight {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 .fluxo-bloco {
     background-color: #1a1a1a;
@@ -437,13 +566,11 @@ mark.highlight {
     color: var(--batman-yellow);
     font-size: 1.1rem;
 }
-
 .fluxo-bloco .codigo-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
-
 .observacao-bloco {
     background-color: var(--batman-black);
     border: 1px solid var(--neon-yellow);
@@ -592,29 +719,7 @@ mark.highlight {
     padding-bottom: 0.5rem;
 }
 
-.search-button {
-    margin-top: 1rem;
-    width: 100%;
-}
-
-#download-planilha-link {
-    display: block;
-    text-align: center;
-    margin-top: 0.5rem;
-    width: auto;
-    text-decoration: none;
-    font-size: 0.8rem;
-    background-color: var(--batman-grey);
-    color: var(--batman-yellow);
-    border: 1px solid var(--batman-yellow);
-}
-#download-planilha-link:hover {
-    background-color: var(--batman-yellow);
-    color: var(--batman-black);
-}
-
 /* --- Estilos Fraseologia (Sub-Abas) --- */
-
 .sub-tab-navigation {
     display: flex;
     border-bottom: 1px solid var(--batman-yellow);
@@ -654,6 +759,66 @@ mark.highlight {
     padding-left: 8px;
 }
 
+/* ===================================== */
+/* ATUALIZAÇÃO: Estilos de Grade para Autorização */
+/* ===================================== */
+#auth-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Grid responsivo */
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilo para CADA bloco de procedimento dentro da autorização */
+.procedure-block {
+    border: 1px dashed var(--batman-grey);
+    background-color: #1a1a1a; 
+    padding: 1rem;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Inputs dentro do bloco ocupam 100% */
+.procedure-block input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+}
+
+.procedure-block label {
+    color: var(--batman-yellow);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.8rem;
+}
+
+/* Botão de remover flutuante no canto */
+.btn-remove-proc {
+    position: absolute !important;
+    top: 5px !important;
+    right: 5px !important;
+    width: 20px !important;
+    height: 20px !important;
+    padding: 0 !important;
+    line-height: 20px !important;
+    font-size: 12px !important;
+    background-color: var(--neon-red) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    text-align: center !important;
+}
+.btn-remove-proc:hover {
+    transform: scale(1.1);
+}
+/* ===================================== */
+/* FIM DA ATUALIZAÇÃO */
+/* ===================================== */
+
 .inputs-container {
     display: flex;
     flex-direction: column;
@@ -676,18 +841,6 @@ mark.highlight {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
 }
-.procedure-block {
-    border: 1px dashed var(--batman-grey);
-    background-color: #1a1a1a; 
-    padding: 1rem;
-    border-radius: 4px;
-}
-.procedure-block label {
-    color: var(--batman-yellow);
-    font-weight: 700;
-    display: block;
-    margin-bottom: 0.5rem;
-}
 
 .btn-gerar {
     margin-top: 0.5rem;
@@ -704,36 +857,32 @@ mark.highlight {
 }
 
 
-/* Estilos dos Resultados da Busca */
-#search-status {
-    color: var(--batman-yellow);
-    text-align: center;
+/* Estilos para inputs com erro de validação */
+.input-error {
+    border-color: var(--neon-red) !important;
+    box-shadow: 0 0 5px var(--neon-red) !important;
+    animation: shake 0.3s ease-in-out;
 }
 
-.result-card {
-    background-color: var(--batman-grey);
-    border: 1px solid var(--batman-light-grey);
-    padding: 1rem;
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.input-wrapper {
     margin-bottom: 1rem;
-    border-radius: 4px;
 }
 
-.result-card:hover {
-    border-color: var(--batman-yellow);
-    box-shadow: 0 0 5px var(--batman-yellow);
-}
-
-.result-card p {
-    margin: 0.25rem 0;
-    font-size: 0.9rem;
-    word-break: break-word; 
-}
-
-.result-card strong {
+.input-wrapper label {
+    display: block;
+    margin-bottom: 0.5rem;
     color: var(--batman-yellow);
-    min-width: 120px;
-    display: inline-block;
+    font-size: 0.9rem;
 }
+
 
 /* Indicador de Status NEON */
 .status-indicator {
@@ -768,119 +917,6 @@ mark.highlight {
     100% { transform: scale(0.9); }
 }
 
-/* ===================================== */
-/* NOVOS ESTILOS: Bloco de Notas */
-/* ===================================== */
-.notepad-container {
-    display: flex;
-    gap: 1rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    height: 75vh;
-}
-
-.notes-list-column {
-    flex: 1;
-    min-width: 250px;
-    max-width: 350px;
-    background-color: var(--batman-grey);
-    border: 1px solid var(--batman-yellow);
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-}
-
-.notes-list-header {
-    padding: 1rem;
-    border-bottom: 1px solid var(--batman-yellow);
-}
-.notes-list-header h3 {
-    margin: 0 0 1rem 0;
-    color: var(--batman-yellow);
-}
-#new-note-btn {
-    width: 100%;
-}
-
-.notes-list {
-    overflow-y: auto;
-    padding: 0.5rem;
-}
-.note-item {
-    background-color: #1a1a1a;
-    border: 1px solid var(--batman-grey);
-    border-radius: 4px;
-    padding: 0.75rem 1rem;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    word-break: break-word;
-}
-.note-item:hover {
-    border-color: var(--batman-yellow);
-}
-.note-item.active {
-    background-color: var(--batman-yellow);
-    color: var(--batman-black);
-    font-weight: 700;
-}
-.note-item-title {
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 0;
-}
-.note-item-date {
-    font-size: 0.8rem;
-    opacity: 0.7;
-    margin: 0;
-}
-
-
-.note-editor-column {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-}
-.note-editor {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-.note-editor textarea {
-    flex-grow: 1;
-    font-size: 1rem;
-    line-height: 1.6;
-    background-color: rgba(30,30,30,0.5);
-    resize: none;
-    animation: text-pulse 2s infinite alternate;
-}
-@keyframes text-pulse {
-    from { box-shadow: 0 0 5px var(--batman-yellow); }
-    to { box-shadow: 0 0 15px var(--batman-yellow); }
-}
-
-.note-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-#save-note-btn {
-    flex: 2;
-}
-#delete-note-btn {
-    flex: 1;
-    background-color: var(--neon-red);
-}
-#delete-note-btn:hover {
-    background-color: var(--batman-black);
-    color: var(--neon-red);
-    border-color: var(--neon-red);
-}
-/* ===================================== */
-/* FIM DOS ESTILOS DO BLOCO DE NOTAS */
-/* ===================================== */
-
-
 /* --- Media Query para Responsividade --- */
 
 @media (max-width: 800px) {
@@ -909,18 +945,26 @@ mark.highlight {
     .nav-link.active {
         background-color: var(--batman-yellow);
     }
-    .user-info {
-        flex-direction: column; 
-        align-items: flex-start;
+    
+    /* Responsividade do Menu Dropdown */
+    .user-menu {
+        order: 2; /* Fica abaixo do logo */
         width: 100%;
-        gap: 0.5rem;
-        order: 2;
     }
-    .user-info span {
-        font-size: 0.9rem;
+    .menu-toggle {
+        width: 100%;
+        justify-content: center;
     }
-    #logout-button {
-        width: 100%; 
+    .menu-toggle-text {
+        display: inline; /* Mostra o texto "CONFIGURAÇÕES" */
+    }
+    .dropdown-content {
+        position: static; /* Remove flutuação */
+        width: 100%;
+        box-shadow: none;
+        border-top: 1px solid var(--batman-yellow);
+        border-radius: 0;
+        margin-top: 0.5rem;
     }
 
     /* --- Responsividade da Página de Login --- */
@@ -959,6 +1003,11 @@ mark.highlight {
     #dynamic-procedure-inputs {
         grid-template-columns: 1fr; 
     }
+    
+    /* Grade de autorização vira coluna no mobile */
+    #auth-list-container {
+        grid-template-columns: 1fr;
+    }
 
     /* --- Responsividade da Página de Zonas --- */
     #zonas-container {
@@ -991,7 +1040,7 @@ mark.highlight {
     }
     .notes-list-column {
         max-width: 100%;
-        height: 40vh; /* Altura fixa para a lista de notas */
+        height: 40vh;
     }
 
     /* Ajuste do Indicador de Status */

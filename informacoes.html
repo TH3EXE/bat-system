@@ -18,6 +18,7 @@
         <nav class="main-navigation">
             <a href="busca.html" class="nav-link">INÍCIO</a>
             <a href="bloco_de_notas.html" class="nav-link">BLOCO DE NOTAS</a>
+            <a href="pesquisa.html" class="nav-link">BUSCA AVANÇADA</a>
             <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
             <a href="zonas.html" class="nav-link">ZONAS</a>
             <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
@@ -26,12 +27,31 @@
             <a href="medicamentos.html" class="nav-link">MEDICAMENTOS</a>
             <a href="fornecimento.html" class="nav-link">FORNECIMENTO</a>
             <a href="informacoes.html" class="nav-link active">INFORMAÇÕES</a> </nav>
-        <div class="user-info">
-            <span>OPERADOR: <strong id="user-name">...</strong></span>
-            <span>ENTRADA: <strong id="login-time">...</strong></span>
-            <span>SESSÃO: <strong id="session-timer">00:00:00</strong></span>
-            <span>LOGINS: <strong id="login-count">...</strong></span>
-            <button id="logout-button" class="app-button">SAIR</button>
+        
+        <div class="user-menu">
+            <button class="menu-toggle app-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" width="16" height="16"><path d="M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-46.5 0-69.7l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14.2L465.6 93.3c-1.6-5.6-7.2-9.2-13.1-8.1l-48.4 11.1c-14.3-11.2-29.8-20.7-46.3-28.1L347 11.2C345.8 5.4 340.2 1 334.2 1H177.8c-6 0-11.6 4.4-12.8 10.2L154.2 68.1C137.7 75.5 122.2 85 107.9 96.2L59.5 85.1c-5.9-1.1-11.5 2.5-13.1 8.1L19 182.5c-1.6 5.6.6 11.4 5.5 14.2l42.6 24.6c-4.3 23.2-4.3 46.5 0 69.7l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14.2l27.1 89.2c1.6 5.6 7.2 9.2 13.1 8.1l48.4-11.1c14.3 11.2 29.8 20.7 46.3 28.1l10.8 56.9c1.2 5.8 6.8 10.2 12.8 10.2h156.4c6 0 11.6-4.4 12.8-10.2l10.8-56.9c16.5-7.4 32-16.9 46.3-28.1l48.4 11.1c5.9 1.1 11.5-2.5 13.1-8.1l27.1-89.2c1.6-5.6-.6-11.4-5.5-14.2zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"/></svg>
+                <span class="menu-toggle-text">CONFIGURAÇÕES</span>
+            </button>
+            <div class="dropdown-content" id="user-menu-dropdown">
+                <div class="user-info-item">
+                    <span>OPERADOR:</span>
+                    <strong id="user-name">...</strong>
+                </div>
+                <div class="user-info-item">
+                    <span>ENTRADA:</span>
+                    <strong id="login-time">...</strong>
+                </div>
+                <div class="user-info-item">
+                    <span>SESSÃO:</span>
+                    <strong id="session-timer">00:00:00</strong>
+                </div>
+                <div class="user-info-item">
+                    <span>LOGINS:</span>
+                    <strong id="login-count">...</strong>
+                </div>
+                <button id="logout-button" class="app-button">SAIR</button>
+            </div>
         </div>
     </header>
 
