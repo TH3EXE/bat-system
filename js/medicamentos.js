@@ -1,85 +1,305 @@
 // js/medicamentos.js
-// Lógica para a página medicamentos.html
-// (Controle das Sub-Abas + Lógica de Pesquisa)
+// Lógica para ler a planilha BATMAN2.xlsx com ORDEM EXATA E PAGINAÇÃO NUMÉRICA
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    // --- 1. ELEMENTOS DA PÁGINA ---
-    const subTabButtons = document.querySelectorAll('.sub-tab-button');
-    const subTabPanels = document.querySelectorAll('.sub-tab-panel');
     
-    // Elementos da Pesquisa
-    const searchInput = document.getElementById('medicamentos-search-input');
-    const noResultsMsg = document.getElementById('medicamentos-no-results');
+    // --- CONFIGURAÇÃO ---
+    const EXCEL_FILE_NAME = 'BATMAN2.xlsx'; 
+    const ITEMS_PER_PAGE = 10;
 
-    if (!searchInput) return; // Sai se não estiver na página certa
+    // SEQUÊNCIA EXATA SOLICITADA
+    const PRIORITY_COLUMNS = [
+        'MEDICAÇÃO', 
+        'MEDICAMENTO',
+        'NOME DA MEDICAÇÃO',
+        
+        'UNIDADE',
+        
+        'FORMA DE APLICAÇÃO',
+        'FORMA DE APLICACAO',
+        
+        'TUSS',
+        'PRIMEIRA OPCAO',
+        
+        'CODIGO 02',
+        'CODIGO 03',
+        'CODIGO 04',
+        'CODIGO 05'
+    ];
 
-    // --- 2. FUNÇÕES ---
+    // Elementos
+    const selectAba = document.getElementById('select-aba');
+    const searchTermInput = document.getElementById('search-term');
+    const searchButton = document.getElementById('search-button');
+    const searchStatus = document.getElementById('search-status');
+    const reloadBtn = document.getElementById('reload-excel-btn');
+    
+    const tableHead = document.getElementById('tabela-head');
+    const tableBody = document.getElementById('tabela-body');
+    const paginationControls = document.getElementById('pagination-controls');
 
-    // Função para normalizar strings (remove acentos, minúsculas)
-    function normalizarString(str) {
-        if (!str) return '';
-        return str
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
+    // Variáveis
+    let workbook = null;
+    let currentSheetData = []; 
+    let filteredData = [];      
+    let currentPage = 1;
+
+    if (!selectAba) return;
+
+    // --- INICIALIZAÇÃO ---
+    initExcelLoader();
+
+    function initExcelLoader() {
+        loadSpecificExcelFile();
+        setupEventListeners();
     }
 
-    // Função principal de filtro (em tempo real)
-    function filtrarTabelasAtivas() {
-        const searchTerm = normalizarString(searchInput.value);
-        let matchesFound = 0;
-
-        // 1. Descobre qual aba está ativa
-        const activePanel = document.querySelector('.sub-tab-panel.active');
-        if (!activePanel) return; 
+    function setupEventListeners() {
+        searchButton.addEventListener('click', () => aplicarFiltro());
         
-        // 2. Pega todas as linhas (tr) APENAS da tabela ativa
-        const rows = activePanel.querySelectorAll("tbody tr");
+        searchTermInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') aplicarFiltro();
+        });
 
-        // 3. Filtra as linhas
-        rows.forEach(row => {
-            const rowText = normalizarString(row.textContent);
-            
-            // Verifica se o texto da linha inclui o termo pesquisado
-            if (searchTerm === '' || rowText.includes(searchTerm)) {
-                row.style.display = ""; // Mostra a linha
-                matchesFound++;
+        selectAba.addEventListener('change', (e) => {
+            const sheetName = e.target.value;
+            if (sheetName && workbook) {
+                carregarDadosDaAba(sheetName);
             } else {
-                row.style.display = "none"; // Esconde a linha
+                currentSheetData = [];
+                filteredData = [];
+                renderTable();
+                searchStatus.innerHTML = '<p>Selecione uma aba para começar.</p>';
             }
         });
 
-        // 4. Mostra ou esconde a mensagem "Nenhum resultado"
-        if (matchesFound === 0 && searchTerm !== '') {
-            noResultsMsg.style.display = 'block';
-        } else {
-            noResultsMsg.style.display = 'none';
+        reloadBtn.addEventListener('click', () => {
+            location.reload(true);
+        });
+    }
+
+    // --- CARREGAMENTO ---
+    async function loadSpecificExcelFile() {
+        searchStatus.innerHTML = `<p style="color: var(--batman-yellow);">Carregando ${EXCEL_FILE_NAME}...</p>`;
+        selectAba.innerHTML = '<option>Carregando...</option>';
+        selectAba.disabled = true;
+
+        const timeStamp = new Date().getTime();
+        const fileUrl = `${EXCEL_FILE_NAME}?v=${timeStamp}`;
+
+        try {
+            const response = await fetch(fileUrl, { cache: "no-store" });
+            
+            if (!response.ok) {
+                throw new Error(`Arquivo ${EXCEL_FILE_NAME} não encontrado na raiz.`);
+            }
+
+            const arrayBuffer = await response.arrayBuffer();
+            workbook = XLSX.read(arrayBuffer, { type: 'array' });
+
+            populateSheetMenu(workbook.SheetNames);
+            
+            searchStatus.innerHTML = '<p style="color: var(--neon-green);">Planilha carregada! Selecione a categoria.</p>';
+            if(window.atualizarStatusSistema) window.atualizarStatusSistema('stable');
+
+        } catch (error) {
+            console.error("Erro Excel:", error);
+            searchStatus.innerHTML = `<p style="color: var(--neon-red);">ERRO: ${error.message}</p>`;
+            selectAba.innerHTML = '<option>Erro</option>';
+            if(window.atualizarStatusSistema) window.atualizarStatusSistema('offline');
         }
     }
 
-    // --- 3. EVENT LISTENERS ---
-
-    // Adiciona o evento de 'input' (tempo real) à barra de pesquisa
-    searchInput.addEventListener('input', filtrarTabelasAtivas);
-
-    // Adiciona o evento de clique nas Sub-Abas
-    subTabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetSubTabId = button.dataset.subtab;
-
-            // Troca as abas
-            subTabButtons.forEach(btn => btn.classList.remove('active'));
-            subTabPanels.forEach(panel => panel.classList.remove('active'));
-            button.classList.add('active');
-            document.getElementById(targetSubTabId).classList.add('active');
-
-            // Limpa a pesquisa anterior e refiltra
-            // searchInput.value = ''; // Opcional: descomente para limpar
-            filtrarTabelasAtivas();
+    function populateSheetMenu(sheetNames) {
+        selectAba.innerHTML = '<option value="">-- Selecione a Categoria --</option>';
+        sheetNames.forEach(name => {
+            const option = document.createElement('option');
+            option.value = name;
+            option.textContent = name;
+            selectAba.appendChild(option);
         });
-    });
+        selectAba.disabled = false;
+    }
 
-    // Roda o filtro uma vez no início (para o caso de a pesquisa estar preenchida)
-    filtrarTabelasAtivas();
+    // --- PROCESSAMENTO ---
+    function carregarDadosDaAba(sheetName) {
+        const worksheet = workbook.Sheets[sheetName];
+        currentSheetData = XLSX.utils.sheet_to_json(worksheet, { defval: "" });
+        
+        if (currentSheetData.length === 0) {
+            searchStatus.innerHTML = '<p style="color: var(--neon-yellow);">Aba vazia.</p>';
+        } else {
+            searchStatus.innerHTML = `<p>Categoria <strong>${sheetName}</strong> carregada. ${currentSheetData.length} medicamentos.</p>`;
+        }
+
+        filteredData = [...currentSheetData];
+        currentPage = 1;
+        searchTermInput.value = ''; 
+        
+        renderTable();
+    }
+
+    // --- HELPERS ---
+    function normalizarString(str) {
+        if (!str) return '';
+        return String(str).toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    }
+
+    // --- FILTRO ---
+    function aplicarFiltro() {
+        const termo = normalizarString(searchTermInput.value);
+        
+        if (!termo) {
+            filteredData = [...currentSheetData];
+        } else {
+            filteredData = currentSheetData.filter(row => {
+                const rowString = Object.values(row).join(' ');
+                return normalizarString(rowString).includes(termo);
+            });
+        }
+        
+        currentPage = 1;
+        searchStatus.innerHTML = `<p>Exibindo ${filteredData.length} medicamentos.</p>`;
+        renderTable();
+    }
+
+    // --- TABELA ---
+    function renderTable() {
+        tableHead.innerHTML = '';
+        tableBody.innerHTML = '';
+        paginationControls.style.display = 'none';
+
+        if (filteredData.length === 0) {
+            if (currentSheetData.length > 0) {
+                tableBody.innerHTML = '<tr><td colspan="100%" style="text-align:center;">Nenhum resultado encontrado.</td></tr>';
+            }
+            return;
+        }
+
+        const rawKeys = Object.keys(filteredData[0]);
+        const validKeys = rawKeys.filter(key => !key.startsWith('__EMPTY'));
+
+        const colunasOrdenadas = validKeys.sort((a, b) => {
+            const normA = normalizarString(a);
+            const normB = normalizarString(b);
+            let indexA = PRIORITY_COLUMNS.findIndex(p => normA.includes(normalizarString(p)));
+            let indexB = PRIORITY_COLUMNS.findIndex(p => normB.includes(normalizarString(p)));
+
+            if (indexA === -1) indexA = 99;
+            if (indexB === -1) indexB = 99;
+            
+            if (indexA !== indexB) return indexA - indexB;
+            return normA.localeCompare(normB);
+        });
+
+        const trHead = document.createElement('tr');
+        colunasOrdenadas.forEach(col => {
+            const th = document.createElement('th');
+            th.textContent = col.toUpperCase();
+            
+            const normCol = normalizarString(col);
+            if (normCol.includes('CODIGO') || normCol.includes('UNIDADE') || normCol.includes('FORMA') || normCol.includes('TUSS') || normCol.includes('OPCAO')) {
+                th.classList.add('text-center');
+            }
+            trHead.appendChild(th);
+        });
+        tableHead.appendChild(trHead);
+
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+        const pageData = filteredData.slice(startIndex, endIndex);
+
+        pageData.forEach(row => {
+            const tr = document.createElement('tr');
+            colunasOrdenadas.forEach(col => {
+                const td = document.createElement('td');
+                let val = row[col];
+                
+                td.textContent = val;
+                
+                const normCol = normalizarString(col);
+                if (normCol.includes('CODIGO') || normCol.includes('UNIDADE') || normCol.includes('FORMA') || normCol.includes('TUSS') || normCol.includes('OPCAO')) {
+                    td.classList.add('text-center');
+                    if (!val || val === '' || val === '*') {
+                        td.textContent = 'X';
+                        td.classList.add('no-service');
+                    }
+                }
+                tr.appendChild(td);
+            });
+            tableBody.appendChild(tr);
+        });
+
+        renderPagination();
+    }
+
+    // --- NOVA LÓGICA DE PAGINAÇÃO (NUMÉRICA) ---
+    function renderPagination() {
+        const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
+        if (totalPages <= 1) return;
+
+        paginationControls.innerHTML = '';
+        paginationControls.style.display = 'flex';
+
+        // Botão Anterior
+        const btnPrev = createPageButton('Anterior', () => {
+            if (currentPage > 1) { currentPage--; renderTable(); }
+        });
+        if (currentPage === 1) btnPrev.disabled = true;
+        paginationControls.appendChild(btnPrev);
+
+        // Lógica dos Números (Janela deslizante)
+        let startPage = Math.max(1, currentPage - 2);
+        let endPage = Math.min(totalPages, startPage + 4);
+        
+        if (endPage - startPage < 4) {
+            startPage = Math.max(1, endPage - 4);
+        }
+
+        if (startPage > 1) {
+            paginationControls.appendChild(createPageButton('1', () => { currentPage = 1; renderTable(); }));
+            if (startPage > 2) {
+                const span = document.createElement('span');
+                span.textContent = '...';
+                span.style.color = 'var(--batman-yellow)';
+                span.style.alignSelf = 'center';
+                paginationControls.appendChild(span);
+            }
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            const btn = createPageButton(i, () => {
+                currentPage = i;
+                renderTable();
+            });
+            if (i === currentPage) btn.classList.add('active');
+            paginationControls.appendChild(btn);
+        }
+
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                const span = document.createElement('span');
+                span.textContent = '...';
+                span.style.color = 'var(--batman-yellow)';
+                span.style.alignSelf = 'center';
+                paginationControls.appendChild(span);
+            }
+            paginationControls.appendChild(createPageButton(totalPages, () => { currentPage = totalPages; renderTable(); }));
+        }
+
+        // Botão Próxima
+        const btnNext = createPageButton('Próxima', () => {
+            if (currentPage < totalPages) { currentPage++; renderTable(); }
+        });
+        if (currentPage === totalPages) btnNext.disabled = true;
+        paginationControls.appendChild(btnNext);
+    }
+
+    function createPageButton(text, onClick) {
+        const btn = document.createElement('button');
+        btn.textContent = text;
+        btn.className = 'page-btn';
+        btn.addEventListener('click', onClick);
+        return btn;
+    }
 });

@@ -1049,3 +1049,151 @@ mark.highlight {
         right: 10px;
     }
 }
+/* css/style.css */
+
+/* ... (MANTENHA TODO O CÓDIGO ANTERIOR DO CSS QUE ENVIEI NA ÚLTIMA RESPOSTA) ... */
+
+/* Adicione ou atualize esta seção no final do arquivo para os Cards de Resultado */
+
+/* Estilos da Busca Avançada (Result Cards) */
+.result-card {
+    background-color: var(--batman-grey);
+    border: 1px solid var(--batman-light-grey);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.result-card:hover {
+    border-color: var(--batman-yellow);
+    box-shadow: 0 0 10px rgba(232, 185, 35, 0.2);
+}
+
+.result-row {
+    display: flex;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 0.25rem;
+}
+
+.result-row:last-child {
+    border-bottom: none;
+}
+
+.result-label {
+    font-weight: 700;
+    color: var(--batman-yellow);
+    width: 180px; /* Largura fixa para alinhar os rótulos */
+    min-width: 180px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.result-value {
+    color: var(--batman-light-grey);
+    font-size: 0.95rem;
+    flex: 1; /* Ocupa o resto do espaço */
+    word-break: break-word;
+}
+
+.result-value.highlight {
+    color: white;
+    font-weight: bold;
+}
+
+/* Ajuste para mobile nos cards */
+@media (max-width: 600px) {
+    .result-row {
+        flex-direction: column;
+    }
+    .result-label {
+        width: 100%;
+        margin-bottom: 0.2rem;
+    }
+}
+/* css/style.css - Adicione no final */
+
+/* ... (código anterior) ... */
+
+/* Paginação */
+.pagination-container {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    background-color: var(--batman-grey);
+    color: var(--batman-light-grey);
+    border: 1px solid var(--batman-yellow);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: var(--font-terminal);
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.page-btn:hover:not(:disabled) {
+    background-color: var(--batman-yellow);
+    color: var(--batman-black);
+}
+
+.page-btn.active {
+    background-color: var(--batman-yellow);
+    color: var(--batman-black);
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: #555;
+}
+/* css/style.css */
+
+/* ... (MANTENHA O RESTO DO CÓDIGO ANTERIOR) ... */
+
+/* ADICIONE OU ATUALIZE ESTA PARTE NO FINAL DO ARQUIVO */
+
+/* Estilos para Tabela de Busca Avançada / Procedimentos */
+/* A classe .tabela-procedimentos pode ser usada em procedimentos.html */
+/* A classe .prestador-tabela é usada em pesquisa.html (Busca Avançada) */
+
+/* Centraliza colunas específicas na Busca Avançada (assumindo a ordem forçada pelo JS) */
+/* Coluna 2 (ESPECIALIDADE), 3 (TUSS), 4 (AMB) */
+#tabela-resultados th:nth-child(2),
+#tabela-resultados td:nth-child(2),
+#tabela-resultados th:nth-child(3),
+#tabela-resultados td:nth-child(3),
+#tabela-resultados th:nth-child(4),
+#tabela-resultados td:nth-child(4) {
+    text-align: center;
+}
+
+/* Centraliza colunas específicas na aba Procedimentos (HTML estático) */
+.tabela-procedimentos th:nth-child(2),
+.tabela-procedimentos td:nth-child(2),
+.tabela-procedimentos th:nth-child(3),
+.tabela-procedimentos td:nth-child(3),
+.tabela-procedimentos th:nth-child(4),
+.tabela-procedimentos td:nth-child(4) {
+    text-align: center;
+}
+
+/* Garante que a tabela ocupe largura total */
+#tabela-resultados {
+    width: 100%;
+}
+/* css/style.css */
+
+/* ... */
+
+/* Ajustes para a Tabela de Medicamentos */
+.tabela-medicamentos th:nth-child(n+2), 
+.tabela-medicamentos td:nth-child(n+2) {
+    text-align: center;
+}
