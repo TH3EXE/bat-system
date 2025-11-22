@@ -1,8 +1,8 @@
 // js/zonas.js
-// Lógica e dados para a página zonas.html
+// Lógica da página de Zonas (SP e RJ)
 
 // ===============================================
-// ATUALIZAÇÃO: Base de dados com direções
+// DADOS ORIGINAIS MANTIDOS
 // ===============================================
 const ZONAS_DATA = {
     "SP": {
@@ -34,102 +34,84 @@ const ZONAS_DATA = {
         "RJ - REGIÃO DOS LAGOS": "Cabo Frio, Arraial do Cabo, Búzios, Saquarema, Araruama, São Pedro da Aldeia, Rio das Ostras."
     }
 };
-// --- FIM DA BASE DE DADOS ---
-
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- ATUALIZAÇÃO: Novos elementos ---
-    const selectCidade = document.getElementById('select-cidade');
     const searchInput = document.getElementById('zona-search-input');
     const zonasContainer = document.getElementById('zonas-container');
     const noResultsMsg = document.getElementById('zona-no-results');
+    const subTabs = document.querySelectorAll('.sub-tab-button');
 
-    if (!selectCidade) return; // Garante que estamos na página correta
+    let currentCity = 'SP'; // Padrão inicial
 
-    // --- ATUALIZAÇÃO: Adiciona eventos de filtro ---
-    selectCidade.addEventListener('change', filtrarZonas);
-    searchInput.addEventListener('input', filtrarZonas); // Pesquisa em tempo real
+    if (!searchInput) return; 
 
-    // Função para normalizar strings (remove acentos, minúsculas)
+    // Inicializa abas
+    subTabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Ativa visualmente a aba
+            subTabs.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Muda a cidade atual
+            currentCity = btn.dataset.subtab;
+            
+            // Reseta e refiltra
+            searchInput.value = '';
+            filtrarZonas();
+        });
+    });
+
+    // Evento de pesquisa
+    searchInput.addEventListener('input', filtrarZonas); 
+
     function normalizarString(str) {
         if (!str) return '';
-        return str
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
+        return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
     
-    // Função para destacar o texto da pesquisa
     function highlightText(text, term) {
-        // Limpa destaques antigos
-        text = text.replace(/<mark class="highlight">/g, "").replace(/<\/mark>/g, "");
-        if (!term) {
-            return text; // Retorna o texto limpo se a pesquisa estiver vazia
-        }
-        // Adiciona novos destaques (insensível a maiúsculas/minúsculas)
+        // Limpa highlights antigos
+        text = text.replace(/<span class="highlight-animada">/g, "").replace(/<\/span>/g, "");
+        if (!term) return text;
+
         const regex = new RegExp(`(${term})`, 'gi');
-        return text.replace(regex, `<mark class="highlight">$1</mark>`);
+        return text.replace(regex, `<span class="highlight-animada">$1</span>`);
     }
 
-    // --- ATUALIZAÇÃO: Função principal de exibição e filtro ---
     function filtrarZonas() {
-        const cidadeSelecionada = selectCidade.value;
         const searchTerm = normalizarString(searchInput.value);
-
-        // Limpa o container
         zonasContainer.innerHTML = '';
         let matchesFound = 0;
 
-        // Decide quais dados filtrar (SP, RJ, ou Ambos)
-        let dataToFilter = {};
-        if (cidadeSelecionada === "SP") {
-            dataToFilter = ZONAS_DATA.SP;
-        } else if (cidadeSelecionada === "RJ") {
-            dataToFilter = ZONAS_DATA.RJ;
-        } else {
-            // Combina SP e RJ se "Todas" estiver selecionado
-            dataToFilter = { ...ZONAS_DATA.SP, ...ZONAS_DATA.RJ };
-        }
+        const dataToFilter = ZONAS_DATA[currentCity];
 
-        // Loop principal
         for (const zonaNome in dataToFilter) {
             const regioes = dataToFilter[zonaNome];
-            
             const normZonaNome = normalizarString(zonaNome);
             const normRegioes = normalizarString(regioes);
 
-            // Verifica se o termo de pesquisa está no nome da zona OU na lista de regiões
             if (searchTerm === '' || normZonaNome.includes(searchTerm) || normRegioes.includes(searchTerm)) {
                 matchesFound++;
 
-                // Cria o bloco
                 const bloco = document.createElement('div');
-                bloco.className = 'zona-bloco'; 
+                bloco.className = 'zona-bloco fluxo-bloco'; // Usa classes do CSS novo
 
-                // Cria o Título com destaque
                 const titulo = document.createElement('h4');
                 titulo.innerHTML = highlightText(zonaNome, searchTerm);
 
-                // Cria o parágrafo com destaque
                 const p = document.createElement('p');
                 p.innerHTML = highlightText(regioes, searchTerm);
 
-                // Monta o bloco
                 bloco.appendChild(titulo);
                 bloco.appendChild(p);
                 zonasContainer.appendChild(bloco);
             }
         }
         
-        // Mostra ou esconde a mensagem "Nenhum resultado"
-        if (matchesFound === 0 && searchTerm !== '') {
-            noResultsMsg.style.display = 'block';
-        } else {
-            noResultsMsg.style.display = 'none';
-        }
+        noResultsMsg.style.display = (matchesFound === 0 && searchTerm !== '') ? 'block' : 'none';
     }
     
-    // Roda o filtro uma vez no carregamento
+    // Carrega inicialmente
     filtrarZonas();
 });

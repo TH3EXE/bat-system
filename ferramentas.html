@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAT-SYSTEM :: FERRAMENTAS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app-page">
+
+    <div class="status-indicator" id="status-light" title="Status do Sistema"></div>
+
+    <header class="app-header">
+        <div class="logo-title">
+            <svg class="bat-logo-small" fill="#E8B923" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256,23.11c-131.79,0-238.16,92-238.16,205.51,0,80.12,48.24,150.15,116.32,185.74-5.32-2.31-29-14.7-27.11-41.48,1.38-19.12,14.65-42.34,32.32-35.84,10.6,3.9,13,16,16.51,20.8,4.71,6.48,12.72,12.21,21.5,14.54,14.62,3.89,32.48,1.49,43.2-12.22,17.4-22.3,16.27-56.1,16.27-56.1s43.51-17.1,83.87-17.1c40.37,0,83.87,17.1,83.87,17.1s-1.13,33.8,16.27,56.1c10.72,13.71,28.58,16.11,43.2,12.22,8.78-2.33,16.79-8.06,21.5-14.54,3.52-4.82,5.92-16.9,16.51-20.8,17.67-6.5,30.94,16.72,32.32,35.84,1.89,26.78-21.79,39.17-27.11,41.48,68.08-35.59,116.32-105.62,116.32-185.74C494.16,115.11,387.79,23.11,256,23.11Z" /></svg>
+            <h2>BAT-SYSTEM</h2>
+        </div>
+        
+        <nav class="main-navigation">
+            <a href="busca.html" class="nav-link">INÍCIO</a>
+            <a href="ferramentas.html" class="nav-link active">FERRAMENTAS</a> <a href="pesquisa.html" class="nav-link">BUSCA AVANÇADA</a>
+            <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
+            <a href="zonas.html" class="nav-link">ZONAS</a>
+            <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
+            <a href="hospitais.html" class="nav-link">HOSPITAIS</a>
+            <a href="terapias.html" class="nav-link">TERAPIAS</a>
+            <a href="medicamentos.html" class="nav-link">MEDICAMENTOS</a>
+            <a href="fornecimento.html" class="nav-link">FORNECIMENTO</a>
+            <a href="procedimentos.html" class="nav-link">PROCEDIMENTOS</a>
+            <a href="informacoes.html" class="nav-link">INFORMAÇÕES</a>
+        </nav>
+        
+        <div class="user-menu">
+            <button class="menu-toggle app-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" width="16" height="16"><path d="M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-46.5 0-69.7l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14.2L465.6 93.3c-1.6-5.6-7.2-9.2-13.1-8.1l-48.4 11.1c-14.3-11.2-29.8-20.7-46.3-28.1L347 11.2C345.8 5.4 340.2 1 334.2 1H177.8c-6 0-11.6 4.4-12.8 10.2L154.2 68.1C137.7 75.5 122.2 85 107.9 96.2L59.5 85.1c-5.9-1.1-11.5 2.5-13.1 8.1L19 182.5c-1.6 5.6.6 11.4 5.5 14.2l42.6 24.6c-4.3 23.2-4.3 46.5 0 69.7l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14.2l27.1 89.2c1.6 5.6 7.2 9.2 13.1 8.1l48.4-11.1c14.3 11.2 29.8 20.7 46.3 28.1l10.8 56.9c1.2 5.8 6.8 10.2 12.8 10.2h156.4c6 0 11.6-4.4 12.8-10.2l10.8-56.9c16.5-7.4 32-16.9 46.3-28.1l48.4 11.1c5.9 1.1 11.5-2.5 13.1-8.1l27.1-89.2c1.6-5.6-.6-11.4-5.5-14.2zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"/></svg>
+                <span class="menu-toggle-text">CONFIGURAÇÕES</span>
+            </button>
+            <div class="dropdown-content" id="user-menu-dropdown">
+                <div class="user-info-item"><span>OPERADOR:</span><strong id="user-name">...</strong></div>
+                <div class="user-info-item"><span>ENTRADA:</span><strong id="login-time">...</strong></div>
+                <div class="user-info-item"><span>SESSÃO:</span><strong id="session-timer">00:00:00</strong></div>
+                <div class="user-info-item"><span>LOGINS:</span><strong id="login-count">...</strong></div>
+                <button id="logout-button" class="app-button">SAIR</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <div class="tool-module">
+            <h3>UTILITÁRIOS OPERACIONAIS</h3>
+            
+            <nav class="sub-tab-navigation">
+                <button class="sub-tab-button active" data-subtab="tab-notas">BLOCO DE NOTAS</button>
+                <button class="sub-tab-button" data-subtab="tab-conversor">CONVERSOR PDF</button>
+                <button class="sub-tab-button" data-subtab="tab-calculadora">CALCULADORA TERAPIAS</button>
+            </nav>
+            
+            <div class="sub-tab-content">
+                
+                <section id="tab-notas" class="sub-tab-panel active">
+                    <div class="notepad-container">
+                        <div class="notes-list-column">
+                            <div class="notes-list-header">
+                                <h3>MINHAS NOTAS</h3>
+                                <button id="new-note-btn" class="app-button">NOVA NOTA (+)</button>
+                            </div>
+                            <div class="notes-list" id="notes-list"></div>
+                        </div>
+                        <div class="note-editor-column">
+                            <div class="note-editor">
+                                <div class="editor-toolbar">
+                                    <div class="editor-toolbar-group">
+                                        <button class="toolbar-btn" onclick="document.execCommand('bold',false,null)" title="Negrito"><b>B</b></button>
+                                        <button class="toolbar-btn" onclick="document.execCommand('italic',false,null)" title="Itálico"><i>I</i></button>
+                                        <button class="toolbar-btn" onclick="document.execCommand('underline',false,null)" title="Sublinhado"><u>U</u></button>
+                                    </div>
+                                    <div class="editor-toolbar-group">
+                                        <button class="toolbar-btn" onclick="document.execCommand('justifyLeft',false,null)" title="Esquerda">L</button>
+                                        <button class="toolbar-btn" onclick="document.execCommand('justifyCenter',false,null)" title="Centro">C</button>
+                                        <button class="toolbar-btn" onclick="document.execCommand('justifyRight',false,null)" title="Direita">R</button>
+                                    </div>
+                                    <div class="editor-toolbar-group">
+                                        <button class="toolbar-btn" onclick="document.execCommand('insertUnorderedList',false,null)" title="Lista">●</button>
+                                        <button class="toolbar-btn" onclick="document.execCommand('insertOrderedList',false,null)" title="Lista Num">1.</button>
+                                    </div>
+                                    <div class="editor-toolbar-group">
+                                        <select id="fontName" class="toolbar-select" onchange="document.execCommand('fontName',false,this.value)">
+                                            <option value="Arial">Arial</option>
+                                            <option value="Courier New">Courier</option>
+                                            <option value="Georgia">Georgia</option>
+                                            <option value="Impact">Impact</option>
+                                            <option value="Tahoma">Tahoma</option>
+                                            <option value="Verdana">Verdana</option>
+                                        </select>
+                                        <select id="fontSize" class="toolbar-select" onchange="document.execCommand('fontSize',false,this.value)">
+                                            <option value="1">Pt 8</option>
+                                            <option value="2">Pt 10</option>
+                                            <option value="3" selected>Pt 12</option>
+                                            <option value="4">Pt 14</option>
+                                            <option value="5">Pt 18</option>
+                                            <option value="6">Pt 24</option>
+                                            <option value="7">Pt 36</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div id="note-editor-area" class="rich-editor" contenteditable="true" placeholder="Comece a digitar sua nota..."></div>
+                            </div>
+                            
+                            <div class="note-actions">
+                                <button id="save-note-btn" class="app-button">SALVAR</button>
+                                <button id="download-note-btn" class="app-button" style="background-color:#007acc; color:white;">BAIXAR NOTA</button>
+                                <button id="delete-note-btn" class="app-button">DELETAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tab-conversor" class="sub-tab-panel">
+                    <div class="pdf-header-info">
+                        <p>Converta PDFs completos em imagens de alta qualidade. Processamento 100% local.</p>
+                    </div>
+                    <div class="upload-zone" id="drop-zone">
+                        <div class="upload-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        </div>
+                        <p>Arraste e solte seu PDF aqui</p>
+                        <input type="file" id="pdf-upload" accept=".pdf" hidden />
+                    </div>
+                    <div class="file-status" id="file-status-display" style="display: none;">
+                        <span id="file-name-display">Nome do Arquivo.pdf</span>
+                        <span id="page-count-display"></span>
+                    </div>
+                    <div id="loading-bar-container">
+                        <div id="loading-bar"></div>
+                    </div>
+                    <div class="actions-bar" style="display: none;" id="actions-bar">
+                         <button id="download-all-btn" class="app-button status-green">BAIXAR TUDO (ZIP)</button>
+                    </div>
+                    <div class="image-gallery" id="gallery"></div>
+                </section>
+
+                <section id="tab-calculadora" class="sub-tab-panel">
+                    <div class="calc-container">
+                        <div class="calc-header">
+                            <h3>CALCULADORA DE SESSÕES</h3>
+                            <p>Converta horas semanais em sessões mensais.</p>
+                        </div>
+                        <div class="calc-inputs-grid">
+                            <div class="form-group">
+                                <label>HORAS SEMANAIS:</label>
+                                <input type="number" id="calc-horas" placeholder="Ex: 8">
+                            </div>
+                            <div class="form-group">
+                                <label>TEMPO (MIN):</label>
+                                <input type="number" id="calc-tempo" value="50">
+                            </div>
+                        </div>
+                        <button id="btn-calc-terapia" class="app-button">CALCULAR</button>
+                        <div id="calc-resultado" class="calc-result-box">
+                            <h2 id="resultado-valor" class="calc-result-value">0</h2>
+                            <p class="calc-result-label">SESSÕES</p>
+                        </div>
+                        <div class="ref-table-container">
+                            <h4 class="ref-table-title">REFERÊNCIA</h4>
+                            <table class="prestador-tabela" style="width:100%; margin-top:10px;">
+                                <thead><tr><th class="text-center">HORAS</th><th class="text-center">TEMPO</th><th class="text-center">SESSÕES</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="text-center">8 h</td><td class="text-center">50 min</td><td class="text-center check">9</td></tr>
+                                    <tr><td class="text-center">16 h</td><td class="text-center">50 min</td><td class="text-center check">19</td></tr>
+                                    <tr><td class="text-center">30 h</td><td class="text-center">50 min</td><td class="text-center check">36</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="bat-signal-background"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    <script src="js/global.js"></script>
+    <script src="js/ferramentas.js"></script>
+</body>
+</html>
