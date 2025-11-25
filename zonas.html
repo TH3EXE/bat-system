@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAT-SYSTEM :: ZONAS</title>
+    <title>BAT-SYSTEM :: MAPA TÁTICO</title>
     <link rel="stylesheet" href="css/style.css">
-    
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
@@ -23,12 +22,12 @@
             <a href="ferramentas.html" class="nav-link">FERRAMENTAS</a>
             <a href="pesquisa.html" class="nav-link">BUSCA AVANÇADA</a>
             <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
-            <a href="zonas.html" class="nav-link active">ZONAS</a> <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
+            <a href="zonas.html" class="nav-link active">ZONAS</a>
+            <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
             <a href="hospitais.html" class="nav-link">HOSPITAIS</a>
             <a href="terapias.html" class="nav-link">TERAPIAS</a>
             <a href="medicamentos.html" class="nav-link">MEDICAMENTOS</a>
             <a href="fornecimento.html" class="nav-link">FORNECIMENTO</a>
-            <a href="procedimentos.html" class="nav-link">PROCEDIMENTOS</a>
             <a href="informacoes.html" class="nav-link">INFORMAÇÕES</a>
         </nav>
         <div class="user-menu">
@@ -49,17 +48,17 @@
     <main class="app-container">
         <div class="zonas-layout-container">
             
-            <div class="form-group" style="max-width: 800px; margin: 0 auto 1.5rem auto;">
-                <label for="zona-search-input">RASTREAR ALVO (CIDADE OU ESTADO):</label>
-                <div class="search-input-wrapper" style="display: flex; gap: 10px;">
-                    <input type="text" id="zona-search-input" placeholder="Ex: Osasco, Fortaleza, Bahia..." style="flex: 1;">
-                    <button id="btn-buscar-mapa" class="app-button" style="width: auto; padding: 0 25px; white-space: nowrap;">
-                        <span style="margin-right: 5px;">TARGET</span> 🎯
-                    </button>
+            <div class="tool-module">
+                <h3>CENTRAL DE INTELIGÊNCIA TÁTICA</h3>
+                
+                <div id="global-search-bar" class="form-group" style="max-width: 800px; margin: 0 auto 1.5rem auto;">
+                    <label for="zona-search-input">RASTREAR ALVO (CEP, BAIRRO, CIDADE OU ESTADO):</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="zona-search-input" placeholder="Ex: Osasco, Centro RJ, Fortaleza..." style="flex: 1;">
+                        <button id="btn-buscar-mapa" class="app-button" style="flex: 0 0 140px;" title="Rastrear Posição">RASTREAR 🎯</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="tool-module" style="padding: 0; border: none; background: none;">
                 <nav class="sub-tab-navigation">
                     <button class="sub-tab-button active" data-subtab="tab-sp">SÃO PAULO</button>
                     <button class="sub-tab-button" data-subtab="tab-rj">RIO DE JANEIRO</button>
@@ -81,19 +80,19 @@
                                     <span class="hud-title">📡 DADOS DE RASTREIO</span>
                                 </div>
                                 <div class="hud-content">
-                                    <div class="hud-row">
-                                        <span class="hud-label">ALVO:</span>
-                                        <strong id="hud-target" class="hud-value">...</strong>
-                                    </div>
-                                    <div class="hud-row">
-                                        <span class="hud-label">ZONA:</span>
-                                        <strong id="hud-zone" class="hud-value" style="color: var(--batman-yellow);">...</strong>
-                                    </div>
+                                    <div class="hud-row"><span class="hud-label">ALVO:</span><strong id="hud-target" class="hud-value">...</strong></div>
+                                    <div class="hud-row"><span class="hud-label">ZONA:</span><strong id="hud-zone" class="hud-value" style="color: var(--batman-yellow);">...</strong></div>
+                                    
                                     <div class="hud-divider"></div>
-                                    <div class="hud-row">
-                                        <span class="hud-label" style="color: #888;">CIDADES PRÓXIMAS / ROTAS:</span>
-                                    </div>
+                                    
+                                    <div class="hud-row"><span class="hud-label" id="hud-list-title" style="color: #888;">VIZINHANÇA (ORDENADA POR DISTÂNCIA):</span></div>
                                     <div id="hud-routes-list" class="hud-routes"></div>
+
+                                    <div id="hud-pagination" class="hud-pagination" style="display:none;">
+                                        <button id="btn-hud-prev" class="hud-page-btn">◄</button>
+                                        <span id="hud-page-info">1/1</span>
+                                        <button id="btn-hud-next" class="hud-page-btn">►</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
