@@ -1,0 +1,47 @@
+==========================================================================
+BAT-SYSTEM v2.0 - MANUAL DE SOBREVIVÊNCIA (LEIA OU SOFRA)
+==========================================================================
+
+1. O QUE É ISSO?
+----------------
+Um sistema operacional tático para controle de zonas, procedimentos e ferramentas 
+médicas. Feito para parecer que estamos na Batcaverna, mas rodando num navegador 
+Chrome qualquer.
+
+2. ESTRUTURA DE PASTAS (Não bagunce)
+------------------------------------
+/pages   -> Onde moram os HTMLs. Se criar uma página nova, jogue aqui.
+/assets  -> Onde mora a mágica (CSS e JS).
+   /js/layout.js -> O DEUS DO MENU. Se quiser mudar um link do topo, é AQUI.
+                    Não edite os 15 arquivos HTMLs manualmente, por favor.
+
+3. COMO ADICIONAR UMA NOVA ABA?
+-------------------------------
+Passo 1: Crie o arquivo 'nova_aba.html' dentro da pasta /pages.
+Passo 2: Copie a estrutura básica de qualquer outro HTML (com o <div id="app-header-placeholder">).
+Passo 3: Abra 'assets/js/layout.js'.
+Passo 4: Adicione uma linha no array SYSTEM_ROUTES: 
+         { name: "NOVA ABA", url: "nova_aba.html" }
+Passo 5: Pronto. Mágica feita.
+
+4. BUGS CONHECIDOS (Features não documentadas)
+----------------------------------------------
+- O Mapa Tático é renderizado em preto. Se ficar cinza, é porque a aba estava 
+  escondida quando ele carregou. O código tem um "kickstart" (invalidateSize) 
+  para resolver isso, mas as vezes ele é teimoso. Clique na aba de novo.
+- O Banco de Dados é local (JS). Se o navegador limpar o cache, as notas somem. 
+  Isso é uma feature de segurança (mentira, é porque não temos backend).
+
+5. FILOSOFIA DE CÓDIGO
+----------------------
+- Se funciona, não toque.
+- Se está bonito, é Mérito do CSS.
+- Se quebrou, foi o Coringa.
+
+6. CRÉDITOS
+-----------
+Desenvolvido para agilidade máxima e visual noturno para não queimar a retina 
+do operador às 3 da manhã.
+
+Boa sorte, vigilante.
+==========================================================================
