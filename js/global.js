@@ -1,18 +1,88 @@
 // js/global.js
-// Lógica Global: 2 Menus (Sistema e Usuário), Status e Tempo
+// SISTEMA CENTRAL: AUTENTICAÇÃO, LAYOUT E MONITORAMENTO
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. VERIFICAÇÃO DE LOGIN
+    // ============================================================
+    // 1. LÓGICA DE LOGIN (Apenas na tela de login)
+    // ============================================================
+    const loginForm = document.getElementById('login-form');
+
+    if (loginForm) {
+        // Limpa sessão antiga ao abrir a tela de login
+        sessionStorage.clear();
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const userField = document.getElementById('username');
+            const passField = document.getElementById('password');
+            const btn = document.querySelector('.btn-access-tech');
+            const btnText = document.querySelector('.btn-text');
+
+            const user = userField.value.trim().toUpperCase();
+            const pass = passField.value.trim().toUpperCase(); // Converte senha para upper para evitar erro de caixa
+
+            // Efeito Visual de Processamento
+            const originalText = btnText.textContent;
+            btnText.textContent = "AUTENTICANDO...";
+            btn.style.opacity = "0.8";
+            btn.style.cursor = "wait";
+
+            setTimeout(() => {
+                // --- VERIFICAÇÃO DE CREDENCIAIS ---
+                if (user === 'BATMAN' && pass === 'BATMAN666') {
+                    // SUCESSO
+                    sessionStorage.setItem('userRole', 'admin');
+                    sessionStorage.setItem('userName', 'BRUCE WAYNE'); // Nome que aparece no sistema
+                    sessionStorage.setItem('sessionStartTime', new Date().toLocaleString());
+                    
+                    // Feedback Visual Positivo
+                    btnText.textContent = "ACESSO CONCEDIDO";
+                    btn.style.borderColor = "var(--neon-green)";
+                    btn.style.color = "var(--neon-green)";
+                    
+                    // Redirecionamento
+                    setTimeout(() => {
+                        window.location.href = 'busca.html';
+                    }, 800);
+
+                } else {
+                    // ERRO
+                    alert("ALERTA DE SEGURANÇA: Credenciais não reconhecidas.");
+                    
+                    // Reset Visual
+                    btnText.textContent = originalText;
+                    btn.style.borderColor = "var(--bat-yellow)";
+                    btn.style.color = "#000";
+                    btn.style.opacity = "1";
+                    btn.style.cursor = "pointer";
+                    passField.value = ""; // Limpa senha
+                    passField.focus();
+                }
+            }, 1000); // Delay "dramático" de 1 segundo
+        });
+        
+        // Se estiver na tela de login, para por aqui (não carrega header nem monitoramento)
+        return;
+    }
+
+    // ============================================================
+    // 2. SEGURANÇA DE PÁGINAS INTERNAS (Barreira de Acesso)
+    // ============================================================
+    
     const userRole = sessionStorage.getItem('userRole');
     const userName = sessionStorage.getItem('userName');
     
-    if (!userRole && !window.location.pathname.endsWith('index.html') && !window.location.pathname.endsWith('/')) {
+    // Se tentar acessar qualquer página interna sem logar, chuta de volta pro login
+    if (!userRole) {
         window.location.href = 'index.html';
         return;
     }
 
-    // 2. CONSTRUÇÃO DO HEADER (BOTÕES E MENUS)
+    // ============================================================
+    // 3. CONSTRUÇÃO DO HEADER (BOTÕES E MENUS)
+    // ============================================================
     const header = document.querySelector('.app-header');
     // Remove elementos antigos se existirem para recriar limpo
     const oldActions = document.querySelector('.header-actions');
@@ -79,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupMenuEvents();
     }
 
-    // --- 3. LÓGICA DOS MENUS ---
+    // --- LÓGICA DOS MENUS ---
     function setupMenuEvents() {
         const btnSystem = document.getElementById('btn-system');
         const dropSystem = document.getElementById('system-dropdown');
