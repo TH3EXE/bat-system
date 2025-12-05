@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BAT-SYSTEM :: INÍCIO</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body class="app-page">
 
@@ -46,8 +47,31 @@
     <main class="app-container">
         
         <div class="dashboard-hero">
-            <h1 class="hero-title typing-animation">PAINEL DE CONTROLE</h1>
+            <h1 class="hero-title">PAINEL DE CONTROLE</h1>
             <p class="hero-subtitle">Selecione uma ferramenta para iniciar.</p>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-value" id="system-uptime">--</div>
+                    <div class="stat-label">UPTIME</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔒</div>
+                    <div class="stat-value" id="security-level">ÔMEGA</div>
+                    <div class="stat-label">SEGURANÇA</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-value" id="active-sessions">1</div>
+                    <div class="stat-label">SESSÕES</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌐</div>
+                    <div class="stat-value" id="network-status">ONLINE</div>
+                    <div class="stat-label">REDE</div>
+                </div>
+            </div>
         </div>
 
         <div class="dashboard-grid">
@@ -99,6 +123,7 @@
     </main>
 
     <div class="bat-signal-background"></div>
+    <script src="js/layout.js"></script>
     <script src="js/global.js"></script>
 </body>
 </html>

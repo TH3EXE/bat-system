@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body class="login-body">
 
@@ -22,9 +23,55 @@
 
         <div class="login-terminal-box">
             <div class="terminal-header">
-                <svg class="bat-logo-login" viewBox="0 0 512 512">
-                    <path fill="currentColor" d="M256,23.11c-131.79,0-238.16,92-238.16,205.51,0,80.12,48.24,150.15,116.32,185.74-5.32-2.31-29-14.7-27.11-41.48,1.38-19.12,14.65-42.34,32.32-35.84,10.6,3.9,13,16,16.51,20.8,4.71,6.48,12.72,12.21,21.5,14.54,14.62,3.89,32.48,1.49,43.2-12.22,17.4-22.3,16.27-56.1,16.27-56.1s43.51-17.1,83.87-17.1c40.37,0,83.87,17.1,83.87,17.1s-1.13,33.8,16.27,56.1c10.72,13.71,28.58,16.11,43.2,12.22,8.78-2.33,16.79-8.06,21.5-14.54,3.52-4.82,5.92-16.9,16.51-20.8,17.67-6.5,30.94,16.72,32.32,35.84,1.89,26.78-21.79,39.17-27.11,41.48,68.08-35.59,116.32-105.62,116.32-185.74C494.16,115.11,387.79,23.11,256,23.11Z"/>
-                </svg>
+                <div class="bat-signal-container">
+                    <svg class="bat-signal-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="batSignalGradient" cx="50%" cy="50%">
+                                <stop offset="0%" stop-color="#E8B923" stop-opacity="1"/>
+                                <stop offset="40%" stop-color="#E8B923" stop-opacity="0.8"/>
+                                <stop offset="70%" stop-color="#E8B923" stop-opacity="0.4"/>
+                                <stop offset="100%" stop-color="#E8B923" stop-opacity="0"/>
+                            </radialGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Círculo principal do bat-sinal -->
+                        <circle class="bat-signal-circle" cx="100" cy="100" r="75" fill="url(#batSignalGradient)" filter="url(#glow)"/>
+                        <!-- Círculo secundário para profundidade -->
+                        <circle class="bat-signal-circle-inner" cx="100" cy="100" r="60" fill="none" stroke="#E8B923" stroke-width="2" opacity="0.5"/>
+                        <!-- Símbolo do morcego (bat-sinal) -->
+                        <g class="bat-signal-symbol">
+                            <!-- Corpo do morcego -->
+                            <ellipse cx="100" cy="100" rx="6" ry="20" fill="#000"/>
+                            <!-- Cabeça -->
+                            <circle cx="100" cy="80" r="10" fill="#000"/>
+                            <!-- Asas superiores -->
+                            <path d="M 80 85 Q 65 95 80 105 Q 90 100 100 95 Q 90 90 80 85 Z" fill="#000"/>
+                            <path d="M 120 85 Q 135 95 120 105 Q 110 100 100 95 Q 110 90 120 85 Z" fill="#000"/>
+                            <!-- Asas inferiores -->
+                            <path d="M 80 105 Q 65 115 80 125 Q 90 120 100 115 Q 90 110 80 105 Z" fill="#000"/>
+                            <path d="M 120 105 Q 135 115 120 125 Q 110 120 100 115 Q 110 110 120 105 Z" fill="#000"/>
+                            <!-- Orelhas -->
+                            <path d="M 92 75 L 88 65 L 95 70 Z" fill="#000"/>
+                            <path d="M 108 75 L 112 65 L 105 70 Z" fill="#000"/>
+                        </g>
+                        <!-- Raios de luz animados -->
+                        <line class="bat-signal-line bat-signal-line-1" x1="100" y1="10" x2="100" y2="30" stroke="#E8B923" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+                        <line class="bat-signal-line bat-signal-line-2" x1="100" y1="170" x2="100" y2="190" stroke="#E8B923" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+                        <line class="bat-signal-line bat-signal-line-3" x1="10" y1="100" x2="30" y2="100" stroke="#E8B923" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+                        <line class="bat-signal-line bat-signal-line-4" x1="170" y1="100" x2="190" y2="100" stroke="#E8B923" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+                        <!-- Raios diagonais -->
+                        <line class="bat-signal-line bat-signal-line-5" x1="30" y1="30" x2="50" y2="50" stroke="#E8B923" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+                        <line class="bat-signal-line bat-signal-line-6" x1="170" y1="30" x2="150" y2="50" stroke="#E8B923" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+                        <line class="bat-signal-line bat-signal-line-7" x1="30" y1="170" x2="50" y2="150" stroke="#E8B923" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+                        <line class="bat-signal-line bat-signal-line-8" x1="170" y1="170" x2="150" y2="150" stroke="#E8B923" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+                    </svg>
+                </div>
                 <h1>WAYNETECH<span class="highlight">OS</span></h1>
                 <p class="terminal-subtitle">ACESSO RESTRITO // NÍVEL ÔMEGA</p>
             </div>

@@ -17,30 +17,58 @@ const ROUTES = [
 
 document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
-    // Salva o conteúdo original (Main)
-    const pageContent = body.innerHTML;
+    
+    // Remove elementos antigos de navegação antes de processar
+    const oldNav = document.querySelector('.main-navigation');
+    if (oldNav) oldNav.remove();
+    
+    const oldHeader = document.querySelector('header.app-header');
+    if (oldHeader && oldHeader.querySelector('.main-navigation')) {
+        const mainNav = oldHeader.querySelector('.main-navigation');
+        if (mainNav) mainNav.remove();
+    }
+    
+    // Salva o conteúdo original (Main) - apenas o que está dentro de <main> ou body direto
+    let pageContent = '';
+    const mainContent = body.querySelector('main') || body.querySelector('.app-container');
+    if (mainContent) {
+        pageContent = mainContent.innerHTML;
+    } else {
+        // Se não houver main, pega tudo exceto header e nav
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = body.innerHTML;
+        const headerToRemove = tempDiv.querySelector('header');
+        const navToRemove = tempDiv.querySelector('.main-navigation');
+        if (headerToRemove) headerToRemove.remove();
+        if (navToRemove) navToRemove.remove();
+        pageContent = tempDiv.innerHTML;
+    }
+    
     const currentPage = window.location.pathname.split("/").pop() || "busca.html";
 
     // Reconstrói o corpo com o Layout Grid
     body.innerHTML = `
         <header class="app-header">
             <div class="header-left" style="display:flex; align-items:center; gap:10px;">
-                <svg class="bat-logo-small" style="width:24px; color:#E8B923;" fill="currentColor" viewBox="0 0 512 512"><path d="M256,23.11c-131.79,0-238.16,92-238.16,205.51,0,80.12,48.24,150.15,116.32,185.74-5.32-2.31-29-14.7-27.11-41.48,1.38-19.12,14.65-42.34,32.32-35.84,10.6,3.9,13,16,16.51,20.8,4.71,6.48,12.72,12.21,21.5,14.54,14.62,3.89,32.48,1.49,43.2-12.22,17.4-22.3,16.27-56.1,16.27-56.1s43.51-17.1,83.87-17.1c40.37,0,83.87,17.1,83.87,17.1s-1.13,33.8,16.27,56.1c10.72,13.71,28.58,16.11,43.2,12.22,8.78-2.33,16.79-8.06,21.5-14.54,3.52-4.82,5.92-16.9,16.51-20.8,17.67-6.5,30.94,16.72,32.32,35.84,1.89,26.78-21.79,39.17-27.11,41.48,68.08-35.59,116.32-105.62,116.32-185.74C494.16,115.11,387.79,23.11,256,23.11Z"/></svg>
-                <span style="color:#E8B923; font-weight:900; letter-spacing:1px; font-family:'Rajdhani', sans-serif;">BAT-SYSTEM V3.0</span>
-                <div class="system-status" style="margin-left:20px; display:flex; gap:15px; font-size:0.7rem; color:#666;">
+                <button class="menu-toggle-mobile" id="menu-toggle" aria-label="Menu">☰</button>
+                <svg class="bat-logo-small" style="width:20px; height:20px; color:#E8B923;" fill="currentColor" viewBox="0 0 512 512"><path d="M256,23.11c-131.79,0-238.16,92-238.16,205.51,0,80.12,48.24,150.15,116.32,185.74-5.32-2.31-29-14.7-27.11-41.48,1.38-19.12,14.65-42.34,32.32-35.84,10.6,3.9,13,16,16.51,20.8,4.71,6.48,12.72,12.21,21.5,14.54,14.62,3.89,32.48,1.49,43.2-12.22,17.4-22.3,16.27-56.1,16.27-56.1s43.51-17.1,83.87-17.1c40.37,0,83.87,17.1,83.87,17.1s-1.13,33.8,16.27,56.1c10.72,13.71,28.58,16.11,43.2,12.22,8.78-2.33,16.79-8.06,21.5-14.54,3.52-4.82,5.92-16.9,16.51-20.8,17.67-6.5,30.94,16.72,32.32,35.84,1.89,26.78-21.79,39.17-27.11,41.48,68.08-35.59,116.32-105.62,116.32-185.74C494.16,115.11,387.79,23.11,256,23.11Z"/></svg>
+                <span style="color:#E8B923; font-weight:900; letter-spacing:0.5px; font-family:'Rajdhani', sans-serif; font-size:0.9rem;">WAYNETECHOS</span>
+                <div class="system-status" style="margin-left:15px; display:flex; gap:12px; font-size:0.65rem; color:#888;">
                     <div class="status-item"><span class="status-dot"></span> ONLINE</div>
                     <div class="status-item" id="clock-display">--:--</div>
                 </div>
             </div>
-            <div class="header-right" style="display:flex; gap:15px; align-items:center;">
-                <div style="text-align:right; font-size:0.7rem; color:#888;">OPERADOR<br><strong style="color:#fff;">BRUCE.W</strong></div>
-                <button class="btn-logout" onclick="sessionStorage.clear(); window.location.href='index.html'" style="background:transparent; border:1px solid #333; color:#FF3131; padding:5px 10px; cursor:pointer;">SAIR</button>
+            <div class="header-right" style="display:flex; gap:10px; align-items:center;">
+                <div style="text-align:right; font-size:0.65rem; color:#888;">OPERADOR<br><strong style="color:#fff; font-size:0.7rem;">BRUCE.W</strong></div>
+                <button class="btn-logout" onclick="sessionStorage.clear(); window.location.href='index.html'" style="background:transparent; border:1px solid #E8B923; color:#FF3131; padding:0.25rem 0.6rem; cursor:pointer; font-size:0.65rem;">SAIR</button>
             </div>
         </header>
+        
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
         <div class="main-layout" style="display:flex; height:calc(100vh - 60px);">
             <aside class="app-sidebar">
-                <div style="padding:15px; font-size:0.65rem; color:#666; border-bottom:1px solid #222;">NAVEGAÇÃO</div>
+                <div style="padding:15px; font-size:0.65rem; color:#E8B923; border-bottom:1px solid #E8B923;">NAVEGAÇÃO</div>
                 <div class="sidebar-nav" style="overflow-y:auto; flex:1;">
                     ${ROUTES.map(r => `
                         <a href="${r.url}" class="nav-link ${currentPage === r.url ? 'active' : ''}">
@@ -63,4 +91,70 @@ document.addEventListener('DOMContentLoaded', () => {
         const el = document.getElementById('clock-display');
         if(el) el.textContent = new Date().toLocaleTimeString('pt-BR');
     }, 1000);
+    
+    // Inicializar stats do dashboard se existir
+    setTimeout(() => {
+        if (typeof initDashboardStats === 'function') {
+            initDashboardStats();
+        }
+    }, 100);
+
+    // Funcionalidade do menu hambúrguer para desktop e mobile
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.querySelector('.app-sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    
+    if (menuToggle && sidebar && overlay) {
+        // Função para verificar se é mobile
+        const isMobile = () => window.innerWidth <= 768;
+        
+        // Função para toggle do sidebar
+        const toggleSidebar = () => {
+            if (isMobile()) {
+                // Mobile: usa overlay e animação de slide
+                sidebar.classList.toggle('mobile-open');
+                overlay.classList.toggle('active');
+            } else {
+                // Desktop: apenas mostra/oculta o sidebar
+                sidebar.classList.toggle('desktop-hidden');
+            }
+        };
+        
+        menuToggle.addEventListener('click', toggleSidebar);
+        
+        // Overlay só funciona no mobile
+        overlay.addEventListener('click', () => {
+            if (isMobile()) {
+                sidebar.classList.remove('mobile-open');
+                overlay.classList.remove('active');
+            }
+        });
+        
+        // Fechar sidebar ao clicar em um link no mobile
+        const navLinks = sidebar.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMobile()) {
+                    sidebar.classList.remove('mobile-open');
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+        
+        // Ajustar comportamento ao redimensionar a janela
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (!isMobile()) {
+                    // Desktop: remove classes mobile e garante sidebar visível
+                    sidebar.classList.remove('mobile-open');
+                    overlay.classList.remove('active');
+                } else {
+                    // Mobile: remove classe desktop-hidden
+                    sidebar.classList.remove('desktop-hidden');
+                }
+            }, 250);
+        });
+    }
 });
