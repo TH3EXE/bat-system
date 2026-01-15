@@ -109,3 +109,55 @@ function copyCardInfo() {
         }, 2000);
     });
 }
+
+function copyCardInfo(button) {
+    // Localiza o card pai do botão que foi clicado
+    const card = button.closest('.prestador-card');
+    
+    // Captura o título
+    const title = card.querySelector('h3').innerText;
+    
+    // Captura todos os itens da lista
+    const items = card.querySelectorAll('.info-list li');
+    
+    // Monta o texto formatado
+    let textToCopy = `📋 DADOS DO PRESTADOR\n`;
+    textToCopy += `---------------------------\n`;
+    textToCopy += `NOME: ${title}\n`;
+    
+    items.forEach(item => {
+        textToCopy += item.innerText.trim() + '\n';
+    });
+
+    // Função de cópia com suporte a navegadores antigos (fallback)
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            showFeedback(button);
+        });
+    } else {
+        // Fallback usando um elemento temporário
+        const textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            showFeedback(button);
+        } catch (err) {
+            console.error('Erro ao copiar', err);
+        }
+        document.body.removeChild(textArea);
+    }
+}
+
+// Altera o visual do botão por 2 segundos para confirmar a cópia
+function showFeedback(btn) {
+    const originalText = btn.innerText;
+    btn.innerText = "✓ COPIADO COM SUCESSO!";
+    btn.classList.add('success');
+    
+    setTimeout(() => {
+        btn.innerText = originalText;
+        btn.classList.remove('success');
+    }, 2000);
+}
