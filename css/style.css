@@ -10099,7 +10099,6 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--b
 }
 
 /* prestador-card */
-<style>
     .prestador-card {
         border: 1px solid #ddd;
         border-radius: 8px;
@@ -10116,4 +10115,3 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--b
         border-radius: 4px; 
         font-size: 0.8em; 
     }
-</style>
