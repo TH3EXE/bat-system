@@ -3,282 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rede Credenciada - Batman Edition</title>
+    <title>Bat-Sistema v3.0 - Rede Hospitalar</title>
     <style>
-        /* PALETA DE CORES BATMAN */
         :root {
-            --bg-dark: #121212;      /* Fundo Principal */
-            --card-bg: #1e1e1e;      /* Fundo dos Cards */
-            --bat-yellow: #ffcc00;   /* Amarelo Gotham */
-            --bat-yellow-hover: #e6b800;
-            --text-white: #ffffff;
-            --text-gray: #b3b3b3;
-            --border-gray: #333;
+            --bg-dark: #050505;      
+            --header-bg: #111;
+            --card-bg: #181818;      
+            --bat-yellow: #ffcc00;   
+            --text-white: #f0f0f0;
+            --text-gray: #888;
+            --border: #222;
         }
 
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { 
-            font-family: 'Segoe UI', Arial, sans-serif; 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
             background: var(--bg-dark); 
             color: var(--text-white); 
             margin: 0; 
-            padding: 20px; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden; 
         }
 
-        .container { max-width: 1300px; margin: 0 auto; }
+        /* HEADER FIXO */
+        .app-header {
+            background: var(--header-bg);
+            border-bottom: 2px solid var(--bat-yellow);
+            padding: 0 20px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+            z-index: 1000;
+        }
 
-        /* BUSCA */
-        .search-box { 
-            position: sticky; top: 10px; z-index: 100;
-            background: var(--card-bg); padding: 15px; border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5); margin-bottom: 25px;
-            border: 1px solid var(--bat-yellow);
+        .main-navigation { display: flex; gap: 10px; }
+        .nav-link {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px 8px;
+            text-transform: uppercase;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--bat-yellow); }
+
+        /* AREA DE CONTEUDO */
+        .app-main {
+            flex-grow: 1;
+            overflow-y: scroll;
+            padding: 20px;
+        }
+
+        /* BARRA DE ROLAGEM GOTHAM */
+        .app-main::-webkit-scrollbar { width: 6px; }
+        .app-main::-webkit-scrollbar-track { background: #000; }
+        .app-main::-webkit-scrollbar-thumb { background: var(--bat-yellow); border-radius: 10px; }
+
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        .search-container {
+            position: sticky; top: -20px; z-index: 90;
+            background: var(--bg-dark); padding: 10px 0 20px 0;
         }
         .search-box input { 
-            width: 100%; padding: 15px; border: 1px solid var(--border-gray); 
-            border-radius: 8px; font-size: 16px; outline: none; 
-            background: #252525; color: var(--bat-yellow);
-            transition: 0.3s; box-sizing: border-box;
+            width: 100%; padding: 15px; border: 1px solid var(--bat-yellow); 
+            background: #000; color: var(--bat-yellow); font-size: 16px; outline: none;
+            border-radius: 4px;
         }
-        .search-box input:focus { border-color: var(--bat-yellow); box-shadow: 0 0 10px rgba(255, 204, 0, 0.3); }
 
-        /* NAVEGAÇÃO ABAS */
-        .nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
+        .nav-tabs { display: flex; gap: 5px; margin-bottom: 20px; }
         .tab-btn { 
-            padding: 12px 25px; border: 1px solid var(--bat-yellow); background: transparent; 
-            color: var(--bat-yellow); cursor: pointer; border-radius: 6px; 
-            font-weight: bold; text-transform: uppercase; transition: 0.3s;
+            padding: 8px 15px; border: 1px solid var(--border); background: #111; 
+            color: var(--text-gray); cursor: pointer; font-weight: bold; font-size: 12px;
         }
-        .tab-btn.active, .tab-btn:hover { background: var(--bat-yellow); color: #000; }
+        .tab-btn.active { border-color: var(--bat-yellow); color: var(--bat-yellow); }
 
-        /* GRID */
+        /* GRID E CARDS */
         .grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-            gap: 20px; 
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); 
+            gap: 15px;
+            contain: content;
         }
 
         .panel { display: none; }
         .panel.active { display: block; }
 
-        /* CARD ESTILO BATMAN */
         .card { 
-            background: var(--card-bg); border-radius: 8px; padding: 18px;
-            border-left: 4px solid var(--bat-yellow); 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            display: flex; flex-direction: column; transition: 0.2s;
-            border-bottom: 1px solid var(--border-gray);
+            background: var(--card-bg); border: 1px solid var(--border); padding: 15px;
+            display: flex; flex-direction: column;
+            transition: border-color 0.2s;
         }
-        .card:hover { transform: scale(1.02); background: #252525; }
-        .card h3 { margin: 0 0 15px 0; color: var(--bat-yellow); font-size: 1.1rem; text-transform: uppercase; }
+        .card:hover { border-color: var(--bat-yellow); }
+        .card h3 { margin: 0 0 10px 0; color: var(--bat-yellow); font-size: 0.95rem; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
         
         .info { list-style: none; padding: 0; margin: 0; flex-grow: 1; }
-        .info li { margin-bottom: 12px; font-size: 0.9rem; border-bottom: 1px solid var(--border-gray); padding-bottom: 5px; }
-        .info strong { display: block; font-size: 0.7rem; color: var(--bat-yellow); text-transform: uppercase; opacity: 0.8; }
+        .info li { margin-bottom: 6px; font-size: 0.8rem; display: flex; flex-wrap: wrap; }
+        .info strong { color: var(--bat-yellow); margin-right: 5px; min-width: 85px; font-size: 0.7rem; text-transform: uppercase; }
+        .info span { color: var(--text-white); }
 
-        /* BOTÃO COPIAR */
         .btn-copy { 
-            width: 100%; padding: 12px; background: var(--bat-yellow); color: #000; 
-            border: none; border-radius: 5px; cursor: pointer; font-weight: bold;
-            margin-top: 15px; transition: 0.3s; text-transform: uppercase;
+            width: 100%; padding: 8px; background: var(--bat-yellow); color: #000; 
+            border: none; cursor: pointer; font-weight: bold; font-size: 10px;
+            margin-top: 10px; text-transform: uppercase;
         }
-        .btn-copy:hover { background: var(--text-white); }
 
-        #no-results { text-align: center; display: none; padding: 40px; color: var(--bat-yellow); font-weight: bold; }
+        #no-results { text-align: center; display: none; padding: 40px; color: var(--bat-yellow); }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="BUSCAR NA BAT-REDE (Nome, Região, CNPJ)...">
-    </div>
+    <header class="app-header">
+        <nav class="main-navigation">
+            <a href="#" class="nav-link">INÍCIO</a>
+            <a href="#" class="nav-link">FERRAMENTAS</a>
+            <a href="#" class="nav-link">FRASEOLOGIAS</a>
+            <a href="#" class="nav-link">ZONAS</a>
+            <a href="#" class="nav-link active">HOSPITAIS</a>
+            <a href="#" class="nav-link">MEDICAMENTOS</a>
+        </nav>
+        <div style="color: var(--bat-yellow); font-size: 12px;">MODO OPERANTE: GOTHAM</div>
+    </header>
 
-    <nav class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab(event, 'sp')">SÃO PAULO</button>
-        <button class="tab-btn" onclick="switchTab(event, 'rj')">RIO DE JANEIRO</button>
-        <button class="tab-btn" onclick="switchTab(event, 'reg')">REGIONAIS</button>
-    </nav>
+    <main class="app-main">
+        <div class="container">
+            
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="PESQUISAR NOS ARQUIVOS...">
+            </div>
 
-    <div id="no-results">NENHUM HOSPITAL LOCALIZADO NOS ARQUIVOS DE GOTHAM.</div>
+            <nav class="nav-tabs">
+                <button class="tab-btn active" onclick="switchTab(event, 'sp')">SÃO PAULO</button>
+                <button class="tab-btn" onclick="switchTab(event, 'rj')">RIO DE JANEIRO</button>
+                <button class="tab-btn" onclick="switchTab(event, 'reg')">REGIONAIS</button>
+            </nav>
 
-    <section id="sp" class="panel active">
-        <div class="grid">
-            <div class="card">
-                <h3>HOSPITAL BOSQUE DA SAUDE</h3>
-                <ul class="info">
-                    <li><strong>CNPJ</strong> 44649812007140</li>
-                    <li><strong>CÓDIGO</strong> 249396133</li>
-                    <li><strong>LOCALIZAÇÃO</strong> SUL - AV. BOSQUE DA SAUDE, 1922</li>
-                </ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL CRUZEIRO DO SUL</h3>
-                <ul class="info">
-                    <li><strong>CNPJ</strong> 44649812026013</li>
-                    <li><strong>CÓDIGO</strong> 249390496</li>
-                    <li><strong>LOCALIZAÇÃO</strong> CENTRO - OSASCO/SP</li>
-                </ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL KEILA FERREIRA</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44.649.812/0235-02</li><li><strong>CÓDIGO</strong> 249396532</li><li><strong>REGIÃO</strong> ALTO TIETÊ</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSP E MATER NOSSA SRA ROSARIO</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44649812007140</li><li><strong>CÓDIGO</strong> 249396133</li><li><strong>REGIÃO</strong> ZONA NORTE</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL FAMILY</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44649812022883</li><li><strong>CÓDIGO</strong> 249396486</li><li><strong>REGIÃO</strong> ZONA OESTE/SUL</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL NOVA VIDA</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44649812025807</li><li><strong>CÓDIGO</strong> 249396621</li><li><strong>REGIÃO</strong> ZONA OESTE</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL E MATERNIDADE SALVALUS</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44649812028490</li><li><strong>CÓDIGO</strong> 249396796</li><li><strong>REGIÃO</strong> ZONA LESTE</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL INTERMEDICA ANALIA FRANCO</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44649812022964</li><li><strong>CÓDIGO</strong> 249396494</li><li><strong>REGIÃO</strong> ZONA LESTE</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>UNIDADE AVANCADA SALVALUS</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44.649.812/0289-03</li><li><strong>CÓDIGO</strong> 249396834</li><li><strong>REGIÃO</strong> ZONA LESTE</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL SANTA MARTA</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44649812037643</li><li><strong>CÓDIGO</strong> 249390569</li><li><strong>REGIÃO</strong> ZONA SUL</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
+            <div id="no-results">NADA ENCONTRADO.</div>
+
+            <section id="sp" class="panel active">
+                <div class="grid">
+                    <div class="card">
+                        <h3>HOSPITAL BOSQUE DA SAUDE</h3>
+                        <ul class="info">
+                            <li><strong>CNPJ:</strong><span>44649812007140</span></li>
+                            <li><strong>CDP:</strong><span>249396133</span></li>
+                            <li><strong>REGIÃO:</strong><span>SUL</span></li>
+                            <li><strong>ENDEREÇO:</strong><span>AV BOSQUE DA SAUDE 1922</span></li>
+                            <li><strong>LOCALIDADE:</strong><span>SAUDE SAO PAULO</span></li>
+                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
+                            <li><strong>CONTATO:</strong><span>1140901740</span></li>
+                            <li><strong>PROCEDIMENTOS:</strong><span>USG TC MATERNIDADE</span></li>
+                        </ul>
+                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>HOSPITAL CRUZEIRO DO SUL</h3>
+                        <ul class="info">
+                            <li><strong>CNPJ:</strong><span>44649812026013</span></li>
+                            <li><strong>CDP:</strong><span>249390496</span></li>
+                            <li><strong>REGIÃO:</strong><span>OESTE</span></li>
+                            <li><strong>ENDEREÇO:</strong><span>AV DOS AUTONOMISTAS 2502</span></li>
+                            <li><strong>LOCALIDADE:</strong><span>OSASCO</span></li>
+                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
+                            <li><strong>CONTATO:</strong><span>1140901740</span></li>
+                            <li><strong>PROCEDIMENTOS:</strong><span>PRONTO SOCORRO INTERNACAO</span></li>
+                        </ul>
+                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>HOSPITAL KEILA FERREIRA</h3>
+                        <ul class="info">
+                            <li><strong>CNPJ:</strong><span>44649812023502</span></li>
+                            <li><strong>CDP:</strong><span>249396532</span></li>
+                            <li><strong>REGIÃO:</strong><span>ALTO TIETE</span></li>
+                            <li><strong>ENDEREÇO:</strong><span>RUA JOSE DE ALENCAR 102</span></li>
+                            <li><strong>LOCALIDADE:</strong><span>SUZANO</span></li>
+                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
+                            <li><strong>CONTATO:</strong><span>1147453333</span></li>
+                            <li><strong>PROCEDIMENTOS:</strong><span>MATERNIDADE GERAL</span></li>
+                        </ul>
+                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>HOSPITAL E MATERNIDADE SALVALUS</h3>
+                        <ul class="info">
+                            <li><strong>CNPJ:</strong><span>44649812028490</span></li>
+                            <li><strong>CDP:</strong><span>249396796</span></li>
+                            <li><strong>REGIÃO:</strong><span>LESTE</span></li>
+                            <li><strong>ENDEREÇO:</strong><span>RUA BRESSER 1954</span></li>
+                            <li><strong>LOCALIDADE:</strong><span>MOOCA SAO PAULO</span></li>
+                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
+                            <li><strong>CONTATO:</strong><span>1126622000</span></li>
+                            <li><strong>PROCEDIMENTOS:</strong><span>PEDIATRIA UTI PS</span></li>
+                        </ul>
+                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>HOSPITAL FAMILY</h3>
+                        <ul class="info">
+                            <li><strong>CNPJ:</strong><span>44649812022883</span></li>
+                            <li><strong>CDP:</strong><span>249396486</span></li>
+                            <li><strong>REGIÃO:</strong><span>SUL OESTE</span></li>
+                            <li><strong>ENDEREÇO:</strong><span>RUA MANOEL ANTONIO FERREIRA 45</span></li>
+                            <li><strong>LOCALIDADE:</strong><span>TABOAO DA SERRA</span></li>
+                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
+                            <li><strong>CONTATO:</strong><span>1147885600</span></li>
+                            <li><strong>PROCEDIMENTOS:</strong><span>GERAL PS</span></li>
+                        </ul>
+                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="rj" class="panel">
+                <div class="grid">
+                    <div class="card">
+                        <h3>HOSPITAL SANTA MARTHA</h3>
+                        <ul class="info">
+                            <li><strong>CNPJ:</strong><span>30079461000162</span></li>
+                            <li><strong>CDP:</strong><span>256437370</span></li>
+                            <li><strong>REGIÃO:</strong><span>NITEROI</span></li>
+                            <li><strong>ENDEREÇO:</strong><span>RUA PANAMA 70</span></li>
+                            <li><strong>LOCALIDADE:</strong><span>SANTA ROSA NITEROI</span></li>
+                            <li><strong>TIPO:</strong><span>CREDENCIADA</span></li>
+                            <li><strong>CONTATO:</strong><span>2127072700</span></li>
+                            <li><strong>PROCEDIMENTOS:</strong><span>CARDIOLOGIA CIRURGIA</span></li>
+                        </ul>
+                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>HOSPITAL NOTRECARE RIO SAMCI</h3>
+                        <ul class="info">
+                            <li><strong>CNPJ:</strong><span>44649812024908</span></li>
+                            <li><strong>CDP:</strong><span>249390470</span></li>
+                            <li><strong>REGIÃO:</strong><span>ANDARAI</span></li>
+                            <li><strong>ENDEREÇO:</strong><span>RUA CARLOS DE LAET 145</span></li>
+                            <li><strong>LOCALIDADE:</strong><span>RIO DE JANEIRO</span></li>
+                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
+                            <li><strong>CONTATO:</strong><span>2121591500</span></li>
+                            <li><strong>PROCEDIMENTOS:</strong><span>INFANTIL PEDIATRIA</span></li>
+                        </ul>
+                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="reg" class="panel">
+                <div class="grid">
+                    <div class="card">
+                        <h3>HOSPITAL NOTRECARE ABC</h3>
+                        <ul class="info">
+                            <li><strong>CNPJ:</strong><span>44649812026609</span></li>
+                            <li><strong>CDP:</strong><span>249396672</span></li>
+                            <li><strong>REGIÃO:</strong><span>ABC</span></li>
+                            <li><strong>ENDEREÇO:</strong><span>AV PEREIRA BARRETO 846</span></li>
+                            <li><strong>LOCALIDADE:</strong><span>SANTO ANDRE</span></li>
+                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
+                            <li><strong>CONTATO:</strong><span>1144333600</span></li>
+                            <li><strong>PROCEDIMENTOS:</strong><span>GERAL INTERNACAO</span></li>
+                        </ul>
+                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>HOSPITAL RENASCENCA CAMPINAS</h3>
+                        <ul class="info">
+                            <li><strong>CNPJ:</strong><span>44649812019238</span></li>
+                            <li><strong>CDP:</strong><span>249390461</span></li>
+                            <li><strong>REGIÃO:</strong><span>CAMPINAS</span></li>
+                            <li><strong>ENDEREÇO:</strong><span>AV BARAO DE ITAPURA 1444</span></li>
+                            <li><strong>LOCALIDADE:</strong><span>CAMPINAS</span></li>
+                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
+                            <li><strong>CONTATO:</strong><span>1937315500</span></li>
+                            <li><strong>PROCEDIMENTOS:</strong><span>PRONTO SOCORRO EXAMES</span></li>
+                        </ul>
+                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
+                    </div>
+                </div>
+            </section>
+
         </div>
-    </section>
+    </main>
 
-    <section id="rj" class="panel">
-        <div class="grid">
-            <div class="card">
-                <h3>HS COR HOSPITAL</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 08562523000133</li><li><strong>CÓDIGO</strong> 256437702</li><li><strong>REGIÃO</strong> DUQUE DE CAXIAS</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL SANTA MARTHA</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 30079461000162</li><li><strong>CÓDIGO</strong> 256437370</li><li><strong>REGIÃO</strong> NITERÓI</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL NOTRECARE RIO (SAMCI)</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44649812024908</li><li><strong>CÓDIGO</strong> 249390470</li><li><strong>REGIÃO</strong> ANDARAÍ</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL DA MULHER JACAREPAGUA</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 76882612005003</li><li><strong>CÓDIGO</strong> 250517070</li><li><strong>REGIÃO</strong> JACAREPAGUÁ</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL INFANTIL JACAREPAGUA</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 76882612005186</li><li><strong>CÓDIGO</strong> 250517089</li><li><strong>REGIÃO</strong> JACAREPAGUÁ</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-        </div>
-    </section>
+    <script>
+        function switchTab(evt, tabId) {
+            document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+            document.getElementById('searchInput').value = '';
+            filterCards();
+        }
 
-    <section id="reg" class="panel">
-        <div class="grid">
-            <div class="card">
-                <h3>HOSPITAL FREI GALVAO</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44649812007817</li><li><strong>CÓDIGO</strong> 249396141</li><li><strong>REGIÃO</strong> SANTOS</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL E MATERNIDADE MODELO</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44649812008899</li><li><strong>CÓDIGO</strong> 249390437</li><li><strong>REGIÃO</strong> SOROCABA</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL NOTRECARE ABC</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44649812026609</li><li><strong>CÓDIGO</strong> 249396672</li><li><strong>REGIÃO</strong> ABC</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL PAULO SACRAMENTO</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44649812001614</li><li><strong>CÓDIGO</strong> 249396044</li><li><strong>REGIÃO</strong> JUNDIAÍ</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL RENASCENCA CAMPINAS</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 44649812019238</li><li><strong>CÓDIGO</strong> 249390461</li><li><strong>REGIÃO</strong> CAMPINAS</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-            <div class="card">
-                <h3>HOSPITAL CLINICA SAO LUCAS</h3>
-                <ul class="info"><li><strong>CNPJ</strong> 43254267000118</li><li><strong>CÓDIGO</strong> 256441408</li><li><strong>REGIÃO</strong> AMERICANA</li></ul>
-                <button class="btn-copy" onclick="copy(this)">COPIAR DADOS</button>
-            </div>
-        </div>
-    </section>
-</div>
+        document.getElementById('searchInput').addEventListener('input', filterCards);
 
-<script>
-    function switchTab(evt, tabId) {
-        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
-        evt.currentTarget.classList.add('active');
-        document.getElementById('searchInput').value = '';
-        filterCards();
-    }
+        function filterCards() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const activePanel = document.querySelector('.panel.active');
+            const cards = activePanel.querySelectorAll('.card');
+            let found = false;
 
-    document.getElementById('searchInput').addEventListener('input', filterCards);
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = "";
+                    found = true;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+            document.getElementById('no-results').style.display = found ? "none" : "block";
+        }
 
-    function filterCards() {
-        const query = document.getElementById('searchInput').value.toLowerCase();
-        const activePanel = document.querySelector('.panel.active');
-        const cards = activePanel.querySelectorAll('.card');
-        let found = false;
-
-        cards.forEach(card => {
-            const content = card.innerText.toLowerCase();
-            if (content.includes(query)) {
-                card.style.display = "flex";
-                found = true;
-            } else {
-                card.style.display = "none";
-            }
-        });
-        document.getElementById('no-results').style.display = found ? "none" : "block";
-    }
-
-    function copy(btn) {
-        const card = btn.closest('.card');
-        const info = card.querySelector('.info').innerText;
-        const title = card.querySelector('h3').innerText;
-        const fullText = `HOSPITAL: ${title}\n${info}`;
-        
-        navigator.clipboard.writeText(fullText).then(() => {
-            const originalText = btn.innerText;
-            btn.innerText = "COPIADO!";
-            btn.style.background = "#ffffff";
-            btn.style.color = "#000";
-            setTimeout(() => {
-                btn.innerText = originalText;
-                btn.style.background = "";
-                btn.style.color = "";
-            }, 1000);
-        });
-    }
-</script>
-
+        function copy(btn) {
+            const card = btn.closest('.card');
+            const lines = card.querySelectorAll('.info li');
+            const title = card.querySelector('h3').innerText;
+            
+            let textToCopy = `HOSPITAL: ${title}\n`;
+            lines.forEach(li => {
+                textToCopy += li.innerText + "\n";
+            });
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = btn.innerText;
+                btn.innerText = "COPIADO";
+                btn.style.background = "#fff";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = "";
+                }, 700);
+            });
+        }
+    </script>
 </body>
 </html>
