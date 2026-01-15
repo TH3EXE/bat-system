@@ -84,3 +84,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Roda o filtro uma vez no início (para o caso de a pesquisa estar preenchida)
     filtrarTabelasAtivas();
 });
+function copyCardInfo() {
+    const card = document.getElementById('card-hospital');
+    const title = card.querySelector('h3').innerText;
+    const items = card.querySelectorAll('.info-list li');
+    
+    let textToCopy = `${title}\n${'-'.repeat(25)}\n`;
+    
+    items.forEach(item => {
+        // Limpa espaços extras para manter a formatação bonita
+        textToCopy += item.innerText.replace(/\n/g, ' ').trim() + '\n';
+    });
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = card.querySelector('.btn-copy');
+        const originalText = btn.innerText;
+        
+        btn.innerText = "✓ Copiado!";
+        btn.classList.add('success');
+        
+        setTimeout(() => {
+            btn.innerText = originalText;
+            btn.classList.remove('success');
+        }, 2000);
+    });
+}
