@@ -3,19 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAT-SYSTEM :: HOSPITAIS</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mobile.css">
+    <title>Rede de Hospitais</title>
 </head>
-<body class="app-page">
-
-    <div class="status-indicator" id="status-light" title="Status do Sistema"></div>
+<body>
 
     <header class="app-header">
-        <div class="logo-title">
-            <svg class="bat-logo-small" fill="#E8B923" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256,23.11c-131.79,0-238.16,92-238.16,205.51,0,80.12,48.24,150.15,116.32,185.74-5.32-2.31-29-14.7-27.11-41.48,1.38-19.12,14.65-42.34,32.32-35.84,10.6,3.9,13,16,16.51,20.8,4.71,6.48,12.72,12.21,21.5,14.54,14.62,3.89,32.48,1.49,43.2-12.22,17.4-22.3,16.27-56.1,16.27-56.1s43.51-17.1,83.87-17.1c40.37,0,83.87,17.1,83.87,17.1s-1.13,33.8,16.27,56.1c10.72,13.71,28.58,16.11,43.2,12.22,8.78-2.33,16.79-8.06,21.5-14.54,3.52-4.82,5.92-16.9,16.51-20.8,17.67-6.5,30.94,16.72,32.32,35.84,1.89,26.78-21.79,39.17-27.11,41.48,68.08-35.59,116.32-105.62,116.32-185.74C494.16,115.11,387.79,23.11,256,23.11Z" /></svg>
-            <h2>BAT-SYSTEM</h2>
-        </div>
         <nav class="main-navigation">
             <a href="busca.html" class="nav-link">INÍCIO</a>
             <a href="ferramentas.html" class="nav-link">FERRAMENTAS</a>
@@ -32,9 +24,6 @@
         
         <div class="user-menu">
             <button class="menu-toggle app-button">...</button>
-            <div class="dropdown-content" id="user-menu-dropdown">...</div>
-        </div>
-            </button>
             <div class="dropdown-content" id="user-menu-dropdown">
                 <div class="user-info-item">
                     <span>OPERADOR:</span>
@@ -82,379 +71,368 @@
                     <section id="subtab-sp" class="sub-tab-panel active">
                         <div class="cidade-section" id="section-sp">
                             <h2>HOSPITAIS | SÃO PAULO</h2>
-                            <div class="tabela-wrapper">
-                                <table class="prestador-tabela" id="tabela-sp">
-                                    <thead>
-                                        <tr>
-                                            <th>PRESTADOR</th>
-                                            <th>ZONA | REGIÃO</th>
-                                            <th class="text-center">CNPJ</th>
-                                            <th class="text-center">CD PESSOA</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <div class="prestador-card" id="card-hospital">
-                                            <h3>HOSPITAL BOSQUE DA SAUDE</h3>
-                                            <hr>
-                                            <ul class="info-list">
-                                                <li><strong>CNPJ:</strong> 44649812007140</li>
-                                                <li><strong>Código:</strong> 249396133</li>
-                                                <li><strong>Zona:</strong> SUL</li>
-                                                <li><strong>Endereço:</strong> AV. BOSQUE DA SAUDE, 1922, - SAUDE</li>
-                                                <li><strong>Localidade:</strong> SÃO PAULO/SP</li>
-                                                <li><strong>Tipo:</strong> PROPRIA</li>
-                                                <li><strong>Contato:</strong> (11) 4090-1740</li>
-                                                <li><strong>Procedimentos:</strong> 
-                                                    <span class="badge">ULTRASSONOGRAFIA</span> 
-                                                    <span class="badge">TOMOGRAFIA COMPUTADORIZADA</span> 
-                                                    <span class="badge">GINECOLOGIA E OBSTETRICIA</span>
-                                                </li>
-                                            </ul>
-                                            <button class="btn-copy" onclick="copyCardInfo()">Copiar Informações</button>
-                                        </div>
-                                        <h3>HOSPITAL CRUZEIRO DO SUL</h3>
-                                            <hr>
-                                            <ul class="info-list">
-                                                <li><strong>CNPJ:</strong> 44649812026013</li>
-                                                <li><strong>Código:</strong> 249390496</li>
-                                                <li><strong>Zona:</strong> OESTE</li>
-                                                <li><strong>Endereço:</strong> AV. DOS AUTONOMISTAS, 2502, - CENTRO</li>
-                                                <li><strong>Localidade:</strong> OSASCO/SP</li>
-                                                <li><strong>Tipo:</strong> PROPRIA</li>
-                                                <li><strong>Contato:</strong> (11) 4090-1740</li>
-                                                <li><strong>Procedimentos:</strong> 
-                                                    <span class="badge">ULTRASSONOGRAFIA</span> 
-                                                    <span class="badge">TOMOGRAFIA COMPUTADORIZADA</span> 
-                                                    <span class="badge">GINECOLOGIA E OBSTETRICIA</span>
-                                                </li>
-                                            </ul>
-                                            <button class="btn-copy" onclick="copyCardInfo()">Copiar Informações</button>
-                                        </div>
-                                    <div class="grid-container">
-                                    
-                                        <div class="prestador-card">
-                                            <h3>HOSPITAL KEILA FERREIRA</h3>
-                                            <hr style="border:0; border-top: 1px solid #eee;">
-                                            <ul class="info-list">
-                                                <li><strong>CNPJ:</strong> 44649812023502</li>
-                                                <li><strong>Código:</strong> 249396532</li>
-                                                <li><strong>Zona:</strong> ALTO TIETE</li>
-                                                <li><strong>Endereço:</strong> ---</li>
-                                                <li><strong>Localidade:</strong> ---</li>
-                                                <li><strong>Tipo:</strong> ---</li>
-                                                <li><strong>Contato:</strong> ---</li>
-                                                <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                                            </ul>
-                                            <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-                                        </div>
-                                    
-                                        <div class="prestador-card">
-                                            <h3>HOSP E MATER NOSSA SRA ROSARIO</h3>
-                                            <hr style="border:0; border-top: 1px solid #eee;">
-                                            <ul class="info-list">
-                                                <li><strong>CNPJ:</strong> 44649812007140</li>
-                                                <li><strong>Código:</strong> 249396133</li>
-                                                <li><strong>Zona:</strong> NORTE</li>
-                                                <li><strong>Endereço:</strong> ---</li>
-                                                <li><strong>Localidade:</strong> ---</li>
-                                                <li><strong>Tipo:</strong> ---</li>
-                                                <li><strong>Contato:</strong> ---</li>
-                                                <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                                            </ul>
-                                            <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-                                        </div>
-                                    
-                                        <div class="prestador-card">
-                                            <h3>HOSPITAL FAMILY</h3>
-                                            <hr style="border:0; border-top: 1px solid #eee;">
-                                            <ul class="info-list">
-                                                <li><strong>CNPJ:</strong> 44649812022883</li>
-                                                <li><strong>Código:</strong> 249396486</li>
-                                                <li><strong>Zona:</strong> OESTE, SUL</li>
-                                                <li><strong>Endereço:</strong> ---</li>
-                                                <li><strong>Localidade:</strong> ---</li>
-                                                <li><strong>Tipo:</strong> ---</li>
-                                                <li><strong>Contato:</strong> ---</li>
-                                                <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                                            </ul>
-                                            <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-                                        </div>
-                                    
-                                        <div class="prestador-card">
-                                            <h3>HOSPITAL NOVA VIDA</h3>
-                                            <hr style="border:0; border-top: 1px solid #eee;">
-                                            <ul class="info-list">
-                                                <li><strong>CNPJ:</strong> 44649812025807</li>
-                                                <li><strong>Código:</strong> 249396621</li>
-                                                <li><strong>Zona:</strong> OESTE</li>
-                                                <li><strong>Endereço:</strong> ---</li>
-                                                <li><strong>Localidade:</strong> ---</li>
-                                                <li><strong>Tipo:</strong> ---</li>
-                                                <li><strong>Contato:</strong> ---</li>
-                                                <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                                            </ul>
-                                            <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-                                        </div>
-                                    
-                                        <div class="prestador-card">
-                                            <h3>HOSPITAL E MATERNIDADE SALVALUS</h3>
-                                            <hr style="border:0; border-top: 1px solid #eee;">
-                                            <ul class="info-list">
-                                                <li><strong>CNPJ:</strong> 44649812028490</li>
-                                                <li><strong>Código:</strong> 249396796</li>
-                                                <li><strong>Zona:</strong> LESTE</li>
-                                                <li><strong>Endereço:</strong> ---</li>
-                                                <li><strong>Localidade:</strong> ---</li>
-                                                <li><strong>Tipo:</strong> ---</li>
-                                                <li><strong>Contato:</strong> ---</li>
-                                                <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                                            </ul>
-                                            <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-                                        </div>
-                                    
-                                        <div class="prestador-card">
-                                            <h3>HOSPITAL INTERMEDICA ANALIA FRANCO</h3>
-                                            <hr style="border:0; border-top: 1px solid #eee;">
-                                            <ul class="info-list">
-                                                <li><strong>CNPJ:</strong> 44649812022964</li>
-                                                <li><strong>Código:</strong> 249396494</li>
-                                                <li><strong>Zona:</strong> LESTE</li>
-                                                <li><strong>Endereço:</strong> ---</li>
-                                                <li><strong>Localidade:</strong> ---</li>
-                                                <li><strong>Tipo:</strong> ---</li>
-                                                <li><strong>Contato:</strong> ---</li>
-                                                <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                                            </ul>
-                                            <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-                                        </div>
-                                    
-                                        <div class="prestador-card">
-                                            <h3>UNIDADE AVANCADA SALVALUS</h3>
-                                            <hr style="border:0; border-top: 1px solid #eee;">
-                                            <ul class="info-list">
-                                                <li><strong>CNPJ:</strong> 44649812028903</li>
-                                                <li><strong>Código:</strong> 249396834</li>
-                                                <li><strong>Zona:</strong> LESTE</li>
-                                                <li><strong>Endereço:</strong> ---</li>
-                                                <li><strong>Localidade:</strong> ---</li>
-                                                <li><strong>Tipo:</strong> ---</li>
-                                                <li><strong>Contato:</strong> ---</li>
-                                                <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                                            </ul>
-                                            <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-                                        </div>
-                                    
-                                        <div class="prestador-card">
-                                            <h3>HOSPITAL SANTA MARTA</h3>
-                                            <hr style="border:0; border-top: 1px solid #eee;">
-                                            <ul class="info-list">
-                                                <li><strong>CNPJ:</strong> 44649812037643</li>
-                                                <li><strong>Código:</strong> 249390569</li>
-                                                <li><strong>Zona:</strong> SUL</li>
-                                                <li><strong>Endereço:</strong> ---</li>
-                                                <li><strong>Localidade:</strong> ---</li>
-                                                <li><strong>Tipo:</strong> ---</li>
-                                                <li><strong>Contato:</strong> ---</li>
-                                                <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                                            </ul>
-                                            <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-                                        </div>
+                            <div class="grid-container">
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL BOSQUE DA SAUDE</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812007140</li>
+                                        <li><strong>Código:</strong> 249396133</li>
+                                        <li><strong>Zona:</strong> SUL</li>
+                                        <li><strong>Endereço:</strong> AV. BOSQUE DA SAUDE, 1922, - SAUDE</li>
+                                        <li><strong>Localidade:</strong> SÃO PAULO/SP</li>
+                                        <li><strong>Tipo:</strong> PROPRIA</li>
+                                        <li><strong>Contato:</strong> (11) 4090-1740</li>
+                                        <li><strong>Procedimentos:</strong> 
+                                            <span class="badge">ULTRASSONOGRAFIA</span> 
+                                            <span class="badge">TOMOGRAFIA COMPUTADORIZADA</span> 
+                                            <span class="badge">GINECOLOGIA E OBSTETRICIA</span>
+                                        </li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
 
-<section id="subtab-rj" class="sub-tab-panel">
-    <div class="cidade-section" id="section-rj">
-        <h2>HOSPITAIS | RIO DE JANEIRO</h2>
-        <div class="grid-container">
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL CRUZEIRO DO SUL</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812026013</li>
+                                        <li><strong>Código:</strong> 249390496</li>
+                                        <li><strong>Zona:</strong> OESTE</li>
+                                        <li><strong>Endereço:</strong> AV. DOS AUTONOMISTAS, 2502, - CENTRO</li>
+                                        <li><strong>Localidade:</strong> OSASCO/SP</li>
+                                        <li><strong>Tipo:</strong> PROPRIA</li>
+                                        <li><strong>Contato:</strong> (11) 4090-1740</li>
+                                        <li><strong>Procedimentos:</strong> 
+                                            <span class="badge">ULTRASSONOGRAFIA</span> 
+                                            <span class="badge">TOMOGRAFIA COMPUTADORIZADA</span> 
+                                            <span class="badge">GINECOLOGIA E OBSTETRICIA</span>
+                                        </li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
 
-            <div class="prestador-card">
-                <h3>HS COR HOSPITAL</h3>
-                <hr>
-                <ul class="info-list">
-                    <li><strong>CNPJ:</strong> 8562523000133</li>
-                    <li><strong>Código:</strong> 256437702</li>
-                    <li><strong>Zona:</strong> DUQUE DE CAXIAS</li>
-                    <li><strong>Endereço:</strong> ---</li>
-                    <li><strong>Localidade:</strong> ---</li>
-                    <li><strong>Tipo:</strong> ---</li>
-                    <li><strong>Contato:</strong> ---</li>
-                    <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                </ul>
-                <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-            </div>
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL KEILA FERREIRA</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812023502</li>
+                                        <li><strong>Código:</strong> 249396532</li>
+                                        <li><strong>Zona:</strong> ALTO TIETE</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
 
-            <div class="prestador-card">
-                <h3>HOSPITAL SANTA MARTHA</h3>
-                <hr>
-                <ul class="info-list">
-                    <li><strong>CNPJ:</strong> 30079461000162</li>
-                    <li><strong>Código:</strong> 256437370</li>
-                    <li><strong>Zona:</strong> NITEROI</li>
-                    <li><strong>Endereço:</strong> ---</li>
-                    <li><strong>Localidade:</strong> ---</li>
-                    <li><strong>Tipo:</strong> ---</li>
-                    <li><strong>Contato:</strong> ---</li>
-                    <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                </ul>
-                <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-            </div>
+                                <div class="prestador-card">
+                                    <h3>HOSP E MATER NOSSA SRA ROSARIO</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812007140</li>
+                                        <li><strong>Código:</strong> 249396133</li>
+                                        <li><strong>Zona:</strong> NORTE</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
 
-            <div class="prestador-card">
-                <h3>HOSPITAL NOTRECARE RIO (SAMCI)</h3>
-                <hr>
-                <ul class="info-list">
-                    <li><strong>CNPJ:</strong> 44649812024908</li>
-                    <li><strong>Código:</strong> 249390470</li>
-                    <li><strong>Zona:</strong> ANDARAI</li>
-                    <li><strong>Endereço:</strong> ---</li>
-                    <li><strong>Localidade:</strong> ---</li>
-                    <li><strong>Tipo:</strong> ---</li>
-                    <li><strong>Contato:</strong> ---</li>
-                    <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                </ul>
-                <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-            </div>
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL FAMILY</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812022883</li>
+                                        <li><strong>Código:</strong> 249396486</li>
+                                        <li><strong>Zona:</strong> OESTE, SUL</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
 
-            <div class="prestador-card">
-                <h3>HOSPITAL DA MULHER JACAREPAGUA</h3>
-                <hr>
-                <ul class="info-list">
-                    <li><strong>CNPJ:</strong> 76882612005003</li>
-                    <li><strong>Código:</strong> 250517070</li>
-                    <li><strong>Zona:</strong> JACAREPAGUA</li>
-                    <li><strong>Endereço:</strong> ---</li>
-                    <li><strong>Localidade:</strong> ---</li>
-                    <li><strong>Tipo:</strong> ---</li>
-                    <li><strong>Contato:</strong> ---</li>
-                    <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                </ul>
-                <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-            </div>
-  
-            <div class="prestador-card">
-                <h3>HOSPITAL INFANTIL JACAREPAGUA</h3>
-                <hr>
-                <ul class="info-list">
-                    <li><strong>CNPJ:</strong> 76882612005186</li>
-                    <li><strong>Código:</strong> 250517089</li>
-                    <li><strong>Zona:</strong> JACAREPAGUA</li>
-                    <li><strong>Endereço:</strong> ---</li>
-                    <li><strong>Localidade:</strong> ---</li>
-                    <li><strong>Tipo:</strong> ---</li>
-                    <li><strong>Contato:</strong> ---</li>
-                    <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                </ul>
-                <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-            </div>
-        </div>
-    </div>
-</section>
-     <section id="subtab-regionais" class="sub-tab-panel">
-    <div class="cidade-section">
-        <h2>HOSPITAIS REGIONAIS</h2>
-        <div class="grid-container">
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL NOVA VIDA</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812025807</li>
+                                        <li><strong>Código:</strong> 249396621</li>
+                                        <li><strong>Zona:</strong> OESTE</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
 
-            <div class="prestador-card">
-                <h3>HOSPITAL FREI GALVAO</h3>
-                <hr>
-                <ul class="info-list">
-                    <li><strong>CNPJ:</strong> 44649812007817</li>
-                    <li><strong>Código:</strong> 249396141</li>
-                    <li><strong>Zona:</strong> SANTOS</li>
-                    <li><strong>Endereço:</strong> ---</li>
-                    <li><strong>Localidade:</strong> ---</li>
-                    <li><strong>Tipo:</strong> ---</li>
-                    <li><strong>Contato:</strong> ---</li>
-                    <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                </ul>
-                <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-            </div>
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL E MATERNIDADE SALVALUS</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812028490</li>
+                                        <li><strong>Código:</strong> 249396796</li>
+                                        <li><strong>Zona:</strong> LESTE</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
 
-            <div class="prestador-card">
-                <h3>HOSPITAL E MATERNIDADE MODELO</h3>
-                <hr>
-                <ul class="info-list">
-                    <li><strong>CNPJ:</strong> 44649812008899</li>
-                    <li><strong>Código:</strong> 249390437</li>
-                    <li><strong>Zona:</strong> SOROCABA</li>
-                    <li><strong>Endereço:</strong> ---</li>
-                    <li><strong>Localidade:</strong> ---</li>
-                    <li><strong>Tipo:</strong> ---</li>
-                    <li><strong>Contato:</strong> ---</li>
-                    <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                </ul>
-                <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-            </div>
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL INTERMEDICA ANALIA FRANCO</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812022964</li>
+                                        <li><strong>Código:</strong> 249396494</li>
+                                        <li><strong>Zona:</strong> LESTE</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
 
-            <div class="prestador-card">
-                <h3>HOSPITAL NOTRECARE ABC</h3>
-                <hr>
-                <ul class="info-list">
-                    <li><strong>CNPJ:</strong> 44649812026609</li>
-                    <li><strong>Código:</strong> 249396672</li>
-                    <li><strong>Zona:</strong> ABC</li>
-                    <li><strong>Endereço:</strong> ---</li>
-                    <li><strong>Localidade:</strong> ---</li>
-                    <li><strong>Tipo:</strong> ---</li>
-                    <li><strong>Contato:</strong> ---</li>
-                    <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                </ul>
-                <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-            </div>
+                                <div class="prestador-card">
+                                    <h3>UNIDADE AVANCADA SALVALUS</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812028903</li>
+                                        <li><strong>Código:</strong> 249396834</li>
+                                        <li><strong>Zona:</strong> LESTE</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
 
-            <div class="prestador-card">
-                <h3>HOSPITAL PAULO SACRAMENTO</h3>
-                <hr>
-                <ul class="info-list">
-                    <li><strong>CNPJ:</strong> 44649812001614</li>
-                    <li><strong>Código:</strong> 249396044</li>
-                    <li><strong>Zona:</strong> JUNDIAI</li>
-                    <li><strong>Endereço:</strong> ---</li>
-                    <li><strong>Localidade:</strong> ---</li>
-                    <li><strong>Tipo:</strong> ---</li>
-                    <li><strong>Contato:</strong> ---</li>
-                    <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                </ul>
-                <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-            </div>
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL SANTA MARTA</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812037643</li>
+                                        <li><strong>Código:</strong> 249390569</li>
+                                        <li><strong>Zona:</strong> SUL</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-            <div class="prestador-card">
-                <h3>HOSPITAL RENASCENCA CAMPINAS</h3>
-                <hr>
-                <ul class="info-list">
-                    <li><strong>CNPJ:</strong> 44649812019238</li>
-                    <li><strong>Código:</strong> 249390461</li>
-                    <li><strong>Zona:</strong> CAMPINAS</li>
-                    <li><strong>Endereço:</strong> ---</li>
-                    <li><strong>Localidade:</strong> ---</li>
-                    <li><strong>Tipo:</strong> ---</li>
-                    <li><strong>Contato:</strong> ---</li>
-                    <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                </ul>
-                <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-            </div>
+                    <section id="subtab-rj" class="sub-tab-panel">
+                        <div class="cidade-section" id="section-rj">
+                            <h2>HOSPITAIS | RIO DE JANEIRO</h2>
+                            <div class="grid-container">
+                                <div class="prestador-card">
+                                    <h3>HS COR HOSPITAL</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 8562523000133</li>
+                                        <li><strong>Código:</strong> 256437702</li>
+                                        <li><strong>Zona:</strong> DUQUE DE CAXIAS</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
 
-            <div class="prestador-card">
-                <h3>HOSPITAL CLINICA SAO LUCAS</h3>
-                <hr>
-                <ul class="info-list">
-                    <li><strong>CNPJ:</strong> 43254267000118</li>
-                    <li><strong>Código:</strong> 256441408</li>
-                    <li><strong>Zona:</strong> AMERICANA</li>
-                    <li><strong>Endereço:</strong> ---</li>
-                    <li><strong>Localidade:</strong> ---</li>
-                    <li><strong>Tipo:</strong> ---</li>
-                    <li><strong>Contato:</strong> ---</li>
-                    <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
-                </ul>
-                <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
-            </div>
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL SANTA MARTHA</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 30079461000162</li>
+                                        <li><strong>Código:</strong> 256437370</li>
+                                        <li><strong>Zona:</strong> NITEROI</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
 
-        </div>
-    </div>
-</section>
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL NOTRECARE RIO (SAMCI)</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812024908</li>
+                                        <li><strong>Código:</strong> 249390470</li>
+                                        <li><strong>Zona:</strong> ANDARAI</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
 
-    <div class="bat-signal-background"></div>
-    <script src="js/layout.js"></script>
-    <script src="js/global.js"></script>
-    <script src="js/hospitais.js"></script>
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL DA MULHER JACAREPAGUA</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 76882612005003</li>
+                                        <li><strong>Código:</strong> 250517070</li>
+                                        <li><strong>Zona:</strong> JACAREPAGUA</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
+
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL INFANTIL JACAREPAGUA</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 76882612005186</li>
+                                        <li><strong>Código:</strong> 250517089</li>
+                                        <li><strong>Zona:</strong> JACAREPAGUA</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="subtab-regionais" class="sub-tab-panel">
+                        <div class="cidade-section">
+                            <h2>HOSPITAIS REGIONAIS</h2>
+                            <div class="grid-container">
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL FREI GALVAO</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812007817</li>
+                                        <li><strong>Código:</strong> 249396141</li>
+                                        <li><strong>Zona:</strong> SANTOS</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
+
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL E MATERNIDADE MODELO</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812008899</li>
+                                        <li><strong>Código:</strong> 249390437</li>
+                                        <li><strong>Zona:</strong> SOROCABA</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
+
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL NOTRECARE ABC</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812026609</li>
+                                        <li><strong>Código:</strong> 249396672</li>
+                                        <li><strong>Zona:</strong> ABC</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
+
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL PAULO SACRAMENTO</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812001614</li>
+                                        <li><strong>Código:</strong> 249396044</li>
+                                        <li><strong>Zona:</strong> JUNDIAI</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
+
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL RENASCENCA CAMPINAS</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 44649812019238</li>
+                                        <li><strong>Código:</strong> 249390461</li>
+                                        <li><strong>Zona:</strong> CAMPINAS</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
+
+                                <div class="prestador-card">
+                                    <h3>HOSPITAL CLINICA SAO LUCAS</h3>
+                                    <hr>
+                                    <ul class="info-list">
+                                        <li><strong>CNPJ:</strong> 43254267000118</li>
+                                        <li><strong>Código:</strong> 256441408</li>
+                                        <li><strong>Zona:</strong> AMERICANA</li>
+                                        <li><strong>Endereço:</strong> ---</li>
+                                        <li><strong>Localidade:</strong> ---</li>
+                                        <li><strong>Tipo:</strong> ---</li>
+                                        <li><strong>Contato:</strong> ---</li>
+                                        <li><strong>Procedimentos:</strong> <span class="badge">A Preencher</span></li>
+                                    </ul>
+                                    <button class="btn-copy" onclick="copyCardInfo(this)">COPIAR INFORMAÇÕES</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div> </div> </div> </main>
+
 </body>
 </html>
