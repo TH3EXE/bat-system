@@ -10274,3 +10274,158 @@ body {
 .btn-copy.success {
     background: #28a745 !important;
 }
+
+/* Variáveis de Estilo para Fácil Manutenção */
+:root {
+    --primary-color: #004a99;
+    --secondary-color: #f8f9fa;
+    --accent-color: #007bff;
+    --text-main: #333;
+    --text-muted: #666;
+    --white: #ffffff;
+    --border-radius: 8px;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Estrutura do Container Principal */
+.app-container {
+    padding: 2rem;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: #f4f7f6;
+}
+
+/* Estilização da Barra de Pesquisa */
+.form-group {
+    background: var(--white);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Navegação por Abas (Sub-tabs) */
+.sub-tab-navigation {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.sub-tab-button {
+    padding: 10px 20px;
+    border: none;
+    background: #e0e0e0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.sub-tab-button.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* GRID DOS CARDS - Organização Visual */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+/* ESTILO DO CARD DO PRESTADOR */
+.prestador-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border-top: 5px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s;
+}
+
+.prestador-card:hover {
+    transform: translateY(-5px);
+}
+
+.prestador-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+/* Lista de Informações Internas */
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+.info-list li {
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.info-list strong {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    display: block;
+    text-transform: uppercase;
+}
+
+/* Badges (Etiquetas de Procedimentos) */
+.badge {
+    display: inline-block;
+    background: #e9ecef;
+    color: #495057;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin: 2px;
+    font-weight: 600;
+}
+
+/* Botão de Copiar */
+.btn-copy {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.btn-copy:hover {
+    background-color: #0056b3;
+}
+
+/* Controle de Exibição das Abas */
+.sub-tab-panel {
+    display: none;
+}
+
+.sub-tab-panel.active {
+    display: block;
+}
