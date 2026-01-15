@@ -10175,3 +10175,102 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--b
 .btn-copy.success {
     background-color: #28a745;
 }
+
+/* Configurações Gerais */
+body {
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Estilo do Card */
+.prestador-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    position: relative;
+    overflow: hidden; /* Esconde o botão que está fora do card */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.prestador-card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+    border-color: #0056b3;
+}
+
+.prestador-card h3 {
+    margin: 0 0 10px 0;
+    color: #0056b3;
+    font-size: 1.1rem;
+    min-height: 2.2em;
+    display: flex;
+    align-items: center;
+}
+
+.prestador-card hr {
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 45px 0; /* Espaço para o botão não sobrepor */
+}
+
+.info-list li {
+    font-size: 0.85rem;
+    margin-bottom: 7px;
+    color: #444;
+}
+
+.badge {
+    background: #eef2f7;
+    color: #555;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    border: 1px solid #d1d9e6;
+    font-weight: bold;
+}
+
+/* Botão com Animação Slide-up */
+.btn-copy {
+    position: absolute;
+    bottom: -60px; /* Escondido abaixo do card */
+    left: 0;
+    width: 100%;
+    background: #0056b3;
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.prestador-card:hover .btn-copy {
+    bottom: 0; /* Sobe para a posição visível */
+    opacity: 1;
+}
+
+.btn-copy:hover {
+    background: #003d7a;
+}
+
+.btn-copy.success {
+    background: #28a745 !important;
+}
