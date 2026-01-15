@@ -56,7 +56,7 @@ window.FRASEOLOGIAS_DATA = {
         },
         {
             id: '103',
-            nome: '74 – PLANO SUSPENSO PESSOA FÍSICA',
+            nome: '103 – PLANO SUSPENSO PESSOA FÍSICA',
             template: "PREZADO(A) SR(A). [_NM_BENEFICIARIO_]\nNÚMERO DO PROTOCOLO: [_NU_PROTOCOLO_]\n\nA atuação da Operadora Hapvida está vinculada à regulação do Governo Federal, através da Agência Nacional de Saúde Suplementar - ANS, Autarquia Federal reguladora do referido setor de saúde. As coberturas são estabelecidas pela ANS, conforme previsto no Rol de Procedimentos e Eventos em Saúde determinado pela Resolução Normativa n°. 465/2021, bem como, os critérios estabelecidos pela Lei Federal n°. 9.656/1998. Após análise da presente solicitação, esta restou indeferida, pois em conformidade com os termos da Lei nº 9656/98 – art. 13, inciso II, bem como, cumprimento de todos os requisitos da RN 593/24 – art. 4º, §3º, os serviços médicos prestados por esta operadora foram SUSPENSOS, visto que vossa senhoria se encontra com pendência financeiras\n\nEM CASO DE DÚVIDAS, POR FAVOR, ENTRE EM CONTATO COM A CENTRAL DE ATENDIMENTO PELOS TELEFONES: 4090-1740, 0800 409 1740 OU 0800 463 4648."
         }
     ],
