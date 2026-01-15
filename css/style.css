@@ -10098,20 +10098,80 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--b
     .terminal-header h1 { font-size: 1.8rem; }
 }
 
-/* prestador-card */
-    .prestador-card {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 15px;
-        font-family: sans-serif;
-        max-width: 400px;
-    }
-    .prestador-card h3 { color: #2c3e50; margin-top: 0; }
-    .prestador-card ul { list-style: none; padding: 0; }
-    .prestador-card li { margin-bottom: 8px; color: #555; }
-    .badge { 
-        background: #e0e0e0; 
-        padding: 2px 8px; 
-        border-radius: 4px; 
-        font-size: 0.8em; 
-    }
+/* Estilo Geral do Card */
+.prestador-card {
+    max-width: 400px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid #eee;
+    color: #333;
+}
+
+.prestador-card h3 {
+    margin: 0 0 10px 0;
+    color: #0056b3;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+.prestador-card hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+/* Lista de Informações */
+.prestador-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.prestador-card li {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.prestador-card strong {
+    color: #555;
+    font-weight: 600;
+}
+
+/* Badges de Procedimentos */
+.badge {
+    display: inline-block;
+    background: #e7f1ff;
+    color: #0056b3;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin: 2px;
+    border: 1px solid #cfe2ff;
+}
+
+/* Botão de Copiar */
+.btn-copy {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-copy:hover {
+    background-color: #004494;
+}
+
+.btn-copy.success {
+    background-color: #28a745;
+}
