@@ -6,14 +6,14 @@
     <title>Bat-Sistema v3.0 - Rede Hospitalar Full</title>
     <style>
         :root {
-            --bg-dark: #050505;      
+            --bg-dark: #0a0a0a;      
             --sidebar-bg: #0a0a0a;
-            --card-bg: #121212;      
-            --bat-yellow: #ffcc00;   
-            --text-white: #f0f0f0;
-            --text-gray: #666;
-            --border: #222;
-            --pending: #ffcc00;
+            --card-bg: #1a1a1a;      
+            --bat-yellow: #F9F871;   
+            --text-white: #b0b0b0;
+            --text-gray: #b0b0b0;
+            --border: #333333;
+            --pending: #F9F871;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
@@ -48,7 +48,7 @@
         }
         .nav-item i { min-width: 25px; margin-right: 20px; font-style: normal; font-size: 18px; }
         .nav-item:hover, .nav-item.active { 
-            color: var(--bat-yellow); background: rgba(255, 204, 0, 0.05); border-left: 3px solid var(--bat-yellow);
+            color: var(--bat-yellow); background: rgba(249, 249, 113, 0.05); border-left: 3px solid var(--bat-yellow);
         }
 
         /* CONTEÚDO PRINCIPAL */
@@ -62,7 +62,7 @@
 
         /* BUSCA */
         .search-bar {
-            width: 100%; background: #000; border: 1px solid var(--border); padding: 15px;
+            width: 100%; background: var(--bg-dark); border: 1px solid var(--border); padding: 15px;
             color: var(--bat-yellow); font-size: 14px; outline: none; border-radius: 4px; margin-bottom: 20px;
         }
 
@@ -77,11 +77,11 @@
 
         .card h3 {
             margin: 0 0 15px 0; font-size: 0.85rem; color: var(--bat-yellow);
-            border-bottom: 1px solid #222; padding-bottom: 10px; height: 45px; display: flex; align-items: center;
+            border-bottom: 1px solid var(--border); padding-bottom: 10px; height: 45px; display: flex; align-items: center;
         }
 
         .info-list { list-style: none; padding: 0; margin: 0; }
-        .info-list li { font-size: 0.72rem; margin-bottom: 6px; display: flex; flex-direction: column; border-bottom: 1px solid #1a1a1a; padding-bottom: 4px; }
+        .info-list li { font-size: 0.72rem; margin-bottom: 6px; display: flex; flex-direction: column; border-bottom: 1px solid var(--card-bg); padding-bottom: 4px; }
         .info-list span { color: var(--text-gray); font-size: 0.65rem; text-transform: uppercase; font-weight: bold; }
         .info-list b { color: var(--text-white); margin-top: 2px; }
         
@@ -91,7 +91,7 @@
             width: 100%; margin-top: 15px; background: transparent; border: 1px solid var(--bat-yellow);
             color: var(--bat-yellow); padding: 10px; font-size: 10px; font-weight: bold; cursor: pointer;
         }
-        .btn-copy:hover { background: var(--bat-yellow); color: #000; }
+        .btn-copy:hover { background: var(--bat-yellow); color: var(--bg-dark); }
 
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-thumb { background: var(--bat-yellow); }
