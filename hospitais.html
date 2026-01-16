@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bat-Sistema v3.0 - Rede Hospitalar</title>
+    <title>Bat-Sistema v3.0 - Rede Hospitalar Full</title>
     <style>
         :root {
             --bg-dark: #050505;      
-            --header-bg: #111;
-            --card-bg: #181818;      
+            --sidebar-bg: #0a0a0a;
+            --card-bg: #121212;      
             --bat-yellow: #ffcc00;   
             --text-white: #f0f0f0;
-            --text-gray: #888;
+            --text-gray: #666;
             --border: #222;
+            --pending: #ffcc00;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
@@ -23,327 +24,177 @@
             margin: 0; 
             height: 100vh; 
             display: flex; 
-            flex-direction: column; 
             overflow: hidden; 
         }
 
-        /* HEADER FIXO */
-        .app-header {
-            background: var(--header-bg);
-            border-bottom: 2px solid var(--bat-yellow);
-            padding: 0 20px;
-            height: 50px;
+        /* MENU LATERAL SANDWICH */
+        .sidebar {
+            width: 60px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            flex-shrink: 0;
-            z-index: 1000;
+            padding-top: 20px;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2000;
+        }
+        .sidebar:hover { width: 220px; }
+        .menu-icon { color: var(--bat-yellow); font-size: 24px; margin-bottom: 30px; cursor: pointer; }
+        .nav-item {
+            width: 100%; display: flex; align-items: center; padding: 15px 20px;
+            color: var(--text-gray); text-decoration: none; font-size: 11px;
+            font-weight: bold; letter-spacing: 1px; white-space: nowrap; overflow: hidden;
+        }
+        .nav-item i { min-width: 25px; margin-right: 20px; font-style: normal; font-size: 18px; }
+        .nav-item:hover, .nav-item.active { 
+            color: var(--bat-yellow); background: rgba(255, 204, 0, 0.05); border-left: 3px solid var(--bat-yellow);
         }
 
-        .main-navigation { display: flex; gap: 10px; }
-        .nav-link {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: bold;
-            padding: 5px 8px;
-            text-transform: uppercase;
-        }
-        .nav-link:hover, .nav-link.active { color: var(--bat-yellow); }
-
-        /* AREA DE CONTEUDO */
-        .app-main {
-            flex-grow: 1;
-            overflow-y: scroll;
-            padding: 20px;
+        /* CONTEÚDO PRINCIPAL */
+        .main-content { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .app-header {
+            height: 60px; background: var(--sidebar-bg); border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; padding: 0 30px; justify-content: space-between;
         }
 
-        /* BARRA DE ROLAGEM GOTHAM */
-        .app-main::-webkit-scrollbar { width: 6px; }
-        .app-main::-webkit-scrollbar-track { background: #000; }
-        .app-main::-webkit-scrollbar-thumb { background: var(--bat-yellow); border-radius: 10px; }
+        .app-main { flex-grow: 1; overflow-y: auto; padding: 25px; }
 
-        .container { max-width: 1400px; margin: 0 auto; }
-
-        .search-container {
-            position: sticky; top: -20px; z-index: 90;
-            background: var(--bg-dark); padding: 10px 0 20px 0;
-        }
-        .search-box input { 
-            width: 100%; padding: 15px; border: 1px solid var(--bat-yellow); 
-            background: #000; color: var(--bat-yellow); font-size: 16px; outline: none;
-            border-radius: 4px;
+        /* BUSCA */
+        .search-bar {
+            width: 100%; background: #000; border: 1px solid var(--border); padding: 15px;
+            color: var(--bat-yellow); font-size: 14px; outline: none; border-radius: 4px; margin-bottom: 20px;
         }
 
-        .nav-tabs { display: flex; gap: 5px; margin-bottom: 20px; }
-        .tab-btn { 
-            padding: 8px 15px; border: 1px solid var(--border); background: #111; 
-            color: var(--text-gray); cursor: pointer; font-weight: bold; font-size: 12px;
-        }
-        .tab-btn.active { border-color: var(--bat-yellow); color: var(--bat-yellow); }
+        /* GRID */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px; }
 
-        /* GRID E CARDS */
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); 
-            gap: 15px;
-            contain: content;
+        .card {
+            background: var(--card-bg); border: 1px solid var(--border); padding: 18px;
+            transition: 0.2s; position: relative;
+        }
+        .card:hover { border-color: var(--bat-yellow); transform: translateY(-3px); }
+
+        .card h3 {
+            margin: 0 0 15px 0; font-size: 0.85rem; color: var(--bat-yellow);
+            border-bottom: 1px solid #222; padding-bottom: 10px; height: 45px; display: flex; align-items: center;
         }
 
-        .panel { display: none; }
-        .panel.active { display: block; }
-
-        .card { 
-            background: var(--card-bg); border: 1px solid var(--border); padding: 15px;
-            display: flex; flex-direction: column;
-            transition: border-color 0.2s;
-        }
-        .card:hover { border-color: var(--bat-yellow); }
-        .card h3 { margin: 0 0 10px 0; color: var(--bat-yellow); font-size: 0.95rem; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+        .info-list { list-style: none; padding: 0; margin: 0; }
+        .info-list li { font-size: 0.72rem; margin-bottom: 6px; display: flex; flex-direction: column; border-bottom: 1px solid #1a1a1a; padding-bottom: 4px; }
+        .info-list span { color: var(--text-gray); font-size: 0.65rem; text-transform: uppercase; font-weight: bold; }
+        .info-list b { color: var(--text-white); margin-top: 2px; }
         
-        .info { list-style: none; padding: 0; margin: 0; flex-grow: 1; }
-        .info li { margin-bottom: 6px; font-size: 0.8rem; display: flex; flex-wrap: wrap; }
-        .info strong { color: var(--bat-yellow); margin-right: 5px; min-width: 85px; font-size: 0.7rem; text-transform: uppercase; }
-        .info span { color: var(--text-white); }
+        .pending-tag { color: var(--bat-yellow); font-style: italic; font-size: 0.6rem; letter-spacing: 1px; }
 
-        .btn-copy { 
-            width: 100%; padding: 8px; background: var(--bat-yellow); color: #000; 
-            border: none; cursor: pointer; font-weight: bold; font-size: 10px;
-            margin-top: 10px; text-transform: uppercase;
+        .btn-copy {
+            width: 100%; margin-top: 15px; background: transparent; border: 1px solid var(--bat-yellow);
+            color: var(--bat-yellow); padding: 10px; font-size: 10px; font-weight: bold; cursor: pointer;
         }
+        .btn-copy:hover { background: var(--bat-yellow); color: #000; }
 
-        #no-results { text-align: center; display: none; padding: 40px; color: var(--bat-yellow); }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: var(--bat-yellow); }
     </style>
 </head>
 <body>
 
-    <header class="app-header">
-        <nav class="main-navigation">
-            <a href="#" class="nav-link">INÍCIO</a>
-            <a href="#" class="nav-link">FERRAMENTAS</a>
-            <a href="#" class="nav-link">FRASEOLOGIAS</a>
-            <a href="#" class="nav-link">ZONAS</a>
-            <a href="#" class="nav-link active">HOSPITAIS</a>
-            <a href="#" class="nav-link">MEDICAMENTOS</a>
-        </nav>
-        <div style="color: var(--bat-yellow); font-size: 12px;">MODO OPERANTE: GOTHAM</div>
-    </header>
+    <aside class="sidebar">
+        <div class="menu-icon">☰</div>
+        <a href="#" class="nav-item"><i>🏠</i> <span>INÍCIO</span></a>
+        <a href="#" class="nav-item active"><i>🏥</i> <span>HOSPITAIS</span></a>
+        <a href="#" class="nav-item"><i>🛠️</i> <span>FERRAMENTAS</span></a>
+        <a href="#" class="nav-item"><i>📍</i> <span>ZONAS</span></a>
+    </aside>
 
-    <main class="app-main">
-        <div class="container">
-            
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="PESQUISAR NOS ARQUIVOS...">
-            </div>
+    <div class="main-content">
+        <header class="app-header">
+            <div style="letter-spacing: 2px; font-weight: bold;">BAT-SYSTEM <span style="color:var(--bat-yellow)">3.0</span></div>
+            <div id="clock" style="font-size: 12px; color: var(--bat-yellow); font-family: monospace;"></div>
+        </header>
 
-            <nav class="nav-tabs">
-                <button class="tab-btn active" onclick="switchTab(event, 'sp')">SÃO PAULO</button>
-                <button class="tab-btn" onclick="switchTab(event, 'rj')">RIO DE JANEIRO</button>
-                <button class="tab-btn" onclick="switchTab(event, 'reg')">REGIONAIS</button>
-            </nav>
+        <main class="app-main">
+            <input type="text" id="searchInput" class="search-bar" placeholder="BUSCAR POR UNIDADE, CNPJ OU REGIÃO...">
 
-            <div id="no-results">NADA ENCONTRADO.</div>
-
-            <section id="sp" class="panel active">
-                <div class="grid">
-                    <div class="card">
-                        <h3>HOSPITAL BOSQUE DA SAUDE</h3>
-                        <ul class="info">
-                            <li><strong>CNPJ:</strong><span>44649812007140</span></li>
-                            <li><strong>CDP:</strong><span>249396133</span></li>
-                            <li><strong>REGIÃO:</strong><span>SUL</span></li>
-                            <li><strong>ENDEREÇO:</strong><span>AV BOSQUE DA SAUDE 1922</span></li>
-                            <li><strong>LOCALIDADE:</strong><span>SAUDE SAO PAULO</span></li>
-                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
-                            <li><strong>CONTATO:</strong><span>1140901740</span></li>
-                            <li><strong>PROCEDIMENTOS:</strong><span>USG TC MATERNIDADE</span></li>
-                        </ul>
-                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
-                    </div>
-
-                    <div class="card">
-                        <h3>HOSPITAL CRUZEIRO DO SUL</h3>
-                        <ul class="info">
-                            <li><strong>CNPJ:</strong><span>44649812026013</span></li>
-                            <li><strong>CDP:</strong><span>249390496</span></li>
-                            <li><strong>REGIÃO:</strong><span>OESTE</span></li>
-                            <li><strong>ENDEREÇO:</strong><span>AV DOS AUTONOMISTAS 2502</span></li>
-                            <li><strong>LOCALIDADE:</strong><span>OSASCO</span></li>
-                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
-                            <li><strong>CONTATO:</strong><span>1140901740</span></li>
-                            <li><strong>PROCEDIMENTOS:</strong><span>PRONTO SOCORRO INTERNACAO</span></li>
-                        </ul>
-                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
-                    </div>
-
-                    <div class="card">
-                        <h3>HOSPITAL KEILA FERREIRA</h3>
-                        <ul class="info">
-                            <li><strong>CNPJ:</strong><span>44649812023502</span></li>
-                            <li><strong>CDP:</strong><span>249396532</span></li>
-                            <li><strong>REGIÃO:</strong><span>ALTO TIETE</span></li>
-                            <li><strong>ENDEREÇO:</strong><span>RUA JOSE DE ALENCAR 102</span></li>
-                            <li><strong>LOCALIDADE:</strong><span>SUZANO</span></li>
-                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
-                            <li><strong>CONTATO:</strong><span>1147453333</span></li>
-                            <li><strong>PROCEDIMENTOS:</strong><span>MATERNIDADE GERAL</span></li>
-                        </ul>
-                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
-                    </div>
-
-                    <div class="card">
-                        <h3>HOSPITAL E MATERNIDADE SALVALUS</h3>
-                        <ul class="info">
-                            <li><strong>CNPJ:</strong><span>44649812028490</span></li>
-                            <li><strong>CDP:</strong><span>249396796</span></li>
-                            <li><strong>REGIÃO:</strong><span>LESTE</span></li>
-                            <li><strong>ENDEREÇO:</strong><span>RUA BRESSER 1954</span></li>
-                            <li><strong>LOCALIDADE:</strong><span>MOOCA SAO PAULO</span></li>
-                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
-                            <li><strong>CONTATO:</strong><span>1126622000</span></li>
-                            <li><strong>PROCEDIMENTOS:</strong><span>PEDIATRIA UTI PS</span></li>
-                        </ul>
-                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
-                    </div>
-
-                    <div class="card">
-                        <h3>HOSPITAL FAMILY</h3>
-                        <ul class="info">
-                            <li><strong>CNPJ:</strong><span>44649812022883</span></li>
-                            <li><strong>CDP:</strong><span>249396486</span></li>
-                            <li><strong>REGIÃO:</strong><span>SUL OESTE</span></li>
-                            <li><strong>ENDEREÇO:</strong><span>RUA MANOEL ANTONIO FERREIRA 45</span></li>
-                            <li><strong>LOCALIDADE:</strong><span>TABOAO DA SERRA</span></li>
-                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
-                            <li><strong>CONTATO:</strong><span>1147885600</span></li>
-                            <li><strong>PROCEDIMENTOS:</strong><span>GERAL PS</span></li>
-                        </ul>
-                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
-                    </div>
+            <div class="grid" id="hospitalGrid">
                 </div>
-            </section>
-
-            <section id="rj" class="panel">
-                <div class="grid">
-                    <div class="card">
-                        <h3>HOSPITAL SANTA MARTHA</h3>
-                        <ul class="info">
-                            <li><strong>CNPJ:</strong><span>30079461000162</span></li>
-                            <li><strong>CDP:</strong><span>256437370</span></li>
-                            <li><strong>REGIÃO:</strong><span>NITEROI</span></li>
-                            <li><strong>ENDEREÇO:</strong><span>RUA PANAMA 70</span></li>
-                            <li><strong>LOCALIDADE:</strong><span>SANTA ROSA NITEROI</span></li>
-                            <li><strong>TIPO:</strong><span>CREDENCIADA</span></li>
-                            <li><strong>CONTATO:</strong><span>2127072700</span></li>
-                            <li><strong>PROCEDIMENTOS:</strong><span>CARDIOLOGIA CIRURGIA</span></li>
-                        </ul>
-                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
-                    </div>
-
-                    <div class="card">
-                        <h3>HOSPITAL NOTRECARE RIO SAMCI</h3>
-                        <ul class="info">
-                            <li><strong>CNPJ:</strong><span>44649812024908</span></li>
-                            <li><strong>CDP:</strong><span>249390470</span></li>
-                            <li><strong>REGIÃO:</strong><span>ANDARAI</span></li>
-                            <li><strong>ENDEREÇO:</strong><span>RUA CARLOS DE LAET 145</span></li>
-                            <li><strong>LOCALIDADE:</strong><span>RIO DE JANEIRO</span></li>
-                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
-                            <li><strong>CONTATO:</strong><span>2121591500</span></li>
-                            <li><strong>PROCEDIMENTOS:</strong><span>INFANTIL PEDIATRIA</span></li>
-                        </ul>
-                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
-                    </div>
-                </div>
-            </section>
-
-            <section id="reg" class="panel">
-                <div class="grid">
-                    <div class="card">
-                        <h3>HOSPITAL NOTRECARE ABC</h3>
-                        <ul class="info">
-                            <li><strong>CNPJ:</strong><span>44649812026609</span></li>
-                            <li><strong>CDP:</strong><span>249396672</span></li>
-                            <li><strong>REGIÃO:</strong><span>ABC</span></li>
-                            <li><strong>ENDEREÇO:</strong><span>AV PEREIRA BARRETO 846</span></li>
-                            <li><strong>LOCALIDADE:</strong><span>SANTO ANDRE</span></li>
-                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
-                            <li><strong>CONTATO:</strong><span>1144333600</span></li>
-                            <li><strong>PROCEDIMENTOS:</strong><span>GERAL INTERNACAO</span></li>
-                        </ul>
-                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
-                    </div>
-
-                    <div class="card">
-                        <h3>HOSPITAL RENASCENCA CAMPINAS</h3>
-                        <ul class="info">
-                            <li><strong>CNPJ:</strong><span>44649812019238</span></li>
-                            <li><strong>CDP:</strong><span>249390461</span></li>
-                            <li><strong>REGIÃO:</strong><span>CAMPINAS</span></li>
-                            <li><strong>ENDEREÇO:</strong><span>AV BARAO DE ITAPURA 1444</span></li>
-                            <li><strong>LOCALIDADE:</strong><span>CAMPINAS</span></li>
-                            <li><strong>TIPO:</strong><span>PROPRIA</span></li>
-                            <li><strong>CONTATO:</strong><span>1937315500</span></li>
-                            <li><strong>PROCEDIMENTOS:</strong><span>PRONTO SOCORRO EXAMES</span></li>
-                        </ul>
-                        <button class="btn-copy" onclick="copy(this)">COPIAR</button>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-    </main>
+        </main>
+    </div>
 
     <script>
-        function switchTab(evt, tabId) {
-            document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            evt.currentTarget.classList.add('active');
-            document.getElementById('searchInput').value = '';
-            filterCards();
+        const hospitais = [
+            { nome: "HOSPITAL BOSQUE DA SAUDE", cnpj: "44649812007140", cdp: "249396133", regiao: "SUL - SP", endereco: "AV BOSQUE DA SAUDE 1922", tipo: "PRÓPRIA", telefone: "1140901740", especialidade: "MATERNIDADE / USG / TC" },
+            { nome: "HOSPITAL SALVALUS", cnpj: "44649812028490", cdp: "249396796", regiao: "LESTE - SP", endereco: "RUA BRESSER 1954", tipo: "PRÓPRIA", telefone: "1126622000", especialidade: "PEDIATRIA / UTI / PS" },
+            { nome: "HOSPITAL CRUZEIRO DO SUL", cnpj: "44649812026013", cdp: "249390496", regiao: "OESTE - OSASCO", endereco: "AV DOS AUTONOMISTAS 2502", tipo: "PRÓPRIA", telefone: "1140901740", especialidade: "PS / INTERNAÇÃO" },
+            { nome: "HOSPITAL NOTRECARE GUARULHOS", cnpj: "44649812012739", cdp: "249396281", regiao: "GUARULHOS", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
+            { nome: "HOSPITAL SAO BERNARDO", cnpj: "44649812011090", cdp: "249396257", regiao: "ABC", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
+            { nome: "HOSPITAL MODELO", cnpj: "44649812015089", cdp: "249396346", regiao: "SOROCABA", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
+            { nome: "HOSPITAL FAMILY", cnpj: "44649812022883", cdp: "249396486", regiao: "SUL OESTE", endereco: "RUA MANOEL ANTONIO FERREIRA 45", tipo: "PRÓPRIA", telefone: "1147885600", especialidade: "PS GERAL" },
+            { nome: "HOSPITAL KEILA FERREIRA", cnpj: "44649812023502", cdp: "249396532", regiao: "ALTO TIETE", endereco: "RUA JOSE DE ALENCAR 102", tipo: "PRÓPRIA", telefone: "1147453333", especialidade: "MATERNIDADE" },
+            { nome: "HOSPITAL NOTRECARE MAUA", cnpj: "44649812013549", cdp: "249396303", regiao: "MAUÁ", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
+            { nome: "HOSPITAL SANTANA", cnpj: "44649812016999", cdp: "249396400", regiao: "MOGI DAS CRUZES", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
+            { nome: "HOSPITAL SÃO LUCAS ITANHAÉM", cnpj: "44649812021054", cdp: "249396451", regiao: "BAIXADA SANTISTA", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
+            { nome: "HOSPITAL FREI GALVÃO", cnpj: "44649812018509", cdp: "249396427", regiao: "SANTOS", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
+            { nome: "HOSPITAL NOTRECARE RIO SAMCI", cnpj: "44649812024908", cdp: "249390470", regiao: "RIO DE JANEIRO", endereco: "RUA CARLOS DE LAET 145", tipo: "PRÓPRIA", telefone: "2121591500", especialidade: "INFANTIL" },
+            { nome: "HOSPITAL SANTA MARTHA", cnpj: "30079461000162", cdp: "256437370", regiao: "NITERÓI", endereco: "RUA PANAMA 70", tipo: "CREDENCIADA", telefone: "2127072700", especialidade: "CARDIO" },
+            { nome: "HOSPITAL MEDICAL MEIER", cnpj: "44649812025122", cdp: "249390489", regiao: "RIO DE JANEIRO", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
+            { nome: "HOSPITAL AMIU JACAREPAGUA", cnpj: "44649812027508", cdp: "249396737", regiao: "RIO DE JANEIRO", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
+            { nome: "HOSPITAL DO CARMO", cnpj: "44649812020244", cdp: "249396443", regiao: "RIO DE JANEIRO", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
+            { nome: "HOSPITAL NOTRECARE ABC", cnpj: "44649812026609", cdp: "249396672", regiao: "SANTO ANDRE", endereco: "AV PEREIRA BARRETO 846", tipo: "PRÓPRIA", telefone: "1144333600", especialidade: "GERAL" },
+            { nome: "HOSPITAL RENASCENCA CAMPINAS", cnpj: "44649812019238", cdp: "249390461", regiao: "CAMPINAS", endereco: "AV BARAO DE ITAPURA 1444", tipo: "PRÓPRIA", telefone: "1937315500", especialidade: "PS / EXAMES" },
+            { nome: "HOSPITAL NOTRECARE SOROCABA", cnpj: "44649812014278", cdp: "249396320", regiao: "SOROCABA", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" }
+        ];
+
+        function renderGrid() {
+            const grid = document.getElementById('hospitalGrid');
+            grid.innerHTML = hospitais.map(h => `
+                <div class="card">
+                    <h3>${h.nome}</h3>
+                    <ul class="info-list">
+                        <li><span>CNPJ</span><b>${h.cnpj}</b></li>
+                        <li><span>CDP</span><b>${h.cdp}</b></li>
+                        <li><span>Região</span><b>${h.regiao}</b></li>
+                        <li><span>Endereço</span><b>${h.endereco === 'PENDENTE' ? '<span class="pending-tag">[AGUARDANDO ATUALIZAÇÃO]</span>' : h.endereco}</b></li>
+                        <li><span>Tipo</span><b>${h.tipo}</b></li>
+                        <li><span>Contato</span><b>${h.telefone === 'PENDENTE' ? '<span class="pending-tag">[AGUARDANDO ATUALIZAÇÃO]</span>' : h.telefone}</b></li>
+                        <li><span>Especialidades</span><b>${h.especialidade}</b></li>
+                    </ul>
+                    <button class="btn-copy" onclick="copyVertical(this)">Copiar Arquivo Vertical</button>
+                </div>
+            `).join('');
         }
 
-        document.getElementById('searchInput').addEventListener('input', filterCards);
-
-        function filterCards() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const activePanel = document.querySelector('.panel.active');
-            const cards = activePanel.querySelectorAll('.card');
-            let found = false;
-
-            cards.forEach(card => {
-                const text = card.innerText.toLowerCase();
-                if (text.includes(query)) {
-                    card.style.display = "";
-                    found = true;
-                } else {
-                    card.style.display = "none";
-                }
-            });
-            document.getElementById('no-results').style.display = found ? "none" : "block";
-        }
-
-        function copy(btn) {
+        function copyVertical(btn) {
             const card = btn.closest('.card');
-            const lines = card.querySelectorAll('.info li');
-            const title = card.querySelector('h3').innerText;
+            const lines = card.querySelectorAll('.info-list li');
+            const nome = card.querySelector('h3').innerText;
             
-            let textToCopy = `HOSPITAL: ${title}\n`;
+            let textToCopy = `UNIDADE: ${nome}\n`;
             lines.forEach(li => {
-                textToCopy += li.innerText + "\n";
+                const label = li.querySelector('span').innerText;
+                const value = li.querySelector('b').innerText;
+                textToCopy += `${label}: ${value}\n`;
             });
-            
+
             navigator.clipboard.writeText(textToCopy).then(() => {
                 const originalText = btn.innerText;
-                btn.innerText = "COPIADO";
-                btn.style.background = "#fff";
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.background = "";
-                }, 700);
+                btn.innerText = "COPIADO COM SUCESSO";
+                setTimeout(() => btn.innerText = originalText, 1000);
             });
         }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            document.querySelectorAll('.card').forEach(c => {
+                c.style.display = c.innerText.toLowerCase().includes(val) ? "block" : "none";
+            });
+        });
+
+        setInterval(() => {
+            document.getElementById('clock').innerText = new Date().toLocaleTimeString();
+        }, 1000);
+
+        renderGrid();
     </script>
 </body>
 </html>
