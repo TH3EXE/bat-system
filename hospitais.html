@@ -3,206 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bat-Sistema v3.0 - Rede Hospitalar Full</title>
-    <style>
-        :root {
-            --bg-dark: #0a0a0a;      
-            --sidebar-bg: #0a0a0a;
-            --card-bg: #1a1a1a;      
-            --bat-yellow: #E8B923;   
-            --text-white: #b0b0b0;
-            --text-gray: #b0b0b0;
-            --border: #333333;
-            --pending: #E8B923;
-        }
-
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { 
-            font-family: 'Segoe UI', Tahoma, sans-serif; 
-            background: var(--bg-dark); 
-            color: var(--text-white); 
-            margin: 0; 
-            height: 100vh; 
-            display: flex; 
-            overflow: hidden; 
-        }
-
-        /* MENU LATERAL SANDWICH */
-        .sidebar {
-            width: 60px;
-            background: var(--sidebar-bg);
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 2000;
-        }
-        .sidebar:hover { width: 220px; }
-        .menu-icon { color: var(--bat-yellow); font-size: 24px; margin-bottom: 30px; cursor: pointer; }
-        .nav-item {
-            width: 100%; display: flex; align-items: center; padding: 15px 20px;
-            color: var(--text-gray); text-decoration: none; font-size: 11px;
-            font-weight: bold; letter-spacing: 1px; white-space: nowrap; overflow: hidden;
-        }
-        .nav-item i { min-width: 25px; margin-right: 20px; font-style: normal; font-size: 18px; }
-        .nav-item:hover, .nav-item.active { 
-            color: var(--bat-yellow); background: rgba(232, 139, 35, 0.05); border-left: 3px solid var(--bat-yellow);
-        }
-
-        /* CONTEÚDO PRINCIPAL */
-        .main-content { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
-        .app-header {
-            height: 60px; background: var(--sidebar-bg); border-bottom: 1px solid var(--border);
-            display: flex; align-items: center; padding: 0 30px; justify-content: space-between;
-        }
-
-        .app-main { flex-grow: 1; overflow-y: auto; padding: 25px; }
-
-        /* BUSCA */
-        .search-bar {
-            width: 100%; background: var(--bg-dark); border: 1px solid var(--border); padding: 15px;
-            color: var(--bat-yellow); font-size: 14px; outline: none; border-radius: 4px; margin-bottom: 20px;
-        }
-
-        /* GRID */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px; }
-
-        .card {
-            background: var(--card-bg); border: 1px solid var(--border); padding: 18px;
-            transition: 0.2s; position: relative;
-        }
-        .card:hover { border-color: var(--bat-yellow); transform: translateY(-3px); }
-
-        .card h3 {
-            margin: 0 0 15px 0; font-size: 0.85rem; color: var(--bat-yellow);
-            border-bottom: 1px solid var(--border); padding-bottom: 10px; height: 45px; display: flex; align-items: center;
-        }
-
-        .info-list { list-style: none; padding: 0; margin: 0; }
-        .info-list li { font-size: 0.72rem; margin-bottom: 6px; display: flex; flex-direction: column; border-bottom: 1px solid var(--card-bg); padding-bottom: 4px; }
-        .info-list span { color: var(--text-gray); font-size: 0.65rem; text-transform: uppercase; font-weight: bold; }
-        .info-list b { color: var(--text-white); margin-top: 2px; }
-        
-        .pending-tag { color: var(--bat-yellow); font-style: italic; font-size: 0.6rem; letter-spacing: 1px; }
-
-        .btn-copy {
-            width: 100%; margin-top: 15px; background: transparent; border: 1px solid var(--bat-yellow);
-            color: var(--bat-yellow); padding: 10px; font-size: 10px; font-weight: bold; cursor: pointer;
-        }
-        .btn-copy:hover { background: var(--bat-yellow); color: var(--bg-dark); }
-
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-thumb { background: var(--bat-yellow); }
-    </style>
+    <title>BAT-SYSTEM :: HOSPITAIS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
 </head>
-<body>
+<body class="app-page">
 
-    <aside class="sidebar">
-        <div class="menu-icon">☰</div>
-        <a href="busca.html" class="nav-item"><i>📊</i> <span>DASHBOARD</span></a>
-        <a href="ferramentas.html" class="nav-item"><i>🛠️</i> <span>FERRAMENTAS</span></a>
-        <a href="pesquisa.html" class="nav-item"><i>🔍</i> <span>BUSCA AVANÇADA</span></a>
-        <a href="fraseologia.html" class="nav-item"><i>💬</i> <span>FRASEOLOGIA</span></a>
-        <a href="zonas.html" class="nav-item"><i>🗺️</i> <span>ZONAS / MAPA</span></a>
-        <a href="infiltracao.html" class="nav-item"><i>🕵️</i> <span>INFILTRAÇÃO</span></a>
-        <a href="hospitais.html" class="nav-item active"><i>🏥</i> <span>HOSPITAIS</span></a>
-        <a href="terapias.html" class="nav-item"><i>💊</i> <span>TERAPIAS</span></a>
-        <a href="medicamentos.html" class="nav-item"><i>🩺</i> <span>MEDICAMENTOS</span></a>
-        <a href="fornecimento.html" class="nav-item"><i>📦</i> <span>FORNECIMENTO</span></a>
-        <a href="informacoes.html" class="nav-item"><i>ℹ️</i> <span>INFORMAÇÕES</span></a>
-    </aside>
+    <div class="status-indicator" id="status-light" title="Status do Sistema"></div>
 
-    <div class="main-content">
-        <header class="app-header">
-            <div style="letter-spacing: 2px; font-weight: bold;">BAT-SYSTEM <span style="color:var(--bat-yellow)">3.0</span></div>
-            <div id="clock" style="font-size: 12px; color: var(--bat-yellow); font-family: monospace;"></div>
-        </header>
-
-        <main class="app-main">
-            <input type="text" id="searchInput" class="search-bar" placeholder="BUSCAR POR UNIDADE, CNPJ OU REGIÃO...">
-
-            <div class="grid" id="hospitalGrid">
+    <header class="app-header">
+        <div class="logo-title">
+            <svg class="bat-logo-small" fill="#E8B923" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256,23.11c-131.79,0-238.16,92-238.16,205.51,0,80.12,48.24,150.15,116.32,185.74-5.32-2.31-29-14.7-27.11-41.48,1.38-19.12,14.65-42.34,32.32-35.84,10.6,3.9,13,16,16.51,20.8,4.71,6.48,12.72,12.21,21.5,14.54,14.62,3.89,32.48,1.49,43.2-12.22,17.4-22.3,16.27-56.1,16.27-56.1s43.51-17.1,83.87-17.1c40.37,0,83.87,17.1,83.87,17.1s-1.13,33.8,16.27,56.1c10.72,13.71,28.58,16.11,43.2,12.22,8.78-2.33,16.79-8.06,21.5-14.54,3.52-4.82,5.92-16.9,16.51-20.8,17.67-6.5,30.94,16.72,32.32,35.84,1.89,26.78-21.79,39.17-27.11,41.48,68.08-35.59,116.32-105.62,116.32-185.74C494.16,115.11,387.79,23.11,256,23.11Z" /></svg>
+            <h2>BAT-SYSTEM</h2>
+        </div>
+        <nav class="main-navigation">
+            <a href="busca.html" class="nav-link">INÍCIO</a>
+            <a href="ferramentas.html" class="nav-link">FERRAMENTAS</a>
+            <a href="pesquisa.html" class="nav-link">BUSCA AVANÇADA</a>
+            <a href="fraseologia.html" class="nav-link">FRASEOLOGIAS</a>
+            <a href="zonas.html" class="nav-link">ZONAS</a>
+            <a href="infiltracao.html" class="nav-link">INFILTRAÇÃO</a>
+            <a href="hospitais.html" class="nav-link">HOSPITAIS</a>
+            <a href="terapias.html" class="nav-link">TERAPIAS</a>
+            <a href="medicamentos.html" class="nav-link">MEDICAMENTOS</a>
+            <a href="fornecimento.html" class="nav-link">FORNECIMENTO</a>
+            <a href="informacoes.html" class="nav-link">INFORMAÇÕES</a>
+        </nav>
+        
+        <div class="user-menu">
+            <button class="menu-toggle app-button">...</button>
+            <div class="dropdown-content" id="user-menu-dropdown">...</div>
+        </div>
+            </button>
+            <div class="dropdown-content" id="user-menu-dropdown">
+                <div class="user-info-item">
+                    <span>OPERADOR:</span>
+                    <strong id="user-name">...</strong>
                 </div>
-        </main>
-    </div>
-
-    <script>
-        const hospitais = [
-            { nome: "HOSPITAL BOSQUE DA SAUDE", cnpj: "44649812023006", cdp: "249396508", regiao: "PENDENTE", endereco: "AV BOSQUE DA SAUDE 1922", tipo: "PRÓPRIA", telefone: "1140901740", especialidade: "MATERNIDADE / USG / TC" },
-            { nome: "HOSPITAL SALVALUS", cnpj: "44649812028490", cdp: "249396796", regiao: "PENDENTE", endereco: "RUA BRESSER 1954", tipo: "PRÓPRIA", telefone: "1126622000", especialidade: "PEDIATRIA / UTI / PS" },
-            { nome: "HOSPITAL CRUZEIRO DO SUL", cnpj: "44649812026013", cdp: "249390496", regiao: "PENDENTE", endereco: "AV DOS AUTONOMISTAS 2502", tipo: "PRÓPRIA", telefone: "1140901740", especialidade: "PS / INTERNAÇÃO" },
-            { nome: "HOSPITAL KEILA FERREIRA", cnpj: "44649812023502", cdp: "249396281", regiao: "PENDENTE", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
-            { nome: "HOSPITAL SAO BERNARDO", cnpj: "44649812005016", cdp: "249396095", regiao: "PENDENTE", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
-            { nome: "HOSPITAL NOTRECARE ABC", cnpj: "44649812026609", cdp: "249396672", regiao: "PENDENTE", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
-            { nome: "HOSPITAL INTERMEDICA ABC", cnpj: "44649812023936", cdp: "249396559", regiao: "PENDENTE", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
-            { nome: "HOSPITAL MODELO", cnpj: "44649812008899", cdp: "249390437", regiao: "PENDENTE", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
-            { nome: "HOSPITAL FAMILY", cnpj: "44649812022883", cdp: "249396486", regiao: "PENDENTE", endereco: "RUA MANOEL ANTONIO FERREIRA 45", tipo: "PRÓPRIA", telefone: "1147885600", especialidade: "PS GERAL" },
-            { nome: "HOSPITAL SANTANA", cnpj: "44649812027176", cdp: "249396710", regiao: "PENDENTE", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
-            { nome: "HOSPITAL CLINICA SAO LUCAS ", cnpj: "43254267000118", cdp: "256441408", regiao: "PENDENTE", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
-            { nome: "HOSPITAL FREI GALVÃO", cnpj: "44649812007817", cdp: "249396141", regiao: "PENDENTE", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
-            { nome: "HOSPITAL NOTRECARE RIO SAMCI", cnpj: "44649812024908", cdp: "249390470", regiao: "PENDENTE", endereco: "RUA CARLOS DE LAET 145", tipo: "PRÓPRIA", telefone: "2121591500", especialidade: "INFANTIL" },
-            { nome: "HOSPITAL SANTA MARTHA", cnpj: "30079461000162", cdp: "256437370", regiao: "PENDENTE", endereco: "RUA PANAMA 70", tipo: "CREDENCIADA", telefone: "2127072700", especialidade: "CARDIO" },
-            { nome: "HOSPITAL SANTO ANDRE", cnpj: "44649812028300", cdp: "249396788", regiao: "PENDENTE", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "1144333600", especialidade: "GERAL" },
-            { nome: "HS COR HOSPITAL", cnpj: "8562523000133", cdp: "256437702", regiao: "RIO DE JANEIRO", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
-            { nome: "HOSPITAL NOTRECARE RIO (SAMCI)", cnpj: "44649812024908", cdp: "249390470", regiao: "RIO DE JANEIRO", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
-            { nome: "HOSPITAL DA MULHER JACAREPAGUA", cnpj: "44649812024908", cdp: "249390470", regiao: "RIO DE JANEIRO", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
-            { nome: "HOSPITAL INFANTIL JACAREPAGUA", cnpj: "76882612005186", cdp: "250517089", regiao: "RIO DE JANEIRO", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" },
-            { nome: "HOSPITAL RENASCENCA CAMPINAS", cnpj: "44649812019238", cdp: "249390461", regiao: "PENDENTE", endereco: "AV BARAO DE ITAPURA 1444", tipo: "PRÓPRIA", telefone: "1937315500", especialidade: "PS / EXAMES" },
-            { nome: "HOSPITAL NOTRECARE SOROCABA", cnpj: "44649812034709", cdp: "249390542", regiao: "PENDENTE", endereco: "PENDENTE", tipo: "PRÓPRIA", telefone: "PENDENTE", especialidade: "GERAL" }
-        ];
-
-        function renderGrid() {
-            const grid = document.getElementById('hospitalGrid');
-            grid.innerHTML = hospitais.map(h => `
-                <div class="card">
-                    <h3>${h.nome}</h3>
-                    <ul class="info-list">
-                        <li><span>CNPJ</span><b>${h.cnpj}</b></li>
-                        <li><span>CDP</span><b>${h.cdp}</b></li>
-                        <li><span>Região</span><b>${h.regiao}</b></li>
-                        <li><span>Endereço</span><b>${h.endereco === 'PENDENTE' ? '<span class="pending-tag">[AGUARDANDO ATUALIZAÇÃO]</span>' : h.endereco}</b></li>
-                        <li><span>Tipo</span><b>${h.tipo}</b></li>
-                        <li><span>Contato</span><b>${h.telefone === 'PENDENTE' ? '<span class="pending-tag">[AGUARDANDO ATUALIZAÇÃO]</span>' : h.telefone}</b></li>
-                        <li><span>Especialidades</span><b>${h.especialidade}</b></li>
-                    </ul>
-                    <button class="btn-copy" onclick="copyVertical(this)">Copiar Arquivo Vertical</button>
+                <div class="user-info-item">
+                    <span>ENTRADA:</span>
+                    <strong id="login-time">...</strong>
                 </div>
-            `).join('');
-        }
+                <div class="user-info-item">
+                    <span>SESSÃO:</span>
+                    <strong id="session-timer">00:00:00</strong>
+                </div>
+                <div class="user-info-item">
+                    <span>LOGINS:</span>
+                    <strong id="login-count">...</strong>
+                </div>
+                <button id="logout-button" class="app-button">SAIR</button>
+            </div>
+        </div>
+    </header>
 
-        function copyVertical(btn) {
-            const card = btn.closest('.card');
-            const lines = card.querySelectorAll('.info-list li');
-            const nome = card.querySelector('h3').innerText;
-            
-            let textToCopy = `UNIDADE: ${nome}\n`;
-            lines.forEach(li => {
-                const label = li.querySelector('span').innerText;
-                const value = li.querySelector('b').innerText;
-                textToCopy += `${label}: ${value}\n`;
-            });
+    <main class="app-container">
+        <div class="infiltracao-layout-container">
+            <div class="tool-module">
+                <h3>REDE DE HOSPITAIS</h3>
+                
+                <div class="form-group" style="max-width: 600px; margin: 0 auto 1.5rem auto;">
+                    <label for="hospitais-search-input">Pesquisar Hospital ou Região (na aba ativa):</label>
+                    <input type="text" id="hospitais-search-input" placeholder="Digite Bosque da Saude, ABC, Niteroi...">
+                </div>
+                
+                <p id="hospitais-no-results" class="zona-no-results" style="display: none;">
+                    Nenhum hospital encontrado para esta pesquisa.
+                </p>
 
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                const originalText = btn.innerText;
-                btn.innerText = "COPIADO COM SUCESSO";
-                setTimeout(() => btn.innerText = originalText, 1000);
-            });
-        }
+                <nav class="sub-tab-navigation">
+                    <button class="sub-tab-button active" data-subtab="subtab-sp">HOSPITAIS SP</button>
+                    <button class="sub-tab-button" data-subtab="subtab-rj">HOSPITAIS RJ</button>
+                    <button class="sub-tab-button" data-subtab="subtab-regionais">HOSPITAIS REGIONAIS</button>
+                </nav>
 
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const val = e.target.value.toLowerCase();
-            document.querySelectorAll('.card').forEach(c => {
-                c.style.display = c.innerText.toLowerCase().includes(val) ? "block" : "none";
-            });
-        });
+                <div class="sub-tab-content">
+                    
+                    <section id="subtab-sp" class="sub-tab-panel active">
+                        <div class="cidade-section" id="section-sp">
+                            <h2>HOSPITAIS | SÃO PAULO</h2>
+                            <div class="tabela-wrapper">
+                                <table class="prestador-tabela" id="tabela-sp">
+                                    <thead>
+                                        <tr>
+                                            <th>PRESTADOR</th>
+                                            <th>ZONA | REGIÃO</th>
+                                            <th class="text-center">CNPJ</th>
+                                            <th class="text-center">CD PESSOA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>HOSPITAL BOSQUE DA SAUDE</td>
+                                            <td>SUL</td>
+                                            <td class="text-center">44649812023006</td>
+                                            <td class="text-center">249396508</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL CRUZEIRO DO SUL</td>
+                                            <td>OESTE</td>
+                                            <td class="text-center">44649812026013</td>
+                                            <td class="text-center">249390496</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL E MATERNIDADE GUARULHOS</td>
+                                            <td>ALTO TIETE</td>
+                                            <td class="text-center">44649812023502</td>
+                                            <td class="text-center">249396532</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSP E MATER NOSSA SRA ROSARIO</td>
+                                            <td>NORTE</td>
+                                            <td class="text-center">44649812007140</td>
+                                            <td class="text-center">249396133</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL FAMILY</td>
+                                            <td>PROXIMIDADE: OESTE, SUL</td>
+                                            <td class="text-center">44649812022883</td>
+                                            <td class="text-center">249396486</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL NOVA VIDA</td>
+                                            <td>OESTE</td>
+                                            <td class="text-center">44649812025807</td>
+                                            <td class="text-center">249396621</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL E MATERNIDADE SALVALUS</td>
+                                            <td>LESTE</td>
+                                            <td class="text-center">44649812028490</td>
+                                            <td class="text-center">249396796</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL INTERMEDICA ANALIA FRANCO</td>
+                                            <td>LESTE</td>
+                                            <td class="text-center">44649812022964</td>
+                                            <td class="text-center">249396494</td>
+                                        </tr>
+                                        <tr>
+                                            <td>UNIDADE AVANCADA SALVALUS</td>
+                                            <td>LESTE</td>
+                                            <td class="text-center">44649812028903</td>
+                                            <td class="text-center">249396834</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL SANTA MARTA</td>
+                                            <td>SUL</td>
+                                            <td class="text-center">44649812037643</td>
+                                            <td class="text-center">249390569</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
 
-        setInterval(() => {
-            document.getElementById('clock').innerText = new Date().toLocaleTimeString();
-        }, 1000);
+                    <section id="subtab-rj" class="sub-tab-panel">
+                        <div class="cidade-section" id="section-rj">
+                            <h2>HOSPITAIS | RIO DE JANEIRO</h2>
+                            <div class="tabela-wrapper">
+                                <table class="prestador-tabela" id="tabela-rj">
+                                    <thead>
+                                        <tr>
+                                            <th>PRESTADOR</th>
+                                            <th>ZONA | REGIÃO</th>
+                                            <th class="text-center">CNPJ</th>
+                                            <th class="text-center">CD PESSOA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>HS COR HOSPITAL</td>
+                                            <td>DUQUE DE CAXIAS</td>
+                                            <td class="text-center">8562523000133</td>
+                                            <td class="text-center">256437702</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL SANTA MARTHA</td>
+                                            <td>NITEROI</td>
+                                            <td class="text-center">30079461000162</td>
+                                            <td class="text-center">256437370</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL NOTRECARE RIO (SAMCI)</td>
+                                            <td>ANDARAI</td>
+                                            <td class="text-center">44649812024908</td>
+                                            <td class="text-center">249390470</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL DA MULHER JACAREPAGUA</td>
+                                            <td>JACAREPAGUA</td>
+                                            <td class="text-center">76882612005003</td>
+                                            <td class="text-center">250517070</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL INFANTIL JACAREPAGUA</td>
+                                            <td>JACAREPAGUA</td>
+                                            <td class="text-center">76882612005186</td>
+                                            <td class="text-center">250517089</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section> 
 
-        renderGrid();
-    </script>
+                    <section id="subtab-regionais" class="sub-tab-panel">
+                        <div class="cidade-section">
+                            <h2>HOSPITAIS REGIONAIS</h2>
+                            <div class="tabela-wrapper">
+                                <table class="prestador-tabela" id="tabela-regionais">
+                                    <thead>
+                                        <tr>
+                                            <th>PRESTADOR</th>
+                                            <th>ZONA | REGIÃO</th>
+                                            <th class="text-center">CNPJ</th>
+                                            <th class="text-center">CD PESSOA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>HOSPITAL FREI GALVAO</td>
+                                            <td>SANTOS</td>
+                                            <td class="text-center">44649812007817</td>
+                                            <td class="text-center">249396141</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL E MATERNIDADE MODELO</td>
+                                            <td>SOROCABA</td>
+                                            <td class="text-center">44649812008899</td>
+                                            <td class="text-center">249390437</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL NOTRECARE ABC</td>
+                                            <td>ABC</td>
+                                            <td class="text-center">44649812026609</td>
+                                            <td class="text-center">249396672</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL INTERMEDICA ABC</td>
+                                            <td>ABC</td>
+                                            <td class="text-center">44649812023936</td>
+                                            <td class="text-center">249396559</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL NOTRECARE SOROCABA</td>
+                                            <td>SOROCABA</td>
+                                            <td class="text-center">44649812034709</td>
+                                            <td class="text-center">249390542</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL PAULO SACRAMENTO</td>
+                                            <td>JUNDIAI</td>
+                                            <td class="text-center">44649812001614</td>
+                                            <td class="text-center">249396044</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL RENASCENCA CAMPINAS</td>
+                                            <td>CAMPINAS</td>
+                                            <td class="text-center">44649812019238</td>
+                                            <td class="text-center">249390461</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL SANTANA MOGI</td>
+                                            <td>ALTO TIETE</td>
+                                            <td class="text-center">44649812027176</td>
+                                            <td class="text-center">249396710</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL SAO BERNARDO</td>
+                                            <td>ABC</td>
+                                            <td class="text-center">44649812005016</td>
+                                            <td class="text-center">249396095</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL FAMILY</td>
+                                            <td>TABOAO DA SERRA</td>
+                                            <td class="text-center">44649812022883</td>
+                                            <td class="text-center">249396486</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL SANTA MARTA</td>
+                                            <td>SANTO AMARO</td>
+                                            <td class="text-center">44649812037643</td>
+                                            <td class="text-center">249390569</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL NOVA VIDA</td>
+                                            <td>ITAPEVI</td>
+                                            <td class="text-center">44649812025807</td>
+                                            <td class="text-center">249396621</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HOSPITAL CLINICA SAO LUCAS</td>
+                                            <td>AMERICANA</td>
+                                            <td class="text-center">43254267000118</td>
+                                            <td class="text-center">256441408</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div> 
+            </div>
+        </div>
+    </main>
+
+    <div class="bat-signal-background"></div>
+    <script src="js/layout.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/hospitais.js"></script>
 </body>
 </html>
