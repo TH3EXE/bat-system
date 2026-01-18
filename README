@@ -13,7 +13,7 @@ Chrome qualquer.
 /pages   -> Onde moram os HTMLs. Se criar uma página nova, jogue aqui.
 /assets  -> Onde mora a mágica (CSS e JS).
    /js/layout.js -> O DEUS DO MENU. Se quiser mudar um link do topo, é AQUI.
-                    Não edite os 15 arquivos HTMLs manualmente, por favor.
+                    Não edite os 15 arquivos HTMLs manualmente, por favor. 
 
 3. COMO ADICIONAR UMA NOVA ABA? 
 -------------------------------

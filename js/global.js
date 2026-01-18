@@ -1,5 +1,5 @@
 // js/global.js
-// SISTEMA CENTRAL: AUTENTICAÇÃO, LAYOUT E MONITORAMENTO 
+// SISTEMA CENTRAL: AUTENTICAÇÃO, LAYOUT E MONITORAMENTO
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
 
     if (loginForm) {
-        // Limpa sessão antiga ao abrir a tela de login
+        // Limpa sessão antiga ao abrir a tela de login 
         sessionStorage.clear();
 
         loginForm.addEventListener('submit', (e) => {

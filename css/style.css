@@ -1,12 +1,12 @@
 /* css/style.css */
 
-/* --- Configuração Global e Tema --- */ 
+/* --- Configuração Global e Tema --- */
 :root {
     --batman-black: #0a0a0a;
     --batman-yellow: #E8B923;
     --batman-grey: #333333;
     --batman-light-grey: #b0b0b0;
-    --font-terminal: Consolas, Monaco, 'Courier New', monospace;
+    --font-terminal: Consolas, Monaco, 'Courier New', monospace; 
     --neon-green: #39FF14;
     --neon-yellow: #F9F871;
     --neon-red: #FF3131;
@@ -10092,8 +10092,10 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--b
     display: flex; justify-content: space-between; color: #555; font-size: 0.65rem;
 }
 
-/* Responsividade */
+/* Responsividade */ 
 @media (max-width: 500px) {
     .login-terminal-box { width: 90%; padding: 1.5rem; }
     .terminal-header h1 { font-size: 1.8rem; }
 }
+
+

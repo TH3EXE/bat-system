@@ -1,5 +1,5 @@
-// js/fornecimento.js
-// Lógica para a página fornecimento.html
+// js/prestadores.js
+// Lógica para a página prestadores.html
 // (Controle das Sub-Abas + Lógica de Pesquisa)
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const subTabButtons = document.querySelectorAll('.sub-tab-button');
     const subTabPanels = document.querySelectorAll('.sub-tab-panel');
     
-    // Elementos da Pesquisa 
-    const searchInput = document.getElementById('fornecimento-search-input');
-    const noResultsMsg = document.getElementById('fornecimento-no-results');
+    // Elementos da Pesquisa
+    const searchInput = document.getElementById('prestadores-search-input');
+    const noResultsMsg = document.getElementById('prestadores-no-results');
 
-    if (!searchInput) return; // Sai se não estiver na página certa
+    if (!searchInput) return; // Sai se não estiver na página certa 
 
     // --- 2. FUNÇÕES ---
 
@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let matchesFound = 0;
 
         // 1. Descobre qual aba está ativa
+        // ATUALIZAÇÃO: Seletor agora busca qualquer painel ativo
         const activePanel = document.querySelector('.sub-tab-panel.active');
         if (!activePanel) return; 
         
@@ -83,4 +84,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Roda o filtro uma vez no início (para o caso de a pesquisa estar preenchida)
     filtrarTabelasAtivas();
 });
-

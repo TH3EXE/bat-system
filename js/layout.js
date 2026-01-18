@@ -8,7 +8,7 @@ const ROUTES = [
     { name: "FRASEOLOGIA", url: "fraseologia.html", icon: '<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>' },
     { name: "ZONAS / MAPA", url: "zonas.html", icon: '<path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5z"/>' },
     { name: "INFILTRAÇÃO", url: "infiltracao.html", icon: '<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 9h-2V7h2v5z"/>' },
-    { name: "HOSPITAIS", url: "hospitais.html", icon: '<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.5 12h-3v-3.5h3V15zm0-5h-3V6.5h3V10zm5 5h-3v-3.5h3V15zm0-5h-3V6.5h3V10z"/>' },
+    { name: "PRESTADORES", url: "prestadores.html", icon: '<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.5 12h-3v-3.5h3V15zm0-5h-3V6.5h3V10zm5 5h-3v-3.5h3V15zm0-5h-3V6.5h3V10z"/>' },
     { name: "TERAPIAS", url: "terapias.html", icon: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>' },
     { name: "MEDICAMENTOS", url: "medicamentos.html", icon: '<path d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/>' },
     { name: "FORNECIMENTO", url: "fornecimento.html", icon: '<path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/>' },
@@ -158,3 +158,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+

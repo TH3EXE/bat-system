@@ -172,3 +172,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 5. INICIA A PÁGINA ---
     initBusca();
 });
+

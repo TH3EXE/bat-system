@@ -1,5 +1,5 @@
 // js/fraseologia.js
-// Lógica de Fraseologia (Port do mkacete.py) 
+// Lógica de Fraseologia (Port do mkacete.py)
 
 document.addEventListener('DOMContentLoaded', () => {
     const subTabContainer = document.querySelector('.sub-tab-navigation');
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let final = data.autorizacao.template_intro + itensTexto + data.autorizacao.template_fim;
-        // Remove o último separador
+        // Remove o último separador 
         final = final.replace("\n=================" + data.autorizacao.template_fim, data.autorizacao.template_fim);
         
         outputTextarea.value = final;
@@ -318,3 +318,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+

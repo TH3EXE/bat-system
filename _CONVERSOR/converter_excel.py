@@ -98,3 +98,4 @@ if __name__ == "__main__":
     # Garante que o script está rodando do diretório correto
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     converter_planilha()
+    

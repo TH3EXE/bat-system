@@ -1,5 +1,5 @@
 // js/ferramentas.js
-// Lógica unificada para FERRAMENTAS (Notas Rich Text, PDF, Calculadora) 
+// Lógica unificada para FERRAMENTAS (Notas Rich Text, PDF, Calculadora)
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. BLOCO DE NOTAS
+    // 2. BLOCO DE NOTAS 
     initNotepad();
 
     // 3. PDF
@@ -223,3 +223,4 @@ function initCalculator() {
         displayResult.animate([{ transform: 'scale(0.9)', opacity: 0.5 }, { transform: 'scale(1)', opacity: 1 }], { duration: 300 });
     });
 }
+

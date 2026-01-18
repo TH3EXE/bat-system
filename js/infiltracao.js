@@ -1,5 +1,5 @@
 // js/infiltracao.js
-// Lógica para a página infiltracao.html (Versão com Sub-Abas) 
+// Lógica para a página infiltracao.html (Versão com Sub-Abas)
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const subTabButtons = document.querySelectorAll('.sub-tab-button');
     const subTabPanels = document.querySelectorAll('.sub-tab-panel');
 
-    if (!searchInput) return; // Sai se não estiver na página certa
+    if (!searchInput) return; // Sai se não estiver na página certa 
 
     // Função para normalizar strings (remove acentos, minúsculas)
     function normalizarString(str) {
