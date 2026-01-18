@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br"> 
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAT-SYSTEM :: HOSPITAIS</title>
+    <title>BAT-SYSTEM :: HOSPITAIS</title> 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/mobile.css">
 </head>
@@ -60,21 +60,33 @@
     <main class="app-container">
         <div class="infiltracao-layout-container">
             <div class="tool-module">
-                <h3>REDE DE HOSPITAIS</h3>
+                <h3>PRESTADORES DENTRO DA REDE</h3>
                 
                 <div class="form-group" style="max-width: 600px; margin: 0 auto 1.5rem auto;">
-                    <label for="hospitais-search-input">Pesquisar Hospital ou Região (na aba ativa):</label>
+                    <label for="hospitais, centroclinicos, nucleoterapias, qualividas, notrelabs -search-input">Pesquisar Prestador ou Região (na aba ativa):</label>
                     <input type="text" id="hospitais-search-input" placeholder="Digite Bosque da Saude, ABC, Niteroi...">
                 </div>
                 
                 <p id="hospitais-no-results" class="zona-no-results" style="display: none;">
-                    Nenhum hospital encontrado para esta pesquisa.
+                    Nenhum prestador encontrado para esta pesquisa.
+                <P id="centroclinicos-no-results" class="zona-no-results" style="display: none;">
+                    Nenhum prestador encontrado para esta pesquisa.
+                <p id="nucleoterapias-no-results" class="zona-no-results" style="display: none;">
+                    Nenhum prestador encontrado para esta pesquisa.
+                <p id="qualividas-no-results" class="zona-no-results" style="display: none;">
+                    Nenhum prestador encontrado para esta pesquisa.
+                <p id="notrelabs-no-results" class="zona-no-results" style="display: none;">
+                    Nenhum prestador encontrado para esta pesquisa.
                 </p>
 
                 <nav class="sub-tab-navigation">
                     <button class="sub-tab-button active" data-subtab="subtab-sp">HOSPITAIS SP</button>
                     <button class="sub-tab-button" data-subtab="subtab-rj">HOSPITAIS RJ</button>
                     <button class="sub-tab-button" data-subtab="subtab-regionais">HOSPITAIS REGIONAIS</button>
+                    <button class="sub-tab-button" data-subtab="subtab-clinicos">CENTRO CLINICOS</button>
+                    <button class="sub-tab-button" data-subtab="subtab-nucleo">NUCLEO DE TERAPIAS</button>
+                    <button class="sub-tab-button" data-subtab="subtab-qualivida">QUALIVIDAS</button>
+                    <button class="sub-tab-button" data-subtab="subtab-notrelab">NOTRELABS</button>
                 </nav>
 
                 <div class="sub-tab-content">
@@ -86,72 +98,105 @@
                                 <table class="prestador-tabela" id="tabela-sp">
                                     <thead>
                                         <tr>
+                                            <th>TIPO DE REDE</th>
                                             <th>PRESTADOR</th>
                                             <th>ZONA | REGIÃO</th>
                                             <th class="text-center">CNPJ</th>
                                             <th class="text-center">CD PESSOA</th>
+                                            <th classe="text-center">ENDEREÇO</th>
+                                            <th class="text-center">TELEFONE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL BOSQUE DA SAUDE</td>
                                             <td>SUL</td>
                                             <td class="text-center">44649812023006</td>
                                             <td class="text-center">249396508</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL CRUZEIRO DO SUL</td>
                                             <td>OESTE</td>
                                             <td class="text-center">44649812026013</td>
                                             <td class="text-center">249390496</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL E MATERNIDADE GUARULHOS</td>
                                             <td>ALTO TIETE</td>
                                             <td class="text-center">44649812023502</td>
                                             <td class="text-center">249396532</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSP E MATER NOSSA SRA ROSARIO</td>
                                             <td>NORTE</td>
                                             <td class="text-center">44649812007140</td>
                                             <td class="text-center">249396133</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL FAMILY</td>
                                             <td>PROXIMIDADE: OESTE, SUL</td>
                                             <td class="text-center">44649812022883</td>
                                             <td class="text-center">249396486</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL NOVA VIDA</td>
                                             <td>OESTE</td>
                                             <td class="text-center">44649812025807</td>
                                             <td class="text-center">249396621</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL E MATERNIDADE SALVALUS</td>
                                             <td>LESTE</td>
                                             <td class="text-center">44649812028490</td>
                                             <td class="text-center">249396796</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL INTERMEDICA ANALIA FRANCO</td>
                                             <td>LESTE</td>
                                             <td class="text-center">44649812022964</td>
                                             <td class="text-center">249396494</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>UNIDADE AVANCADA SALVALUS</td>
                                             <td>LESTE</td>
                                             <td class="text-center">44649812028903</td>
                                             <td class="text-center">249396834</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL SANTA MARTA</td>
                                             <td>SUL</td>
                                             <td class="text-center">44649812037643</td>
                                             <td class="text-center">249390569</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -166,42 +211,60 @@
                                 <table class="prestador-tabela" id="tabela-rj">
                                     <thead>
                                         <tr>
+                                            <th>TIPO DE REDE</th>
                                             <th>PRESTADOR</th>
                                             <th>ZONA | REGIÃO</th>
                                             <th class="text-center">CNPJ</th>
                                             <th class="text-center">CD PESSOA</th>
+                                            <th classe="text-center">ENDEREÇO</th>
+                                            <th class="text-center">TELEFONE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HS COR HOSPITAL</td>
                                             <td>DUQUE DE CAXIAS</td>
                                             <td class="text-center">8562523000133</td>
                                             <td class="text-center">256437702</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL SANTA MARTHA</td>
                                             <td>NITEROI</td>
                                             <td class="text-center">30079461000162</td>
                                             <td class="text-center">256437370</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL NOTRECARE RIO (SAMCI)</td>
                                             <td>ANDARAI</td>
                                             <td class="text-center">44649812024908</td>
                                             <td class="text-center">249390470</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL DA MULHER JACAREPAGUA</td>
                                             <td>JACAREPAGUA</td>
                                             <td class="text-center">76882612005003</td>
                                             <td class="text-center">250517070</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL INFANTIL JACAREPAGUA</td>
                                             <td>JACAREPAGUA</td>
                                             <td class="text-center">76882612005186</td>
                                             <td class="text-center">250517089</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -210,106 +273,595 @@
                     </section> 
 
                     <section id="subtab-regionais" class="sub-tab-panel">
-                        <div class="cidade-section">
+                        <div class="cidade-section" id="section-regionais">
                             <h2>HOSPITAIS REGIONAIS</h2>
                             <div class="tabela-wrapper">
                                 <table class="prestador-tabela" id="tabela-regionais">
                                     <thead>
                                         <tr>
+                                            <th>TIPO DE REDE</th>
                                             <th>PRESTADOR</th>
                                             <th>ZONA | REGIÃO</th>
                                             <th class="text-center">CNPJ</th>
                                             <th class="text-center">CD PESSOA</th>
+                                            <th classe="text-center">ENDEREÇO</th>
+                                            <th class="text-center">TELEFONE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL FREI GALVAO</td>
                                             <td>SANTOS</td>
                                             <td class="text-center">44649812007817</td>
                                             <td class="text-center">249396141</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL E MATERNIDADE MODELO</td>
                                             <td>SOROCABA</td>
                                             <td class="text-center">44649812008899</td>
                                             <td class="text-center">249390437</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL NOTRECARE ABC</td>
                                             <td>ABC</td>
                                             <td class="text-center">44649812026609</td>
                                             <td class="text-center">249396672</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL INTERMEDICA ABC</td>
                                             <td>ABC</td>
                                             <td class="text-center">44649812023936</td>
                                             <td class="text-center">249396559</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL NOTRECARE SOROCABA</td>
                                             <td>SOROCABA</td>
                                             <td class="text-center">44649812034709</td>
                                             <td class="text-center">249390542</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL PAULO SACRAMENTO</td>
                                             <td>JUNDIAI</td>
                                             <td class="text-center">44649812001614</td>
                                             <td class="text-center">249396044</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL RENASCENCA CAMPINAS</td>
                                             <td>CAMPINAS</td>
                                             <td class="text-center">44649812019238</td>
                                             <td class="text-center">249390461</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL SANTANA MOGI</td>
                                             <td>ALTO TIETE</td>
                                             <td class="text-center">44649812027176</td>
                                             <td class="text-center">249396710</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL SAO BERNARDO</td>
                                             <td>ABC</td>
                                             <td class="text-center">44649812005016</td>
                                             <td class="text-center">249396095</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
+                                            <td>HOSPITAL SANTO ANDRE</td>
+                                            <td>SANTO ANDRE</td>
+                                            <td class="text-center">44649812028300</td>
+                                            <td class="text-center">PREEECHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL FAMILY</td>
                                             <td>TABOAO DA SERRA</td>
                                             <td class="text-center">44649812022883</td>
                                             <td class="text-center">249396486</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL SANTA MARTA</td>
                                             <td>SANTO AMARO</td>
                                             <td class="text-center">44649812037643</td>
                                             <td class="text-center">249390569</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL NOVA VIDA</td>
                                             <td>ITAPEVI</td>
                                             <td class="text-center">44649812025807</td>
                                             <td class="text-center">249396621</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                         <tr>
+                                            <td class="text-center">PROPRIA</td>
                                             <td>HOSPITAL CLINICA SAO LUCAS</td>
                                             <td>AMERICANA</td>
                                             <td class="text-center">43254267000118</td>
                                             <td class="text-center">256441408</td>
+                                            <td class="text-center">PREENCHER*</td>
+                                            <td class="text-center">PREENCHER*</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </section>
-                </div> 
-            </div>
-        </div>
-    </main>
+                                            
+                                        <section id="subtab-clinicos" class="sub-tab-panel">
+                                            <div class="cidade-section" id="section-clinicos">
+                                                <h2>CENTRO CLINICOS</h2>
+                                                <div class="tabela-wrapper">
+                                                    <table class="prestador-tabela" id="tabela-clinicos">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>TIPO DE REDE</th>
+                                                                <th>PRESTADOR</th>
+                                                                <th>ZONA | REGIÃO</th>
+                                                                <th class="text-center">CNPJ</th>
+                                                                <th class="text-center">CD PESSOA</th>
+                                                                <th classe="text-center">ENDEREÇO</th>
+                                                                <th class="text-center">TELEFONE</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">PROPRIA</td>
+                                                                <td>CENTRO CLINICO 01</td>
+                                                                <td>PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">PROPRIA</td>
+                                                                <td>CENTRO CLINICO 02</td>
+                                                                <td>PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">PROPRIA</td>
+                                                                <td>CENTRO CLINICO 03</td>
+                                                                <td>PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">PROPRIA</td>
+                                                                <td>CENTRO CLINICO 04</td>
+                                                                <td>PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">PROPRIA</td>
+                                                                <td>CENTRO CLINICO 05</td>
+                                                                <td>PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">PROPRIA</td>
+                                                                <td>CENTRO CLINICO 06</td>
+                                                                <td>PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">PROPRIA</td>
+                                                                <td>CENTRO CLINICO 07</td>
+                                                                <td>PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                            <tr>
+                                                                <tr>
+                                                                <td class="text-center">PROPRIA</td>
+                                                                <td>CENTRO CLINICO 08</td>
+                                                                <td>PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">PROPRIA</td>
+                                                                <td>CENTRO CLINICO 09</td>
+                                                                <td>PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">PROPRIA</td>
+                                                                <td>CENTRO CLINICO 10</td>
+                                                                <td>PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                                <td class="text-center">PREENCHER*</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                                                <section id="subtab-nucleo" class="sub-tab-panel">
+                                                                    <div class="cidade-section" id="section-nucleo">
+                                                                        <h2>NUCLEO DE TERAPIAS</h2>
+                                                                        <div class="tabela-wrapper">
+                                                                            <table class="prestador-tabela" id="tabela-nucleo">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>TIPO DE REDE</th>
+                                                                                        <th>PRESTADOR</th>
+                                                                                        <th>ZONA | REGIÃO</th>
+                                                                                        <th class="text-center">CNPJ</th>
+                                                                                        <th class="text-center">CD PESSOA</th>
+                                                                                        <th classe="text-center">ENDEREÇO</th>
+                                                                                        <th class="text-center">TELEFONE</th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NUCLEO DE TERAPIAS 01</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NUCLEO DE TERAPIAS 02</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NUCLEO DE TERAPIAS 03</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NUCLEO DE TERAPIAS 04</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NUCLEO DE TERAPIAS 05</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NUCLEO DE TERAPIAS 06</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NUCLEO DE TERAPIAS 07</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NUCLEO DE TERAPIAS 08</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NUCLEO DE TERAPIAS 09</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NUCLEO DE TERAPIAS 10</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </section>
+
+                                                                <section id="subtab-qualivida" class="sub-tab-panel">
+                                                                    <div class="cidade-section" id="section-qualivida">
+                                                                        <h2>QUALIVIDAS</h2>
+                                                                        <div class="tabela-wrapper">
+                                                                            <table class="prestador-tabela" id="tabela-qualivida">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>TIPO DE REDE</th>
+                                                                                        <th>PRESTADOR</th>
+                                                                                        <th>ZONA | REGIÃO</th>
+                                                                                        <th class="text-center">CNPJ</th>
+                                                                                        <th class="text-center">CD PESSOA</th>
+                                                                                        <th classe="text-center">ENDEREÇO</th>
+                                                                                        <th class="text-center">TELEFONE</th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>QUALIVIDA 01</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>QUALIVIDA 02</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>QUALIVIDA 03</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>QUALIVIDA 04</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>QUALIVIDA 05</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>QUALIVIDA 06</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>QUALIVIDA 07</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>QUALIVIDA 08</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>QUALIVIDA 09</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>QUALIVIDA 10</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </section>
+
+                                                                <section id="subtab-notrelab" class="sub-tab-panel">
+                                                                    <div class="cidade-section" id="section-notrelab">
+                                                                        <h2>QUALIVIDAS</h2>
+                                                                        <div class="tabela-wrapper">
+                                                                            <table class="prestador-tabela" id="tabela-notrelab">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>TIPO DE REDE</th>
+                                                                                        <th>PRESTADOR</th>
+                                                                                        <th>ZONA | REGIÃO</th>
+                                                                                        <th class="text-center">CNPJ</th>
+                                                                                        <th class="text-center">CD PESSOA</th>
+                                                                                        <th classe="text-center">ENDEREÇO</th>
+                                                                                        <th class="text-center">TELEFONE</th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NOTRELABS 01</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NOTRELABS 02</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NOTRELABS 03</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NOTRELABS 04</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NOTRELABS 05</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NOTRELABS 06</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NOTRELABS 07</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NOTRELABS 08</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NOTRELABS 09</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="text-center">PROPRIA</td>
+                                                                                        <td>NOTRELABS 10</td>
+                                                                                        <td>PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+                                                                                        <td class="text-center">PREENCHER*</td>
+
+                                                    </section>
+                                                </div>
+                                            </main>
 
     <div class="bat-signal-background"></div>
     <script src="js/layout.js"></script>
