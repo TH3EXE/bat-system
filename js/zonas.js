@@ -1,5 +1,5 @@
 // js/zonas.js
-// MAPA TÁTICO: Correção de Bug (Limpeza de Rotas e Seleção)
+// MAPA TÁTICO: Correção de Bug (Limpeza de Rotas e Seleção) 
 
 document.addEventListener('DOMContentLoaded', () => {
 

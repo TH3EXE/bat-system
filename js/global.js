@@ -1,5 +1,5 @@
 // js/global.js
-// SISTEMA CENTRAL: AUTENTICAÇÃO, LAYOUT E MONITORAMENTO
+// SISTEMA CENTRAL: AUTENTICAÇÃO, LAYOUT E MONITORAMENTO 
 
 document.addEventListener('DOMContentLoaded', () => {
 

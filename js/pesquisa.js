@@ -1,5 +1,5 @@
 // js/pesquisa.js
-// Lógica para ler MÚLTIPLOS arquivos Excel (BATMAN.xlsx, BATMAN1.xlsx, etc.)
+// Lógica para ler MÚLTIPLOS arquivos Excel (BATMAN.xlsx, BATMAN1.xlsx, etc.) 
 // ATUALIZADO: Com sistema Anti-Cache para forçar a leitura de novos arquivos
 
 document.addEventListener('DOMContentLoaded', () => {

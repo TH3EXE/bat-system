@@ -1,6 +1,6 @@
 // js/hospitais.js
 // Lógica para a página hospitais.html
-// (Controle das Sub-Abas + Lógica de Pesquisa)
+// (Controle das Sub-Abas + Lógica de Pesquisa) 
 
 document.addEventListener('DOMContentLoaded', () => {
 

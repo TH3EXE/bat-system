@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let dadosDaAbaAtual = [];
     let mapaAbas = {};
 
-    // --- 2. ELEMENTOS DA PÁGINA DE BUSCA ---
+    // --- 2. ELEMENTOS DA PÁGINA DE BUSCA --- 
     const selectAba = document.getElementById('select-aba');
     const searchTermInput = document.getElementById('search-term');
     const searchButton = document.getElementById('search-button');

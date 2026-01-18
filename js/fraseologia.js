@@ -1,5 +1,5 @@
 // js/fraseologia.js
-// Lógica de Fraseologia (Port do mkacete.py)
+// Lógica de Fraseologia (Port do mkacete.py) 
 
 document.addEventListener('DOMContentLoaded', () => {
     const subTabContainer = document.querySelector('.sub-tab-navigation');

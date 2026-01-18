@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let allNotes = [];
     let activeNoteId = null;
 
-    // --- 1. FUNÇÕES DE DADOS (LOCALSTORAGE) ---
+    // --- 1. FUNÇÕES DE DADOS (LOCALSTORAGE) --- 
 
     // Carrega todas as notas do localStorage
     function loadNotesFromStorage() {

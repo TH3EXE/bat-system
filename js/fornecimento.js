@@ -1,6 +1,6 @@
 // js/fornecimento.js
 // Lógica para a página fornecimento.html
-// (Controle das Sub-Abas + Lógica de Pesquisa)
+// (Controle das Sub-Abas + Lógica de Pesquisa) 
 
 document.addEventListener('DOMContentLoaded', () => {
 

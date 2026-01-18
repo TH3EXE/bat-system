@@ -2,7 +2,7 @@
 // BASE DE DADOS DE FRASEOLOGIAS (Cópia Fiel do mkacete.py)
 
 window.FRASEOLOGIAS_DATA = {
-    // 1. NEGATIVAS E RESTRIÇÕES (Texto Jurídico Completo)
+    // 1. NEGATIVAS E RESTRIÇÕES (Texto Jurídico Completo) 
     "negativas": [
         {
             id: '01',

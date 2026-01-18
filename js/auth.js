@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('password');
     const errorMessage = document.getElementById('error-message');
 
-    // Se já estiver logado, manda para a tela de apresentação
+    // Se já estiver logado, manda para a tela de apresentação 
     if (sessionStorage.getItem('userRole')) {
         // ATUALIZADO: Aponta para a nova página de apresentação
         window.location.href = 'busca.html'; 

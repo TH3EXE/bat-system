@@ -1,7 +1,7 @@
 // js/informacoes.js
 // Lógica e dados para a página informacoes.html
 
-// --- BASE DE DADOS DAS INFORMAÇÕES BÁSICAS ---
+// --- BASE DE DADOS DAS INFORMAÇÕES BÁSICAS --- 
 const INFO_DATA = [
     {
         "FLUXO": "PROCEDIMENTO NÃO IDENTIFICADO EM GUIA",

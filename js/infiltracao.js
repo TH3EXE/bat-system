@@ -1,5 +1,5 @@
 // js/infiltracao.js
-// Lógica para a página infiltracao.html (Versão com Sub-Abas)
+// Lógica para a página infiltracao.html (Versão com Sub-Abas) 
 
 document.addEventListener('DOMContentLoaded', () => {
 

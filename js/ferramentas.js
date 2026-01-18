@@ -1,5 +1,5 @@
 // js/ferramentas.js
-// Lógica unificada para FERRAMENTAS (Notas Rich Text, PDF, Calculadora)
+// Lógica unificada para FERRAMENTAS (Notas Rich Text, PDF, Calculadora) 
 
 document.addEventListener('DOMContentLoaded', () => {
     

@@ -1,5 +1,5 @@
 // js/medicamentos.js
-// Lógica para ler a planilha BATMAN2.xlsx com ORDEM EXATA E PAGINAÇÃO NUMÉRICA
+// Lógica para ler a planilha BATMAN2.xlsx com ORDEM EXATA E PAGINAÇÃO NUMÉRICA 
 
 document.addEventListener('DOMContentLoaded', () => {
     
