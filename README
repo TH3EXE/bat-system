@@ -2,7 +2,7 @@
 BAT-SYSTEM v2.0 - MANUAL DE SOBREVIVÊNCIA (LEIA OU SOFRA)
 ==========================================================================
 
-1. O QUE É ISSO? 
+1. O QUE É ISSO?
 ----------------
 Um sistema operacional tático para controle de zonas, procedimentos e ferramentas 
 médicas. Feito para parecer que estamos na Batcaverna, mas rodando num navegador 
@@ -15,7 +15,7 @@ Chrome qualquer.
    /js/layout.js -> O DEUS DO MENU. Se quiser mudar um link do topo, é AQUI.
                     Não edite os 15 arquivos HTMLs manualmente, por favor.
 
-3. COMO ADICIONAR UMA NOVA ABA?
+3. COMO ADICIONAR UMA NOVA ABA? 
 -------------------------------
 Passo 1: Crie o arquivo 'nova_aba.html' dentro da pasta /pages.
 Passo 2: Copie a estrutura básica de qualquer outro HTML (com o <div id="app-header-placeholder">).
